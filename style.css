@@ -496,7 +496,15 @@ body {
   font-weight: 900;
   line-height: 1.15;
   letter-spacing: -1.5px;
-  margin-bottom: 18px;
+  margin-bottom: 8px;
+}
+
+.hero-full-name {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
 }
 
 .hero-role-wrapper {
