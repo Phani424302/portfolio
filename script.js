@@ -332,7 +332,7 @@ const projectData = {
       "Color palette selection and stroke thickness modulation via intuitive index-to-middle finger pinch gestures."
     ],
     architecture: "Input Video Stream ➔ MediaPipe Landmark Extraction (21 3D points) ➔ Gesture State Machine ➔ Canvas Buffer Smoothing ➔ CNN Classifier (EMNIST weights) ➔ Real-time Visual Output.",
-    github: "https://github.com"
+    github: "https://github.com/Phani424302/portfolio"
   },
   vehicle: {
     title: "Vehicle Detection & Counting System · Intelligent Traffic Analytics",
@@ -346,7 +346,7 @@ const projectData = {
       "Integrated Flask web dashboard that allows users to upload surveillance videos, adjust detection parameters, and monitor vehicle count statistics live."
     ],
     architecture: "Uploaded Video ➔ Flask Ingestion ➔ OpenCV Frame Generator ➔ YOLOv8n Detection Engine (COCO Weights) ➔ Intersection Line Counting Logic ➔ Web Streaming Response.",
-    github: "https://github.com"
+    github: "https://github.com/Phani424302/portfolio"
   }
 };
 
