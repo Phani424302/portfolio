@@ -685,9 +685,10 @@ body {
 }
 
 .cap-icon-gold i {
-  color: var(--gold-light);
+  display: inline-block;
+  line-height: 1;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5)) saturate(120%);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  text-shadow: 0 0 10px rgba(243, 199, 124, 0.35);
 }
 
 .cap-box:hover .cap-icon-gold {
@@ -701,9 +702,8 @@ body {
 }
 
 .cap-box:hover .cap-icon-gold i {
-  color: #ffffff;
-  text-shadow: 0 0 18px rgba(243, 199, 124, 0.9);
-  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 20px rgba(243, 199, 124, 0.4)) brightness(1.2) saturate(130%);
+  transform: scale(1.12);
 }
 
 .cap-box h4 {
@@ -881,13 +881,13 @@ body {
 
 .gold-pill i {
   font-size: 0.95rem;
-  color: var(--gold-light);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
   transition: all 0.22s ease;
 }
 
 .gold-pill:hover i {
-  color: #ffffff;
-  text-shadow: 0 0 10px rgba(243, 199, 124, 0.85);
+  filter: drop-shadow(0 0 8px currentColor) brightness(1.2);
+  transform: scale(1.12);
 }
 
 /* Experience */
@@ -934,9 +934,11 @@ body {
 }
 
 .exp-badge-disc i {
+  display: inline-block;
+  line-height: 1;
   color: var(--gold-light);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5)) saturate(120%);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  text-shadow: 0 0 10px rgba(243, 199, 124, 0.35);
 }
 
 .experience-showcase:hover .exp-badge-disc {
@@ -950,9 +952,8 @@ body {
 }
 
 .experience-showcase:hover .exp-badge-disc i {
-  color: #ffffff;
-  text-shadow: 0 0 18px rgba(243, 199, 124, 0.9);
-  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 20px rgba(243, 199, 124, 0.4)) brightness(1.2) saturate(130%);
+  transform: scale(1.12);
 }
 
 .exp-role-title {
@@ -1105,8 +1106,8 @@ body {
   display: inline-block;
   line-height: 1;
   color: var(--gold-light);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.55)) saturate(120%);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(243, 199, 124, 0.35);
 }
 
 .skill-disc-item:hover .skill-icon-bubble {
@@ -1120,9 +1121,8 @@ body {
 }
 
 .skill-disc-item:hover .skill-icon-bubble i {
-  color: #ffffff;
-  text-shadow: 0 0 18px rgba(243, 199, 124, 0.9), 0 0 26px rgba(212, 175, 55, 0.6);
-  transform: scale(1.12);
+  filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 20px rgba(243, 199, 124, 0.45)) brightness(1.2) saturate(130%);
+  transform: scale(1.14);
 }
 
 .skill-label {
@@ -1186,9 +1186,11 @@ body {
 }
 
 .diploma-badge-disc i {
+  display: inline-block;
+  line-height: 1;
   color: var(--gold-light);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5)) saturate(120%);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  text-shadow: 0 0 10px rgba(243, 199, 124, 0.35);
 }
 
 .diploma-card:hover .diploma-badge-disc {
@@ -1202,9 +1204,8 @@ body {
 }
 
 .diploma-card:hover .diploma-badge-disc i {
-  color: #ffffff;
-  text-shadow: 0 0 18px rgba(243, 199, 124, 0.9);
-  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 20px rgba(243, 199, 124, 0.4)) brightness(1.2) saturate(130%);
+  transform: scale(1.12);
 }
 
 .featured-diploma {
@@ -1293,9 +1294,11 @@ body {
 }
 
 .credential-icon i {
+  display: inline-block;
+  line-height: 1;
   color: var(--gold-light);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5)) saturate(120%);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  text-shadow: 0 0 10px rgba(243, 199, 124, 0.35);
 }
 
 .credential-card:hover .credential-icon {
@@ -1309,9 +1312,8 @@ body {
 }
 
 .credential-card:hover .credential-icon i {
-  color: #ffffff;
-  text-shadow: 0 0 18px rgba(243, 199, 124, 0.9);
-  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 20px rgba(243, 199, 124, 0.4)) brightness(1.2) saturate(130%);
+  transform: scale(1.12);
 }
 
 .credential-info {
@@ -1388,9 +1390,11 @@ body {
 }
 
 .concierge-icon i {
+  display: inline-block;
+  line-height: 1;
   color: var(--gold-light);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5)) saturate(120%);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  text-shadow: 0 0 10px rgba(243, 199, 124, 0.35);
 }
 
 .concierge-box:hover .concierge-icon {
@@ -1404,9 +1408,8 @@ body {
 }
 
 .concierge-box:hover .concierge-icon i {
-  color: #ffffff;
-  text-shadow: 0 0 18px rgba(243, 199, 124, 0.9);
-  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 20px rgba(243, 199, 124, 0.4)) brightness(1.2) saturate(130%);
+  transform: scale(1.12);
 }
 
 .concierge-text {
