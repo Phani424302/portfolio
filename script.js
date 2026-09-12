@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-  initCursorSpotlight();
-  initMobileNav();
-  initActiveNavSpy();
+  initLuxurySpotlight();
+  initMobileNavigation();
+  initSectionSpy();
   initCurrentYear();
 });
 
-/* Dynamic Mouse Spotlight */
-function initCursorSpotlight() {
+/* Dynamic Warm Gold Cursor Spotlight */
+function initLuxurySpotlight() {
   const root = document.documentElement;
   window.addEventListener('mousemove', (e) => {
     root.style.setProperty('--mouse-x', `${e.clientX}px`);
@@ -15,51 +15,51 @@ function initCursorSpotlight() {
 }
 
 /* Mobile Navigation Toggle */
-function initMobileNav() {
+function initMobileNavigation() {
   const toggle = document.getElementById('mobile-toggle');
-  const nav = document.getElementById('nav-menu');
-  const links = document.querySelectorAll('.nav-link');
+  const navMenu = document.getElementById('nav-menu');
+  const navItems = document.querySelectorAll('.nav-item');
 
-  if (toggle && nav) {
+  if (toggle && navMenu) {
     toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
+      navMenu.classList.toggle('open');
     });
 
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('open');
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        navMenu.classList.remove('open');
       });
     });
   }
 }
 
-/* Active Section Nav Spy */
-function initActiveNavSpy() {
+/* Active Section Spy */
+function initSectionSpy() {
   const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
+  const navItems = document.querySelectorAll('.nav-item');
 
   window.addEventListener('scroll', () => {
     let current = '';
-    const scrollPosition = window.pageYOffset + 120;
+    const scrollPos = window.pageYOffset + 140;
 
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      if (scrollPosition >= top && scrollPosition < top + height) {
-        current = section.getAttribute('id');
+    sections.forEach(sec => {
+      const top = sec.offsetTop;
+      const height = sec.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        current = sec.getAttribute('id');
       }
     });
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
+    navItems.forEach(item => {
+      item.classList.remove('active');
+      if (item.getAttribute('href') === `#${current}`) {
+        item.classList.add('active');
       }
     });
   });
 }
 
-/* Resume Modal */
+/* Curriculum Vitae Modal */
 function openResumeModal() {
   const modal = document.getElementById('resume-modal');
   if (modal) {
@@ -88,27 +88,27 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-/* Email Copy with Toast */
-function copyEmail(text) {
-  navigator.clipboard.writeText(text).then(() => {
-    showToast(`Copied email to clipboard: ${text}`);
+/* Copy Email with Toast */
+function copyEmail(email) {
+  navigator.clipboard.writeText(email).then(() => {
+    showGoldToast(`Copied email to clipboard: ${email}`);
   }).catch(() => {
-    const el = document.createElement('input');
-    el.value = text;
-    document.body.appendChild(el);
-    el.select();
+    const input = document.createElement('input');
+    input.value = email;
+    document.body.appendChild(input);
+    input.select();
     document.execCommand('copy');
-    document.body.removeChild(el);
-    showToast(`Copied email to clipboard: ${text}`);
+    document.body.removeChild(input);
+    showGoldToast(`Copied email to clipboard: ${email}`);
   });
 }
 
-function showToast(msg) {
+function showGoldToast(msg) {
   const toast = document.getElementById('toast');
-  const msgEl = document.getElementById('toast-msg');
-  if (!toast || !msgEl) return;
+  const toastMsg = document.getElementById('toast-message');
+  if (!toast || !toastMsg) return;
 
-  msgEl.textContent = msg;
+  toastMsg.textContent = msg;
   toast.classList.add('active');
 
   setTimeout(() => {
@@ -116,7 +116,7 @@ function showToast(msg) {
   }, 2800);
 }
 
-/* Contact Form */
+/* Concierge Contact Form */
 function handleContactSubmit(e) {
   e.preventDefault();
   const form = e.target;
@@ -125,19 +125,19 @@ function handleContactSubmit(e) {
   const subject = form.subject.value.trim();
   const message = form.message.value.trim();
 
-  const mailto = `mailto:phani424302@gmail.com?subject=${encodeURIComponent(subject + ' - from ' + name)}&body=${encodeURIComponent(message + '\n\nSender: ' + name + ' (' + email + ')')}`;
+  const mailto = `mailto:phani424302@gmail.com?subject=${encodeURIComponent(subject + ' - ' + name)}&body=${encodeURIComponent(message + '\n\nSender: ' + name + ' (' + email + ')')}`;
 
-  showToast('Opening your email client...');
+  showGoldToast('Initiating transmission to email client...');
   setTimeout(() => {
     window.location.href = mailto;
     form.reset();
-  }, 700);
+  }, 750);
 }
 
-/* Current Year */
+/* Footer Year */
 function initCurrentYear() {
-  const el = document.getElementById('current-year');
-  if (el) {
-    el.textContent = new Date().getFullYear();
+  const yearEl = document.getElementById('current-year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
   }
 }
