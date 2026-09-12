@@ -74,14 +74,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Luxury Golden Ambient Lighting */
-.cursor-spotlight {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  background: radial-gradient(850px circle at var(--mouse-x, 50vw) var(--mouse-y, 30vh), rgba(243, 199, 124, 0.08) 0%, rgba(212, 175, 55, 0.035) 40%, transparent 75%);
-}
+/* Luxury Soft Ambient Background Lighting (Static, Non-glaring) */
 
 .ambient-glow-gold {
   position: fixed;
@@ -202,16 +195,15 @@ body {
   overflow: hidden;
 }
 
-/* Dynamic Liquid Glint Sheen - responds to mouse or rests on upper-left curve */
+/* Frosted Glass Sheen - Calm, static, elegant specular reflection */
 .luxury-card::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(420px circle at var(--card-x, 25%) var(--card-y, 20%), rgba(255, 255, 255, 0.15) 0%, rgba(243, 199, 124, 0.07) 32%, rgba(255, 255, 255, 0.01) 65%, transparent 80%);
+  background: radial-gradient(380px circle at 20% 15%, rgba(255, 255, 255, 0.08) 0%, rgba(243, 199, 124, 0.03) 35%, transparent 75%);
   pointer-events: none;
-  opacity: 0.7;
-  transition: opacity 0.35s ease;
+  opacity: 0.6;
   z-index: 1;
 }
 

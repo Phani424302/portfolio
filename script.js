@@ -1,37 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  initLuxurySpotlight();
-  initLiquidGlassCards();
   initMobileNavigation();
   initSectionSpy();
   initCurrentYear();
 });
-
-/* Dynamic Warm Gold Cursor Spotlight */
-function initLuxurySpotlight() {
-  const root = document.documentElement;
-  window.addEventListener('mousemove', (e) => {
-    root.style.setProperty('--mouse-x', `${e.clientX}px`);
-    root.style.setProperty('--mouse-y', `${e.clientY}px`);
-  });
-}
-
-/* Dynamic Liquid Glass Interactive Pointer Glint (iPhone 26 / Next-Gen VisionOS Glass) */
-function initLiquidGlassCards() {
-  const cards = document.querySelectorAll('.luxury-card');
-  cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty('--card-x', `${x}px`);
-      card.style.setProperty('--card-y', `${y}px`);
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.removeProperty('--card-x');
-      card.style.removeProperty('--card-y');
-    });
-  });
-}
 
 /* Mobile Navigation Toggle */
 function initMobileNavigation() {
