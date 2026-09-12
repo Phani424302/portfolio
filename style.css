@@ -418,15 +418,19 @@ body {
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.1rem, 3.8vw, 3.4rem);
+  font-size: clamp(2.3rem, 4.4vw, 3.8rem);
   font-weight: 900;
   letter-spacing: 0.5px;
   line-height: 1.18;
+  margin-bottom: 18px;
+  word-break: normal;
+}
+
+.hero-title .name-line {
+  display: block;
   background: var(--gold-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 14px;
-  word-break: normal;
 }
 
 .hero-executive-title {
