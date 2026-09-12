@@ -663,29 +663,35 @@ body {
 }
 
 .cap-icon-gold {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(212, 175, 55, 0.22) 40%, rgba(18, 24, 38, 0.75) 100%);
-  border: 1px solid rgba(255, 245, 215, 0.35);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.65);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(20, 27, 42, 0.85) 45%, rgba(10, 14, 22, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.55);
   color: var(--gold-pale);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 1.45rem;
   margin-bottom: 20px;
-  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.5), 0 8px 18px -4px rgba(0, 0, 0, 0.5), 0 0 14px rgba(212, 175, 55, 0.2);
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 0 14px 0 rgba(0, 0, 0, 0.6),
+    0 8px 18px -4px rgba(0, 0, 0, 0.65),
+    0 0 16px rgba(212, 175, 55, 0.12);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cap-box:hover .cap-icon-gold {
-  transform: scale(1.1) translateY(-2px);
+  transform: scale(1.12) translateY(-3px);
   border-top-color: #ffffff;
-  color: #ffffff;
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 10px 24px -4px rgba(0, 0, 0, 0.6), 0 0 24px rgba(243, 199, 124, 0.45);
+  box-shadow: 
+    inset 0 2px 2px 0 rgba(255, 255, 255, 0.8),
+    0 12px 26px -2px rgba(0, 0, 0, 0.8),
+    0 0 24px rgba(243, 199, 124, 0.45);
 }
 
 .cap-box h4 {
@@ -836,16 +842,33 @@ body {
 }
 
 .gold-pill {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(14, 18, 28, 0.75) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(16, 22, 35, 0.85) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
   color: var(--text-creamy);
-  padding: 5px 14px;
-  border-radius: 8px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 6px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
+  padding: 6px 14px;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 3px 8px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.22s ease;
+}
+
+.gold-pill:hover {
+  border-color: var(--gold-light);
+  border-top-color: #ffffff;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 6px 14px rgba(0, 0, 0, 0.45), 0 0 12px rgba(212, 175, 55, 0.2);
+}
+
+.gold-pill i {
+  font-size: 0.95rem;
 }
 
 /* Experience */
@@ -857,10 +880,47 @@ body {
 .exp-title-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 20px;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
+}
+
+.exp-title-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.exp-badge-disc {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(20, 27, 42, 0.85) 45%, rgba(10, 14, 22, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 0 14px 0 rgba(0, 0, 0, 0.6),
+    0 8px 18px -4px rgba(0, 0, 0, 0.65),
+    0 0 16px rgba(212, 175, 55, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.experience-showcase:hover .exp-badge-disc {
+  transform: scale(1.12) translateY(-2px);
+  border-top-color: #ffffff;
+  box-shadow: 
+    inset 0 2px 2px 0 rgba(255, 255, 255, 0.8),
+    0 12px 26px -2px rgba(0, 0, 0, 0.8),
+    0 0 24px rgba(243, 199, 124, 0.45);
 }
 
 .exp-role-title {
@@ -914,91 +974,117 @@ body {
 }
 
 .arsenal-card {
-  padding: 28px;
-}
-
-.arsenal-head {
+  padding: 30px 20px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 20px;
+  text-align: center;
 }
 
-.arsenal-icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(212, 175, 55, 0.2) 40%, rgba(18, 24, 38, 0.75) 100%);
-  border: 1px solid rgba(255, 245, 215, 0.35);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.6);
-  color: var(--gold-pale);
+/* Category Pill Header with Glowing Status Dot (Matching Reference Image) */
+.arsenal-category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 229, 192, 0.08);
+  border: 1px solid rgba(0, 229, 192, 0.3);
+  color: #00e5c0;
+  padding: 6px 18px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin-bottom: 24px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 2px 10px rgba(0, 229, 192, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.category-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00e5c0;
+  box-shadow: 0 0 8px #00e5c0, 0 0 16px #00e5c0;
+}
+
+/* Skills Bubble Grid (Matching Reference Image) */
+.skills-bubble-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px 14px;
+  width: 100%;
+}
+
+.skill-disc-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 72px;
+  cursor: pointer;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-disc-item:hover {
+  transform: translateY(-5px);
+}
+
+.skill-icon-bubble {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(20, 27, 42, 0.85) 45%, rgba(10, 14, 22, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 0 14px 0 rgba(0, 0, 0, 0.6),
+    0 8px 18px -4px rgba(0, 0, 0, 0.65),
+    0 0 14px rgba(212, 175, 55, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.15rem;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.45), 0 6px 16px -4px rgba(0, 0, 0, 0.4), 0 0 12px rgba(212, 175, 55, 0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  font-size: 26px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  flex-shrink: 0;
+  position: relative;
 }
 
-.arsenal-card:hover .arsenal-icon-box {
-  transform: scale(1.1) translateY(-2px);
+.skill-icon-bubble i {
+  display: inline-block;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.skill-disc-item:hover .skill-icon-bubble {
+  transform: scale(1.12);
   border-top-color: #ffffff;
-  color: #ffffff;
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 8px 20px -4px rgba(0, 0, 0, 0.6), 0 0 20px rgba(243, 199, 124, 0.4);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 
+    inset 0 2px 2px 0 rgba(255, 255, 255, 0.7),
+    0 12px 26px -2px rgba(0, 0, 0, 0.85),
+    0 0 24px rgba(243, 199, 124, 0.35);
 }
 
-.arsenal-head h4 {
-  font-family: var(--font-serif);
-  font-size: 1.12rem;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: 0.3px;
-  transition: color 0.25s ease;
+.skill-disc-item:hover .skill-icon-bubble i {
+  transform: scale(1.08);
 }
 
-.arsenal-card:hover h4 {
-  color: var(--gold-pale);
-}
-
-.arsenal-pill-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.arsenal-pill {
-  font-size: 0.86rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(18, 23, 34, 0.6) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
+.skill-label {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
   color: var(--text-creamy);
-  padding: 6px 14px;
-  border-radius: 10px;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 6px rgba(0, 0, 0, 0.25);
-  transition: all 0.22s ease;
+  margin-top: 8px;
+  line-height: 1.25;
+  transition: color 0.2s ease;
+  word-break: break-word;
+  text-align: center;
 }
 
-.arsenal-pill:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(30, 40, 60, 0.75) 100%);
-  border-color: rgba(243, 199, 124, 0.45);
-  border-top-color: #ffffff;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 6px 14px rgba(0, 0, 0, 0.35), 0 0 12px rgba(212, 175, 55, 0.2);
-}
-
-.primary-pill {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(212, 175, 55, 0.16) 40%, rgba(22, 28, 42, 0.7) 100%);
-  border-color: rgba(212, 175, 55, 0.4);
-  border-top-color: rgba(255, 245, 215, 0.55);
+.skill-disc-item:hover .skill-label {
   color: #ffffff;
   font-weight: 600;
 }
@@ -1013,7 +1099,47 @@ body {
 }
 
 .diploma-card {
-  padding: 28px 32px;
+  padding: 26px 30px;
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.diploma-body {
+  flex-grow: 1;
+}
+
+.diploma-badge-disc {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(20, 27, 42, 0.85) 45%, rgba(10, 14, 22, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.55);
+  color: var(--gold-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 0 14px 0 rgba(0, 0, 0, 0.6),
+    0 8px 18px -4px rgba(0, 0, 0, 0.65),
+    0 0 16px rgba(212, 175, 55, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.diploma-card:hover .diploma-badge-disc {
+  transform: scale(1.12) translateY(-2px);
+  border-top-color: #ffffff;
+  color: #ffffff;
+  box-shadow: 
+    inset 0 2px 2px 0 rgba(255, 255, 255, 0.8),
+    0 12px 26px -2px rgba(0, 0, 0, 0.8),
+    0 0 24px rgba(243, 199, 124, 0.45);
 }
 
 .featured-diploma {
@@ -1080,29 +1206,36 @@ body {
 }
 
 .credential-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(212, 175, 55, 0.22) 40%, rgba(18, 24, 38, 0.75) 100%);
-  border: 1px solid rgba(255, 245, 215, 0.35);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.65);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(20, 27, 42, 0.85) 45%, rgba(10, 14, 22, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.55);
   color: var(--gold-pale);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   flex-shrink: 0;
-  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.5), 0 8px 18px -4px rgba(0, 0, 0, 0.5), 0 0 14px rgba(212, 175, 55, 0.2);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 0 14px 0 rgba(0, 0, 0, 0.6),
+    0 8px 18px -4px rgba(0, 0, 0, 0.65),
+    0 0 16px rgba(212, 175, 55, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .credential-card:hover .credential-icon {
-  transform: scale(1.1) translateY(-2px);
+  transform: scale(1.12) translateY(-2px);
   border-top-color: #ffffff;
   color: #ffffff;
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 10px 24px -4px rgba(0, 0, 0, 0.6), 0 0 24px rgba(243, 199, 124, 0.45);
+  box-shadow: 
+    inset 0 2px 2px 0 rgba(255, 255, 255, 0.8),
+    0 12px 26px -2px rgba(0, 0, 0, 0.8),
+    0 0 24px rgba(243, 199, 124, 0.45);
 }
 
 .credential-info {
@@ -1157,29 +1290,36 @@ body {
 }
 
 .concierge-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(212, 175, 55, 0.22) 40%, rgba(18, 24, 38, 0.75) 100%);
-  border: 1px solid rgba(255, 245, 215, 0.35);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.65);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(20, 27, 42, 0.85) 45%, rgba(10, 14, 22, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.55);
   color: var(--gold-pale);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 1.45rem;
   flex-shrink: 0;
-  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.5), 0 8px 18px -4px rgba(0, 0, 0, 0.5), 0 0 14px rgba(212, 175, 55, 0.2);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 0 14px 0 rgba(0, 0, 0, 0.6),
+    0 8px 18px -4px rgba(0, 0, 0, 0.65),
+    0 0 16px rgba(212, 175, 55, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .concierge-box:hover .concierge-icon {
-  transform: scale(1.1) translateY(-2px);
+  transform: scale(1.12) translateY(-2px);
   border-top-color: #ffffff;
   color: #ffffff;
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 10px 24px -4px rgba(0, 0, 0, 0.6), 0 0 24px rgba(243, 199, 124, 0.45);
+  box-shadow: 
+    inset 0 2px 2px 0 rgba(255, 255, 255, 0.8),
+    0 12px 26px -2px rgba(0, 0, 0, 0.8),
+    0 0 24px rgba(243, 199, 124, 0.45);
 }
 
 .concierge-text {
