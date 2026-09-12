@@ -144,7 +144,7 @@ async function handleContactSubmit(e) {
 
   const name = form.name.value.trim();
   const email = form.email.value.trim();
-  const subject = form.subject.value.trim() || 'Portfolio Inquiry';
+  const subject = (form.subject && form.subject.value) ? form.subject.value.trim() : 'Portfolio Inquiry';
   const message = form.message.value.trim();
 
   if (!name || !email || !message) {
