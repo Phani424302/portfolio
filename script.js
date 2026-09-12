@@ -165,16 +165,21 @@ function handleContactSubmit(e) {
     submitBtn.innerHTML = '<span>Opening Mail...</span> <i class="fa-solid fa-envelope"></i>';
   }
 
-  // Open Gmail Web compose in a new tab
-  const newTab = window.open(gmailUrl, '_blank');
-  if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
-    // If popups are blocked or on mobile device, trigger default mail app
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile) {
+    // On mobile devices, native mailto is instant and immune to popup blockers
     window.location.href = mailtoUrl;
+  } else {
+    // On desktop, try Gmail Web tab first, fallback to native mail client
+    const newTab = window.open(gmailUrl, '_blank');
+    if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
+      window.location.href = mailtoUrl;
+    }
   }
 
   setTimeout(() => {
     if (submitBtn) {
-      submitBtn.innerHTML = '<span>Message Drafted!</span> <i class="fa-solid fa-check"></i>';
+      submitBtn.innerHTML = '<span>Message Ready to Send!</span> <i class="fa-solid fa-check"></i>';
       setTimeout(() => {
         submitBtn.innerHTML = originalBtnHtml;
       }, 3500);
