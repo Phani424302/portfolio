@@ -179,7 +179,7 @@ async function handleContactSubmit(e) {
     formData.append('_captcha', 'false');
     formData.append('_template', 'table');
 
-    const response = await fetch('https://formsubmit.co/ajax/phani424302@gmail.com', {
+    const response = await fetch('https://formsubmit.co/ajax/a1faf15330c6f1691e25c69d1ed17084', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
