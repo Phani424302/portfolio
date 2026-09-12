@@ -90,10 +90,9 @@ Simply double-click [`index.html`](index.html) to open it directly in Google Chr
 
 ## 🛠️ Personalization & Custom Links
 
-To link your exact personal GitHub and LinkedIn profiles:
-1. Open [`index.html`](index.html).
-2. Search for `https://github.com` and replace with your GitHub username (e.g. `https://github.com/phani-bhushan`).
-3. Search for `https://linkedin.com` and replace with your LinkedIn profile URL.
+Your personal GitHub and LinkedIn profiles are already fully linked:
+- **GitHub**: `https://github.com/Phani424302`
+- **LinkedIn**: `https://www.linkedin.com/in/phani-bhushan-reddy-chennamareddygari-843806289/`
 
 ---
 

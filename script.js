@@ -165,19 +165,21 @@ async function handleContactSubmit(e) {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        name: name,
-        email: email,
-        _subject: `Portfolio Message from ${name}: ${subject}`,
-        subject: subject,
-        message: message,
-        _captcha: false
+        "Name": name,
+        "Email": email,
+        "Subject": subject,
+        "Message": message,
+        "_replyto": email,
+        "_subject": `Portfolio Message from ${name}: ${subject}`,
+        "_template": "table",
+        "_captcha": "false"
       })
     });
 
     const data = await response.json().catch(() => ({}));
 
     if (response.ok && (data.success === 'true' || data.success === true)) {
-      showGoldToast('Message sent successfully! Thank you for reaching out.');
+      showGoldToast('Message sent! It will arrive in your email inbox.');
       form.reset();
       if (submitBtn) {
         submitBtn.innerHTML = '<span>Message Sent!</span> <i class="fa-solid fa-check"></i>';
@@ -186,16 +188,13 @@ async function handleContactSubmit(e) {
           submitBtn.innerHTML = originalBtnHtml;
         }, 3000);
       }
-    } else if (data.message && data.message.includes('Activation')) {
-      // FormSubmit requires one-time activation on recipient email
-      showGoldToast('Opening your email app to deliver message...');
-      fallbackSendEmail(name, email, subject, message);
+    } else if (data.message && data.message.toLowerCase().includes('activation')) {
+      showGoldToast('Action needed: Check phani424302@gmail.com to activate FormSubmit!');
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnHtml;
       }
     } else {
-      showGoldToast('Opening your email app to deliver message...');
       fallbackSendEmail(name, email, subject, message);
       if (submitBtn) {
         submitBtn.disabled = false;
@@ -204,7 +203,6 @@ async function handleContactSubmit(e) {
     }
   } catch (error) {
     console.warn('Direct submission error, activating mail fallback:', error);
-    showGoldToast('Opening your email app to deliver message...');
     fallbackSendEmail(name, email, subject, message);
     if (submitBtn) {
       submitBtn.disabled = false;
@@ -214,14 +212,12 @@ async function handleContactSubmit(e) {
 }
 
 function fallbackSendEmail(name, email, subject, message) {
-  const bodyText = `${message}\n\n---\nSender: ${name}\nEmail: ${email}`;
+  const bodyText = `${message}\n\nFrom: ${name} (${email})`;
   const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=phani424302@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
-  const mailtoUrl = `mailto:phani424302@gmail.com?subject=${encodeURIComponent(subject + ' - ' + name)}&body=${encodeURIComponent(bodyText)}`;
+  const mailtoUrl = `mailto:phani424302@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
 
-  // Try opening Gmail Web in a new tab first (works on all devices without needing configured mail client)
   const newTab = window.open(gmailUrl, '_blank');
   if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
-    // If popup was blocked, fallback to standard mailto
     window.location.href = mailtoUrl;
   }
 }

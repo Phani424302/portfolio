@@ -795,13 +795,13 @@
               </a>
             </div>
 
-            <div class="concierge-box luxury-card">
+            <div class="concierge-box luxury-card" onclick="window.open('https://www.linkedin.com/in/phani-bhushan-reddy-chennamareddygari-843806289/', '_blank')" style="cursor: pointer;">
               <div class="concierge-icon"><i class="devicon-linkedin-plain colored"></i></div>
               <div class="concierge-text">
                 <span class="concierge-label-inline">LinkedIn:</span>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="concierge-link">linkedin.com/in/phani-bhushan-reddy</a>
+                <a href="https://www.linkedin.com/in/phani-bhushan-reddy-chennamareddygari-843806289/" target="_blank" rel="noopener noreferrer" class="concierge-link" onclick="event.stopPropagation()">linkedin.com/in/phani-bhushan-reddy-chennamareddygari</a>
               </div>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="gold-chat-btn" title="Open LinkedIn Profile">
+              <a href="https://www.linkedin.com/in/phani-bhushan-reddy-chennamareddygari-843806289/" target="_blank" rel="noopener noreferrer" class="gold-chat-btn" title="Open LinkedIn Profile" onclick="event.stopPropagation()">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
               </a>
             </div>
@@ -821,7 +821,10 @@
             <h3 class="form-gold-title">Transmit an Inquiry</h3>
             <p class="form-gold-sub">Submit your details below and I will reply promptly.</p>
             
-            <form id="contact-form" onsubmit="handleContactSubmit(event)">
+            <form id="contact-form" action="https://formsubmit.co/phani424302@gmail.com" method="POST" onsubmit="handleContactSubmit(event)">
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_subject" value="New Portfolio Message via Contact Form" />
               <div class="form-split-row">
                 <div class="gold-form-group">
                   <label for="name">Your Name</label>
