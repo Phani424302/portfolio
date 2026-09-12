@@ -773,11 +773,25 @@
             </div>
 
             <div class="concierge-box luxury-card">
+              <div class="concierge-icon"><i class="fa-brands fa-instagram" style="color: #e1306c;"></i></div>
+              <div class="concierge-text">
+                <span class="concierge-label">Instagram Profile</span>
+                <a href="https://www.instagram.com/phani__18__/" target="_blank" rel="noopener noreferrer" class="concierge-link">@phani__18__</a>
+              </div>
+              <a href="https://www.instagram.com/phani__18__/" target="_blank" rel="noopener noreferrer" class="gold-chat-btn" title="Visit Instagram Profile">
+                <i class="fa-brands fa-instagram" style="color: #e1306c;"></i>
+              </a>
+            </div>
+
+            <div class="concierge-box luxury-card">
               <div class="concierge-icon"><i class="devicon-github-original" style="color: #ffffff;"></i></div>
               <div class="concierge-text">
                 <span class="concierge-label">GitHub Repository</span>
                 <a href="https://github.com/Phani424302" target="_blank" rel="noopener noreferrer" class="concierge-link">github.com/Phani424302</a>
               </div>
+              <a href="https://github.com/Phani424302" target="_blank" rel="noopener noreferrer" class="gold-chat-btn" title="Open GitHub Profile">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
             </div>
 
             <div class="concierge-box luxury-card">
@@ -786,6 +800,9 @@
                 <span class="concierge-label">LinkedIn Profile</span>
                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="concierge-link">linkedin.com/in/phani-bhushan-reddy</a>
               </div>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="gold-chat-btn" title="Open LinkedIn Profile">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
             </div>
 
             <div class="concierge-box luxury-card">
@@ -798,37 +815,44 @@
 
           </div>
 
-          <!-- Executive Form -->
+          <!-- Contact Form Box -->
           <div class="concierge-form-box luxury-card">
-            <h3 class="form-gold-title">Transmit an Inquiry</h3>
-            <p class="form-gold-sub">Submit your details below and I will reply promptly.</p>
+            <h3 class="form-gold-title">Send a Message</h3>
+            <p class="form-gold-sub">Feel free to reach out directly. I will reply promptly.</p>
             
             <form id="contact-form" onsubmit="handleContactSubmit(event)">
               <div class="form-split-row">
                 <div class="gold-form-group">
                   <label for="name">Your Name</label>
-                  <input type="text" id="name" name="name" required placeholder="Alexander Vance" />
+                  <input type="text" id="name" name="name" required autocomplete="name" />
                 </div>
                 <div class="gold-form-group">
                   <label for="email">Email Address</label>
-                  <input type="email" id="email" name="email" required placeholder="alexander@company.com" />
+                  <input type="email" id="email" name="email" required autocomplete="email" />
                 </div>
               </div>
 
               <div class="gold-form-group">
                 <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject" required placeholder="Engineering Role / Project Collaboration" />
+                <input type="text" id="subject" name="subject" required />
               </div>
 
               <div class="gold-form-group">
                 <label for="message">Message</label>
-                <textarea id="message" name="message" rows="4" required placeholder="Hello Phani, I reviewed your portfolio and would like to discuss..."></textarea>
+                <textarea id="message" name="message" rows="4" required></textarea>
               </div>
 
-              <button type="submit" class="btn btn-gold btn-block">
-                <span>Submit Transmission</span>
+              <button type="submit" class="btn btn-gold btn-block" id="contact-submit-btn">
+                <span>Send Message</span>
                 <i class="fa-solid fa-paper-plane"></i>
               </button>
+
+              <div class="form-direct-email-row">
+                <span>Prefer your email client?</span>
+                <a href="mailto:phani424302@gmail.com" class="direct-mailto-link">
+                  <i class="fa-solid fa-envelope"></i> Open Mail App
+                </a>
+              </div>
             </form>
           </div>
 

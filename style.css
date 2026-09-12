@@ -1535,6 +1535,40 @@ body {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(14, 19, 30, 0.9) 100%);
 }
 
+.form-direct-email-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.direct-mailto-link {
+  color: var(--gold-light);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.22s ease;
+}
+
+.direct-mailto-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  text-shadow: 0 0 10px rgba(243, 199, 124, 0.5);
+}
+
+.btn:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
 /* Footer */
 .footer {
   padding: 44px 0;

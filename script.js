@@ -135,22 +135,95 @@ function showGoldToast(msg) {
   }, 2800);
 }
 
-/* Concierge Contact Form */
-function handleContactSubmit(e) {
+/* Contact Form Submission - Real Email Transmission via FormSubmit + Smart Fallback */
+async function handleContactSubmit(e) {
   e.preventDefault();
   const form = e.target;
+  const submitBtn = form.querySelector('button[type="submit"]') || document.getElementById('contact-submit-btn');
+  const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '<span>Send Message</span> <i class="fa-solid fa-paper-plane"></i>';
+
   const name = form.name.value.trim();
   const email = form.email.value.trim();
-  const subject = form.subject.value.trim();
+  const subject = form.subject.value.trim() || 'Portfolio Inquiry';
   const message = form.message.value.trim();
 
-  const mailto = `mailto:phani424302@gmail.com?subject=${encodeURIComponent(subject + ' - ' + name)}&body=${encodeURIComponent(message + '\n\nSender: ' + name + ' (' + email + ')')}`;
+  if (!name || !email || !message) {
+    showGoldToast('Please complete all required fields.');
+    return;
+  }
 
-  showGoldToast('Initiating transmission to email client...');
-  setTimeout(() => {
-    window.location.href = mailto;
-    form.reset();
-  }, 750);
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span>Sending Message...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+  }
+
+  try {
+    const response = await fetch('https://formsubmit.co/ajax/phani424302@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        _subject: `Portfolio Message from ${name}: ${subject}`,
+        subject: subject,
+        message: message,
+        _captcha: false
+      })
+    });
+
+    const data = await response.json().catch(() => ({}));
+
+    if (response.ok && (data.success === 'true' || data.success === true)) {
+      showGoldToast('Message sent successfully! Thank you for reaching out.');
+      form.reset();
+      if (submitBtn) {
+        submitBtn.innerHTML = '<span>Message Sent!</span> <i class="fa-solid fa-check"></i>';
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+        }, 3000);
+      }
+    } else if (data.message && data.message.includes('Activation')) {
+      // FormSubmit requires one-time activation on recipient email
+      showGoldToast('Opening your email app to deliver message...');
+      fallbackSendEmail(name, email, subject, message);
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+      }
+    } else {
+      showGoldToast('Opening your email app to deliver message...');
+      fallbackSendEmail(name, email, subject, message);
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+      }
+    }
+  } catch (error) {
+    console.warn('Direct submission error, activating mail fallback:', error);
+    showGoldToast('Opening your email app to deliver message...');
+    fallbackSendEmail(name, email, subject, message);
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnHtml;
+    }
+  }
+}
+
+function fallbackSendEmail(name, email, subject, message) {
+  const bodyText = `${message}\n\n---\nSender: ${name}\nEmail: ${email}`;
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=phani424302@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+  const mailtoUrl = `mailto:phani424302@gmail.com?subject=${encodeURIComponent(subject + ' - ' + name)}&body=${encodeURIComponent(bodyText)}`;
+
+  // Try opening Gmail Web in a new tab first (works on all devices without needing configured mail client)
+  const newTab = window.open(gmailUrl, '_blank');
+  if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
+    // If popup was blocked, fallback to standard mailto
+    window.location.href = mailtoUrl;
+  }
 }
 
 /* Footer Year */
