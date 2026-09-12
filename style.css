@@ -1361,15 +1361,15 @@ body {
 }
 
 .concierge-box {
-  padding: 22px 28px;
+  padding: 16px 22px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
 
 .concierge-icon {
-  width: 56px;
-  height: 56px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(28, 22, 14, 0.8) 45%, rgba(12, 10, 7, 0.95) 100%);
   border: 1px solid rgba(243, 199, 124, 0.22);
@@ -1377,7 +1377,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   flex-shrink: 0;
   box-shadow: 
     inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.45),
@@ -1414,30 +1414,45 @@ body {
 
 .concierge-text {
   flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  white-space: nowrap;
 }
 
-.concierge-label {
-  display: block;
+.concierge-label-inline {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
+  font-size: 0.82rem;
+  font-weight: 600;
   color: var(--gold-light);
-  letter-spacing: 1px;
+  letter-spacing: 0.4px;
+  flex-shrink: 0;
 }
 
 .concierge-link {
   color: #ffffff;
-  font-size: 0.98rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 500;
   text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.2s ease;
 }
 
 .concierge-link:hover {
-  color: var(--gold-light);
+  color: var(--gold-pale);
+  text-decoration: underline;
 }
 
 .location-text {
   color: var(--text-creamy);
+  font-size: 0.92rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .gold-copy-btn, .gold-chat-btn {
@@ -1533,38 +1548,6 @@ body {
   border-top-color: #ffffff;
   box-shadow: inset 0 1.5px 3px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 175, 55, 0.25);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(14, 19, 30, 0.9) 100%);
-}
-
-.gold-form-group.textarea-wrapper {
-  position: relative;
-}
-
-.pill-input {
-  border-radius: var(--radius-pill) !important;
-  padding: 14px 22px !important;
-}
-
-.rounded-textarea {
-  border-radius: 20px !important;
-  padding: 16px 22px 38px 22px !important;
-  resize: vertical;
-  min-height: 120px;
-}
-
-.textarea-clip-icon {
-  position: absolute;
-  bottom: 22px;
-  right: 20px;
-  color: var(--text-muted);
-  font-size: 1.05rem;
-  pointer-events: none;
-  opacity: 0.65;
-  transition: opacity 0.2s ease, color 0.2s ease;
-}
-
-.gold-form-group:focus-within .textarea-clip-icon {
-  color: var(--gold-light);
-  opacity: 0.95;
 }
 
 .gold-form-group input::placeholder,
