@@ -1,52 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
+  initLuxurySpotlight();
   initMobileNavigation();
   initSectionSpy();
-  initNavbarScroll();
   initCurrentYear();
 });
+
+/* Dynamic Warm Gold Cursor Spotlight */
+function initLuxurySpotlight() {
+  const root = document.documentElement;
+  window.addEventListener('mousemove', (e) => {
+    root.style.setProperty('--mouse-x', `${e.clientX}px`);
+    root.style.setProperty('--mouse-y', `${e.clientY}px`);
+  });
+}
 
 /* Mobile Navigation Toggle */
 function initMobileNavigation() {
   const toggle = document.getElementById('mobile-toggle');
   const navMenu = document.getElementById('nav-menu');
-  const navLinks = document.querySelectorAll('.nav-link');
+  const navItems = document.querySelectorAll('.nav-item');
 
   if (toggle && navMenu) {
     toggle.addEventListener('click', () => {
       navMenu.classList.toggle('open');
-      toggle.classList.toggle('active');
     });
 
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
         navMenu.classList.remove('open');
-        toggle.classList.remove('active');
       });
     });
   }
 }
 
-/* Header elevation on scroll */
-function initNavbarScroll() {
-  const navbar = document.getElementById('navbar');
-  if (!navbar) return;
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  }, { passive: true });
-}
-
 /* Active Section Spy */
 function initSectionSpy() {
   const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
+  const navItems = document.querySelectorAll('.nav-item');
 
   window.addEventListener('scroll', () => {
     let current = '';
-    const scrollPos = window.pageYOffset + 160;
+    const scrollPos = window.pageYOffset + 140;
 
     sections.forEach(sec => {
       const top = sec.offsetTop;
@@ -56,16 +50,16 @@ function initSectionSpy() {
       }
     });
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
+    navItems.forEach(item => {
+      item.classList.remove('active');
+      if (item.getAttribute('href') === `#${current}`) {
+        item.classList.add('active');
       }
     });
-  }, { passive: true });
+  });
 }
 
-/* Resume Modal */
+/* Curriculum Vitae Modal */
 function openResumeModal() {
   const modal = document.getElementById('resume-modal');
   if (modal) {
@@ -94,9 +88,22 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-/* Toast notifications */
-let toastTimeout;
-function showToast(msg) {
+/* Copy Email with Toast */
+function copyEmail(email) {
+  navigator.clipboard.writeText(email).then(() => {
+    showGoldToast(`Copied email to clipboard: ${email}`);
+  }).catch(() => {
+    const input = document.createElement('input');
+    input.value = email;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('copy');
+    document.body.removeChild(input);
+    showGoldToast(`Copied email to clipboard: ${email}`);
+  });
+}
+
+function showGoldToast(msg) {
   const toast = document.getElementById('toast');
   const toastMsg = document.getElementById('toast-message');
   if (!toast || !toastMsg) return;
@@ -104,45 +111,12 @@ function showToast(msg) {
   toastMsg.textContent = msg;
   toast.classList.add('active');
 
-  clearTimeout(toastTimeout);
-  toastTimeout = setTimeout(() => {
+  setTimeout(() => {
     toast.classList.remove('active');
-  }, 3000);
+  }, 2800);
 }
 
-// Backward compatibility alias
-function showGoldToast(msg) {
-  showToast(msg);
-}
-
-/* Copy text to clipboard helper */
-function copyEmail(email) {
-  if (navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(email).then(() => {
-      showToast(`Copied email to clipboard: ${email}`);
-    }).catch(() => {
-      fallbackCopy(email);
-    });
-  } else {
-    fallbackCopy(email);
-  }
-}
-
-function fallbackCopy(text) {
-  const input = document.createElement('input');
-  input.value = text;
-  document.body.appendChild(input);
-  input.select();
-  try {
-    document.execCommand('copy');
-    showToast(`Copied to clipboard: ${text}`);
-  } catch (err) {
-    showToast(`Could not copy automatically`);
-  }
-  document.body.removeChild(input);
-}
-
-/* Contact form handler */
+/* Concierge Contact Form */
 function handleContactSubmit(e) {
   e.preventDefault();
   const form = e.target;
@@ -153,14 +127,14 @@ function handleContactSubmit(e) {
 
   const mailto = `mailto:phani424302@gmail.com?subject=${encodeURIComponent(subject + ' - ' + name)}&body=${encodeURIComponent(message + '\n\nSender: ' + name + ' (' + email + ')')}`;
 
-  showToast('Opening default email client...');
+  showGoldToast('Initiating transmission to email client...');
   setTimeout(() => {
     window.location.href = mailto;
     form.reset();
-  }, 700);
+  }, 750);
 }
 
-/* Current year in footer */
+/* Footer Year */
 function initCurrentYear() {
   const yearEl = document.getElementById('current-year');
   if (yearEl) {
