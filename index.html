@@ -821,10 +821,7 @@
             <h3 class="form-gold-title">Transmit an Inquiry</h3>
             <p class="form-gold-sub">Submit your details below and I will reply promptly.</p>
             
-            <form id="contact-form" action="https://formsubmit.co/a1faf15330c6f1691e25c69d1ed17084" method="POST" onsubmit="handleContactSubmit(event)">
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_subject" value="New Portfolio Message via Contact Form" />
+            <form id="contact-form" onsubmit="handleContactSubmit(event)">
               <div class="form-split-row">
                 <div class="gold-form-group">
                   <label for="name">Your Name</label>
@@ -852,10 +849,16 @@
               </button>
 
               <div class="form-direct-email-row">
-                <span>Prefer your email client?</span>
-                <a href="mailto:phani424302@gmail.com" class="direct-mailto-link">
-                  <i class="fa-solid fa-envelope"></i> Open Mail App
-                </a>
+                <span>Direct send:</span>
+                <div class="direct-email-actions">
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=phani424302@gmail.com" target="_blank" rel="noopener noreferrer" class="direct-mailto-link">
+                    <i class="fa-solid fa-envelope" style="color: #ea4335;"></i> Gmail
+                  </a>
+                  <span class="direct-sep" style="color: var(--gold-border); margin: 0 4px;">·</span>
+                  <a href="mailto:phani424302@gmail.com" class="direct-mailto-link">
+                    <i class="fa-solid fa-paper-plane" style="color: var(--gold-light);"></i> Mail App
+                  </a>
+                </div>
               </div>
             </form>
           </div>

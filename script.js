@@ -135,8 +135,8 @@ function showGoldToast(msg) {
   }, 2800);
 }
 
-/* Contact Form Submission - 100% Guaranteed Email Transmission */
-async function handleContactSubmit(e) {
+/* Direct Personal Email Dispatch — Zero Middlemen, Zero Activation Emails */
+function handleContactSubmit(e) {
   e.preventDefault();
   const form = e.target;
   const submitBtn = form.querySelector('button[type="submit"]') || document.getElementById('contact-submit-btn');
@@ -148,85 +148,38 @@ async function handleContactSubmit(e) {
   const message = form.message.value.trim();
 
   if (!name || !email || !message) {
-    showGoldToast('Please complete all required fields.');
+    showGoldToast('Please complete all fields.');
     return;
   }
+
+  const recipient = 'phani424302@gmail.com';
+  const fullSubject = `${subject} — from ${name}`;
+  const fullBody = `${message}\n\n---\nSender Name: ${name}\nSender Email: ${email}`;
+
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(recipient)}&su=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(fullBody)}`;
+  const mailtoUrl = `mailto:${encodeURIComponent(recipient)}?subject=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(fullBody)}`;
+
+  showGoldToast('Opening your email app to send message directly to Phani...');
 
   if (submitBtn) {
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<span>Sending Message...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+    submitBtn.innerHTML = '<span>Opening Mail...</span> <i class="fa-solid fa-envelope"></i>';
   }
 
-  const bodyText = `${message}\n\nFrom: ${name} (${email})`;
-
-  // If browsed directly as a local file (file:///), browser cross-origin policy blocks external APIs.
-  // In this case, immediately launch Gmail Web / default mail app with the message pre-filled.
-  if (window.location.protocol === 'file:') {
-    deliverViaMailApp(name, email, subject, bodyText, form, submitBtn, originalBtnHtml);
-    return;
-  }
-
-  // When hosted on a web server (localhost, GitHub Pages, Netlify, custom domain):
-  // Transmit directly via FormSubmit urlencoded API which delivers cleanly in the background.
-  try {
-    const formData = new URLSearchParams();
-    formData.append('Name', name);
-    formData.append('Email', email);
-    formData.append('Subject', subject);
-    formData.append('Message', message);
-    formData.append('_replyto', email);
-    formData.append('_subject', `Portfolio Message from ${name}: ${subject}`);
-    formData.append('_captcha', 'false');
-    formData.append('_template', 'table');
-
-    const response = await fetch('https://formsubmit.co/ajax/a1faf15330c6f1691e25c69d1ed17084', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      body: formData.toString()
-    });
-
-    const data = await response.json().catch(() => ({}));
-
-    if (response.ok && (data.success === 'true' || data.success === true)) {
-      showGoldToast('Message sent! It has been delivered directly to Phani\'s inbox.');
-      form.reset();
-      if (submitBtn) {
-        submitBtn.innerHTML = '<span>Message Sent!</span> <i class="fa-solid fa-check"></i>';
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnHtml;
-        }, 3500);
-      }
-    } else {
-      console.warn('FormSubmit status notice, activating direct mail delivery:', data.message);
-      deliverViaMailApp(name, email, subject, bodyText, form, submitBtn, originalBtnHtml);
-    }
-  } catch (error) {
-    console.warn('Network issue, activating direct mail delivery:', error);
-    deliverViaMailApp(name, email, subject, bodyText, form, submitBtn, originalBtnHtml);
-  }
-}
-
-function deliverViaMailApp(name, email, subject, bodyText, form, submitBtn, originalBtnHtml) {
-  showGoldToast('Opening your email app to deliver message directly to Phani...');
-  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=phani424302@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
-  const mailtoUrl = `mailto:phani424302@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
-
+  // Open Gmail Web compose in a new tab
   const newTab = window.open(gmailUrl, '_blank');
   if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
+    // If popups are blocked or on mobile device, trigger default mail app
     window.location.href = mailtoUrl;
   }
 
-  if (submitBtn) {
-    submitBtn.innerHTML = '<span>Mail App Opened!</span> <i class="fa-solid fa-envelope"></i>';
-    setTimeout(() => {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalBtnHtml;
-    }, 3000);
-  }
+  setTimeout(() => {
+    if (submitBtn) {
+      submitBtn.innerHTML = '<span>Message Drafted!</span> <i class="fa-solid fa-check"></i>';
+      setTimeout(() => {
+        submitBtn.innerHTML = originalBtnHtml;
+      }, 3500);
+    }
+  }, 1000);
 }
 
 /* Footer Year */
