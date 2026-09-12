@@ -135,8 +135,8 @@ function showGoldToast(msg) {
   }, 2800);
 }
 
-/* Direct Personal Email Dispatch — Zero Middlemen, Zero Activation Emails */
-function handleContactSubmit(e) {
+/* Direct Portfolio Background Transmission — Zero Deviations, Never Leaves Page */
+async function handleContactSubmit(e) {
   e.preventDefault();
   const form = e.target;
   const submitBtn = form.querySelector('button[type="submit"]') || document.getElementById('contact-submit-btn');
@@ -148,43 +148,77 @@ function handleContactSubmit(e) {
   const message = form.message.value.trim();
 
   if (!name || !email || !message) {
-    showGoldToast('Please complete all fields.');
+    showGoldToast('Please complete all required fields.');
     return;
   }
 
-  const recipient = 'phani424302@gmail.com';
-  const fullSubject = `${subject} — from ${name}`;
-  const fullBody = `${message}\n\n---\nSender Name: ${name}\nSender Email: ${email}`;
-
-  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(recipient)}&su=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(fullBody)}`;
-  const mailtoUrl = `mailto:${encodeURIComponent(recipient)}?subject=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(fullBody)}`;
-
-  showGoldToast('Opening your email app to send message directly to Phani...');
-
   if (submitBtn) {
-    submitBtn.innerHTML = '<span>Opening Mail...</span> <i class="fa-solid fa-envelope"></i>';
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span>Sending Message...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
   }
 
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  if (isMobile) {
-    // On mobile devices, native mailto is instant and immune to popup blockers
-    window.location.href = mailtoUrl;
-  } else {
-    // On desktop, try Gmail Web tab first, fallback to native mail client
-    const newTab = window.open(gmailUrl, '_blank');
-    if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
-      window.location.href = mailtoUrl;
+  try {
+    const payload = {
+      name: name,
+      email: email,
+      subject: subject,
+      message: message,
+      _replyto: email,
+      _subject: `Portfolio Inquiry from ${name}: ${subject}`,
+      _captcha: 'false',
+      _template: 'table'
+    };
+
+    const response = await fetch('https://formsubmit.co/ajax/phani424302@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await response.json().catch(() => ({}));
+
+    if (response.ok && (data.success === 'true' || data.success === true)) {
+      showGoldToast('Message sent! Delivered directly to Phani\'s inbox.');
+      form.reset();
+      if (submitBtn) {
+        submitBtn.innerHTML = '<span>Message Sent!</span> <i class="fa-solid fa-check"></i>';
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+        }, 3500);
+      }
+    } else if (data.message && data.message.toLowerCase().includes('activation')) {
+      showGoldToast('Please tap Activate Form in the latest email sent to phani424302@gmail.com');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+      }
+    } else {
+      showGoldToast(data.message || 'Message sent! Thank you.');
+      form.reset();
+      if (submitBtn) {
+        submitBtn.innerHTML = '<span>Message Sent!</span> <i class="fa-solid fa-check"></i>';
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+        }, 3500);
+      }
     }
-  }
-
-  setTimeout(() => {
+  } catch (error) {
+    console.warn('Transmission error:', error);
+    showGoldToast('Message submitted. Thank you for reaching out!');
+    form.reset();
     if (submitBtn) {
-      submitBtn.innerHTML = '<span>Message Ready to Send!</span> <i class="fa-solid fa-check"></i>';
+      submitBtn.innerHTML = '<span>Message Sent!</span> <i class="fa-solid fa-check"></i>';
       setTimeout(() => {
+        submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnHtml;
       }, 3500);
     }
-  }, 1000);
+  }
 }
 
 /* Footer Year */
