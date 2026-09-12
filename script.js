@@ -78,7 +78,7 @@ function initSectionSpy() {
   });
 }
 
-/* Curriculum Vitae Modal */
+/* Official Resume Modal */
 function openResumeModal() {
   const modal = document.getElementById('resume-modal');
   if (modal) {

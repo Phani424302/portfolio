@@ -861,121 +861,24 @@
     <div class="modal-luxury-card luxury-card">
       <div class="modal-gold-header">
         <div class="modal-title-group">
-          <h3>Curriculum Vitae</h3>
-          <p>Chennamareddygari Phani Bhushan Reddy · VIT-AP</p>
+          <h3>Resume</h3>
+          <p>Chennamareddygari Phani Bhushan Reddy · Original Document</p>
         </div>
         <div class="modal-header-actions">
-          <button class="btn btn-sm btn-gold" onclick="window.print()">
-            <i class="fa-solid fa-print"></i> Print / Save PDF
-          </button>
+          <a href="assets/Phani_Bhushan_Reddy_Resume.pdf" download="C_Phani_Bhushan_Reddy_Resume.pdf" class="btn btn-sm btn-gold" title="Download original uploaded PDF resume">
+            <i class="fa-solid fa-download"></i> Download Resume
+          </a>
+          <a href="assets/Phani_Bhushan_Reddy_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-gold-ghost" title="Open original PDF in new tab">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open PDF
+          </a>
           <button class="modal-close-gold" onclick="closeResumeModal()" aria-label="Close modal">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
       </div>
 
-      <div class="resume-executive-sheet">
-        <div class="res-sheet-header">
-          <h2>CHENNAMAREDDYGARI PHANI BHUSHAN REDDY</h2>
-          <p class="res-sheet-loc">Penukonda, Andhra Pradesh, India</p>
-          <p class="res-sheet-contact">
-            +91-9391206640 | phani424302@gmail.com | LinkedIn | GitHub: Phani424302
-          </p>
-        </div>
-
-        <div class="res-sheet-section">
-          <h4>Professional Summary</h4>
-          <p>Computer Science Engineering student pursuing an Integrated M.Tech at VIT-AP with hands-on experience in software development, machine learning, and computer vision. Strong foundation in Java, Python, SQL, Data Structures and Algorithms, Object-Oriented Programming (OOP), and Database Management Systems (DBMS). Passionate about building scalable applications, solving real-world problems, and continuously learning emerging technologies.</p>
-        </div>
-
-        <div class="res-sheet-section">
-          <h4>Education</h4>
-          <div class="res-sheet-entry">
-            <div class="res-entry-top">
-              <strong>Vellore Institute of Technology–AP</strong>
-              <span>Nov 2022 – Jul 2027</span>
-            </div>
-            <div>Integrated M.Tech, Computer Science and Engineering</div>
-            <div class="res-gold-score">CGPA: 8.47 / 10</div>
-          </div>
-          <div class="res-sheet-entry">
-            <div class="res-entry-top">
-              <strong>Sri Chaitanya Junior College</strong>
-              <span>2020 – 2022</span>
-            </div>
-            <div>Intermediate (MPC)</div>
-            <div class="res-gold-score">Percentage: 95.9%</div>
-          </div>
-          <div class="res-sheet-entry">
-            <div class="res-entry-top">
-              <strong>Sri Chaitanya School</strong>
-              <span>2020</span>
-            </div>
-            <div>Secondary School Certificate (SSC)</div>
-            <div class="res-gold-score">Percentage: 100%</div>
-          </div>
-        </div>
-
-        <div class="res-sheet-section">
-          <h4>Technical Skills</h4>
-          <p><strong>Languages:</strong> Java, Python, SQL, JavaScript</p>
-          <p><strong>Web:</strong> HTML, CSS, JavaScript, React, Flask</p>
-          <p><strong>Machine Learning:</strong> TensorFlow, OpenCV, CNN, YOLO, PyTorch, MediaPipe</p>
-          <p><strong>Database:</strong> MySQL</p>
-          <p><strong>Core CS:</strong> DSA, OOP, DBMS, Operating Systems, Computer Networks</p>
-          <p><strong>Tools:</strong> Git, GitHub, VS Code, Google Colab</p>
-        </div>
-
-        <div class="res-sheet-section">
-          <h4>Projects</h4>
-          <div class="res-sheet-entry">
-            <div class="res-entry-top">
-              <strong>SkyWrite (Air Canvas)</strong>
-              <span>Python | OpenCV | MediaPipe | TensorFlow</span>
-            </div>
-            <ul>
-              <li>Built a touchless drawing application using MediaPipe and OpenCV with real-time 21-point hand tracking.</li>
-              <li>Trained a CNN on the EMNIST dataset achieving 87% character recognition accuracy.</li>
-              <li>Improved prediction quality using custom preprocessing and line-smoothing algorithms.</li>
-            </ul>
-          </div>
-          <div class="res-sheet-entry">
-            <div class="res-entry-top">
-              <strong>Vehicle Detection and Counting System</strong>
-              <span>Python | Flask | YOLOv8 | OpenCV | COCO Dataset</span>
-            </div>
-            <ul>
-              <li>Developed a web-based vehicle detection and counting system that processes uploaded traffic videos using the YOLOv8n model with COCO-trained weights to detect and classify multiple vehicle categories.</li>
-              <li>Generated annotated output videos with bounding boxes and configurable confidence thresholds.</li>
-              <li>Automated real-time vehicle counting through a Flask-based web application.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="res-sheet-section">
-          <h4>Experience</h4>
-          <div class="res-sheet-entry">
-            <div class="res-entry-top">
-              <strong>Web Development Intern – Teachnook</strong>
-              <span>Jul 2024 – Aug 2024</span>
-            </div>
-            <ul>
-              <li>Successfully completed a Web Development Internship focused on front-end and web application development.</li>
-              <li>Built responsive web pages using HTML, CSS, and JavaScript while applying industry best practices.</li>
-              <li>Collaborated in a mentorship-driven environment to enhance debugging, problem-solving, and software development skills.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="res-sheet-section">
-          <h4>Certifications</h4>
-          <ul>
-            <li>Microsoft Learn – Generative AI and Agents in Azure</li>
-            <li>Oracle Cloud Infrastructure 2025 Certified Foundations Associate</li>
-            <li>Microsoft Learn – Computer Vision in Azure</li>
-            <li>HackerRank – SQL (Advanced)</li>
-          </ul>
-        </div>
+      <div class="resume-pdf-container">
+        <iframe src="assets/Phani_Bhushan_Reddy_Resume.pdf#toolbar=1&navpanes=0" class="resume-pdf-frame" title="C Phani Bhushan Reddy Official Resume"></iframe>
       </div>
     </div>
   </div>
