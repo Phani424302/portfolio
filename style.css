@@ -265,10 +265,16 @@ body {
 }
 
 .nav-container {
+  max-width: 1360px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  flex-wrap: nowrap !important;
+  gap: 20px;
 }
 
 .brand-crest {
@@ -276,6 +282,8 @@ body {
   align-items: center;
   gap: 12px;
   text-decoration: none;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
 }
 
 .crest-box {
@@ -288,6 +296,7 @@ body {
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 14px rgba(212, 175, 55, 0.3);
+  flex-shrink: 0;
 }
 
 .crest-initials {
@@ -302,6 +311,7 @@ body {
 .crest-details {
   display: flex;
   flex-direction: column;
+  white-space: nowrap !important;
 }
 
 .crest-name {
@@ -310,29 +320,30 @@ body {
   font-size: 1.05rem;
   letter-spacing: 0.5px;
   color: #ffffff;
-}
-
-.crest-sub {
-  font-size: 0.72rem;
-  font-family: var(--font-mono);
-  color: var(--gold-light);
-  letter-spacing: 1px;
+  white-space: nowrap !important;
+  word-break: keep-all !important;
 }
 
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 30px;
+  white-space: nowrap !important;
+  flex-wrap: nowrap !important;
 }
 
 .nav-item {
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   font-weight: 500;
   transition: all 0.15s ease;
   position: relative;
-  padding: 4px 0;
+  padding: 6px 0;
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
 .nav-item:hover, .nav-item.active {
@@ -345,7 +356,7 @@ body {
   bottom: -2px;
   left: 0;
   width: 100%;
-  height: 1.5px;
+  height: 2px;
   background: var(--gold-gradient);
 }
 
@@ -353,6 +364,7 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 .mobile-toggle {
@@ -1367,7 +1379,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1040px) {
   .section {
     padding: 70px 0;
   }

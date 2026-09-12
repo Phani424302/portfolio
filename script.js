@@ -35,7 +35,7 @@ function initMobileNavigation() {
 
 /* Active Section Spy */
 function initSectionSpy() {
-  const sections = document.querySelectorAll('section[id]');
+  const sections = document.querySelectorAll('section[id], [id="certifications"]');
   const navItems = document.querySelectorAll('.nav-item');
 
   window.addEventListener('scroll', () => {
