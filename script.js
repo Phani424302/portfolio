@@ -1,33 +1,28 @@
-/**
- * CHENNAMAREDDYGARI PHANI BHUSHAN REDDY - PORTFOLIO INTERACTION
- * Clean, lightweight, professional JavaScript without bloat
- */
-
 document.addEventListener('DOMContentLoaded', () => {
-  initMobileNav();
-  initCurrentYear();
-});
+  // Mobile nav toggle
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('nav-links');
 
-/* --- MOBILE NAVIGATION --- */
-function initMobileNav() {
-  const toggleBtn = document.getElementById('mobile-toggle');
-  const navMenu = document.getElementById('nav-menu');
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  if (toggleBtn && navMenu) {
-    toggleBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('open');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
     });
 
-    navLinks.forEach(link => {
+    nav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
+        nav.classList.remove('open');
       });
     });
   }
-}
 
-/* --- RESUME MODAL --- */
+  // Set current year
+  const yearEl = document.getElementById('year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+});
+
+// Resume Modal
 function openResumeModal() {
   const modal = document.getElementById('resume-modal');
   if (modal) {
@@ -44,48 +39,44 @@ function closeResumeModal() {
   }
 }
 
-function closeModalOnOverlay(e) {
+function handleBackdropClick(e) {
   if (e.target.id === 'resume-modal') {
     closeResumeModal();
   }
 }
 
-// Close on Escape key
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeResumeModal();
   }
 });
 
-/* --- COPY EMAIL & TOAST NOTIFICATION --- */
-function copyEmail(email) {
-  navigator.clipboard.writeText(email).then(() => {
-    showToast(`Copied email to clipboard: ${email}`);
+// Copy email helper
+function copyEmail(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('Copied email to clipboard');
   }).catch(() => {
-    const input = document.createElement('input');
-    input.value = email;
-    document.body.appendChild(input);
-    input.select();
+    const el = document.createElement('input');
+    el.value = text;
+    document.body.appendChild(el);
+    el.select();
     document.execCommand('copy');
-    document.body.removeChild(input);
-    showToast(`Copied email to clipboard: ${email}`);
+    document.body.removeChild(el);
+    showToast('Copied email to clipboard');
   });
 }
 
-function showToast(message) {
+function showToast(msg) {
   const toast = document.getElementById('toast');
-  const toastText = document.getElementById('toast-text');
-  if (!toast || !toastText) return;
-
-  toastText.textContent = message;
-  toast.classList.add('active');
-
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.classList.add('show');
   setTimeout(() => {
-    toast.classList.remove('active');
-  }, 3000);
+    toast.classList.remove('show');
+  }, 2400);
 }
 
-/* --- CONTACT FORM --- */
+// Contact form submit
 function handleContactSubmit(e) {
   e.preventDefault();
   const form = e.target;
@@ -94,20 +85,11 @@ function handleContactSubmit(e) {
   const subject = form.subject.value.trim();
   const message = form.message.value.trim();
 
-  const mailtoUrl = `mailto:phani424302@gmail.com?subject=${encodeURIComponent(subject + ' - ' + name)}&body=${encodeURIComponent(message + '\n\nFrom: ' + name + ' (' + email + ')')}`;
-
-  showToast(`Opening your email client...`);
+  const mailto = `mailto:phani424302@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message + '\n\nFrom: ' + name + ' (' + email + ')')}`;
   
+  showToast('Opening email client...');
   setTimeout(() => {
-    window.location.href = mailtoUrl;
+    window.location.href = mailto;
     form.reset();
-  }, 700);
-}
-
-/* --- FOOTER CURRENT YEAR --- */
-function initCurrentYear() {
-  const yearElem = document.getElementById('current-year');
-  if (yearElem) {
-    yearElem.textContent = new Date().getFullYear();
-  }
+  }, 600);
 }
