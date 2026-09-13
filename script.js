@@ -221,9 +221,8 @@ function showGoldToast(msg) {
 }
 
 // --- CONTACT FORM API CONFIGURATION ---
-// Option 1: Web3Forms API Key (Instant delivery, no activation link needed)
-// Option 2: FormSubmit (Requires 1-time activation link sent to phani424302@gmail.com)
-const CONTACT_API_KEY = ""; // Paste your Web3Forms Access Key here when available
+// Web3Forms Verified API Key (Instant direct delivery to phani424302@gmail.com)
+const CONTACT_API_KEY = "804de2d6-be88-4ab5-a869-05d9da39d530";
 
 /* Direct Portfolio Background Transmission — Zero Deviations, Never Leaves Page */
 async function handleContactSubmit(e) {
