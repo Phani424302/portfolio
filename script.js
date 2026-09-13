@@ -267,9 +267,10 @@ function initCurrentYear() {
 
 /* ----------------------------------------------------
    INTERACTIVE THEME CURSOR ACTIONS
+   0. Single-Click: Instant Champagne Gold Liquid Ripple
    1. Right-Click: Bespoke Obsidian & Gold Quick Access HUD
    2. Double-Click: Golden Celestial Supernova Burst
-   3. 30s Inactivity: Orbiting Starlight Idle Beacon
+   3. Motionless Cursor: 24K Celestial Star Diamond Morph & Orbiting Starlight Beacon
 ---------------------------------------------------- */
 function initCursorActions() {
   const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -281,8 +282,50 @@ function initCursorActions() {
 
   let lastMouseX = window.innerWidth / 2;
   let lastMouseY = window.innerHeight / 2;
+  let mouseHasEntered = false;
   let idleTimer = null;
-  const IDLE_TIMEOUT_MS = 30000; // Exactly 30 seconds
+  const STATIONARY_DELAY_MS = 1600; // 1.6s of motionless cursor triggers transformation
+
+  // --- ACTION 0: SINGLE-CLICK CHAMPAGNE GOLD LIQUID RIPPLE & GLINTS ---
+  function spawnClickRipple(x, y) {
+    if (!effectsContainer) return;
+
+    const ripple = document.createElement('div');
+    ripple.className = 'cursor-click-ripple';
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+    effectsContainer.appendChild(ripple);
+
+    // 3 subtle gold starlight sparks drifting outward
+    const sparkCount = 3;
+    for (let i = 0; i < sparkCount; i++) {
+      const spark = document.createElement('div');
+      spark.className = 'cursor-click-spark';
+      spark.textContent = '✦';
+
+      const angle = (i / sparkCount) * Math.PI * 2 + (Math.random() * 0.5 - 0.25);
+      const dist = 14 + Math.random() * 16;
+      const tx = Math.cos(angle) * dist;
+      const ty = Math.sin(angle) * dist;
+
+      spark.style.left = `${x}px`;
+      spark.style.top = `${y}px`;
+      spark.style.setProperty('--tx', `${tx}px`);
+      spark.style.setProperty('--ty', `${ty}px`);
+
+      effectsContainer.appendChild(spark);
+      setTimeout(() => spark.remove(), 450);
+    }
+
+    setTimeout(() => ripple.remove(), 400);
+  }
+
+  window.addEventListener('mousedown', (e) => {
+    // Only left click triggers click ripple
+    if (e.button === 0) {
+      spawnClickRipple(e.clientX, e.clientY);
+    }
+  });
 
   // --- ACTION 1: RIGHT-CLICK HUD ---
   function openContextMenu(e) {
@@ -415,25 +458,36 @@ function initCursorActions() {
     }, 850);
   });
 
-  // --- ACTION 3: 30-SECOND IDLE BEACON ---
+  // --- ACTION 3: MOTIONLESS CURSOR TRANSFORMATION & CELESTIAL BEACON ---
   function triggerIdleBeacon() {
+    if (!mouseHasEntered) return;
+    document.body.classList.add('cursor-stationary');
     if (!idleBeacon) return;
-    idleBeacon.style.left = `${lastMouseX}px`;
-    idleBeacon.style.top = `${lastMouseY}px`;
+
+    // Keep beacon comfortably within viewport bounds
+    const x = Math.max(40, Math.min(window.innerWidth - 40, lastMouseX));
+    const y = Math.max(40, Math.min(window.innerHeight - 65, lastMouseY));
+
+    idleBeacon.style.left = `${x}px`;
+    idleBeacon.style.top = `${y}px`;
     idleBeacon.classList.add('active');
   }
 
   function resetIdleTimer() {
+    document.body.classList.remove('cursor-stationary');
     if (idleBeacon && idleBeacon.classList.contains('active')) {
       idleBeacon.classList.remove('active');
     }
     clearTimeout(idleTimer);
-    idleTimer = setTimeout(triggerIdleBeacon, IDLE_TIMEOUT_MS);
+    if (mouseHasEntered) {
+      idleTimer = setTimeout(triggerIdleBeacon, STATIONARY_DELAY_MS);
+    }
   }
 
   window.addEventListener('mousemove', (e) => {
     lastMouseX = e.clientX;
     lastMouseY = e.clientY;
+    mouseHasEntered = true;
     resetIdleTimer();
   }, { passive: true });
 
@@ -441,8 +495,11 @@ function initCursorActions() {
   window.addEventListener('keydown', resetIdleTimer, { passive: true });
   window.addEventListener('scroll', resetIdleTimer, { passive: true });
 
-  // Start 30s timer
-  idleTimer = setTimeout(triggerIdleBeacon, IDLE_TIMEOUT_MS);
+  document.addEventListener('mouseleave', () => {
+    document.body.classList.remove('cursor-stationary');
+    if (idleBeacon) idleBeacon.classList.remove('active');
+    clearTimeout(idleTimer);
+  });
 }
 
 

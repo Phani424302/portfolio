@@ -118,22 +118,81 @@ body {
   .ctx-item {
     cursor: url('assets/cursor-pointer.svg') 0 0, pointer !important;
   }
+
+  /* Stationary Cursor: Morphs into 24K Celestial Star Diamond when motionless */
+  body.cursor-stationary,
+  body.cursor-stationary * {
+    cursor: url('assets/cursor-idle.svg') 9 9, auto !important;
+  }
 }
 
 /* ----------------------------------------------------
    INTERACTIVE CURSOR ACTIONS (Theme-Synchronized)
+   0. Single-Click: Instant Champagne Gold Liquid Ripple
    1. Double-Click: Golden Celestial Supernova Burst
    2. Right-Click: Bespoke Obsidian & Gold Radial HUD
-   3. 30s Inactivity: Orbiting Starlight Idle Beacon
+   3. Motionless Cursor: Celestial Diamond Morph & Orbiting Starlight Beacon
 ---------------------------------------------------- */
 
-/* 1. Double-Click Particle Supernova Container */
+/* Cursor FX Master Container */
 .cursor-effects-container {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 999999;
   overflow: hidden;
+}
+
+/* 0. Single-Click Instant Luxury Ripple & Micro-Glints */
+.cursor-click-ripple {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(243, 199, 124, 0.95);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.75), inset 0 0 8px rgba(255, 243, 209, 0.5);
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.2);
+  animation: clickRipple 0.38s cubic-bezier(0.12, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes clickRipple {
+  0% {
+    width: 6px;
+    height: 6px;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+  60% {
+    opacity: 0.95;
+  }
+  100% {
+    width: 44px;
+    height: 44px;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+.cursor-click-spark {
+  position: absolute;
+  pointer-events: none;
+  font-family: var(--font-serif);
+  color: #fff6db;
+  text-shadow: 0 0 10px rgba(243, 199, 124, 0.95), 0 0 18px rgba(212, 175, 55, 0.7);
+  font-size: 11px;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+  animation: clickSparkFly 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes clickSparkFly {
+  0% {
+    transform: translate(-50%, -50%) translate(0, 0) scale(0.4) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(var(--tx), var(--ty)) scale(1.1) rotate(45deg);
+    opacity: 0;
+  }
 }
 
 .cursor-burst-ring {
@@ -353,7 +412,7 @@ body {
   text-transform: uppercase;
 }
 
-/* 3. 30-Second Inactivity Idle Celestial Beacon */
+/* 3. Motionless Cursor Idle Celestial Beacon */
 .cursor-idle-beacon {
   position: fixed;
   top: -9999px;
