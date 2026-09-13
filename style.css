@@ -2118,14 +2118,19 @@ body {
 
 /* Footer */
 .footer {
-  padding: 44px 0;
+  padding: 26px 0;
   background-color: var(--bg-onyx);
-  border-top: 1px solid var(--gold-border);
+  border-top: 1px solid rgba(212, 175, 55, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 245, 215, 0.06);
   position: relative;
   z-index: 2;
 }
 
-.footer-content {
+.footer-container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 3.5vw, 44px);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -2136,12 +2141,12 @@ body {
 .footer-left {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .footer-crest {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2152,14 +2157,22 @@ body {
   width: 100%;
   height: 100%;
   display: block;
-  border-radius: 9px;
-  box-shadow: 0 0 14px rgba(212, 175, 55, 0.28);
-  transition: all 0.25s ease;
+  border-radius: 10px;
+  border: 1px solid rgba(212, 175, 55, 0.32);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.22);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .footer-crest:hover .footer-crest-img {
-  box-shadow: 0 0 22px rgba(212, 175, 55, 0.55);
-  transform: scale(1.05);
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.55);
+  transform: scale(1.06);
+  border-color: rgba(243, 199, 124, 0.65);
+}
+
+.footer-text-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .footer-author-name {
@@ -2167,16 +2180,33 @@ body {
   font-weight: 700;
   font-size: 1.05rem;
   color: #ffffff;
+  letter-spacing: 0.5px;
+  line-height: 1.25;
+  margin-bottom: 4px;
 }
 
 .footer-academic-line {
-  font-size: 0.84rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
 }
 
 .footer-copyright {
   font-size: 0.85rem;
-  color: var(--text-dim);
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+  line-height: 1.4;
+}
+
+.footer-copyright span {
+  color: var(--gold-light);
+  font-weight: 600;
 }
 
 /* Resume Modal */
@@ -2812,18 +2842,22 @@ body {
 
   /* Footer */
   .footer {
-    padding: 38px 0;
+    padding: 30px 0;
   }
-  .footer-content {
+  .footer-container {
     flex-direction: column;
     text-align: center;
     gap: 16px;
+    padding: 0 20px;
   }
   .footer-left {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 10px;
+    gap: 12px;
+  }
+  .footer-text-group {
+    align-items: center;
   }
 }
 
