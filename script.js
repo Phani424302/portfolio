@@ -19,7 +19,6 @@ function initMobileNavigation() {
       toggle.classList.add('active');
       toggle.setAttribute('aria-expanded', 'true');
     }
-    document.body.style.overflow = 'hidden';
   }
 
   function closeMenu() {
@@ -28,11 +27,6 @@ function initMobileNavigation() {
     if (toggle) {
       toggle.classList.remove('active');
       toggle.setAttribute('aria-expanded', 'false');
-    }
-    // Only restore body scrolling if resume modal is not currently active
-    const resumeModal = document.getElementById('resumeModal');
-    if (!resumeModal || !resumeModal.classList.contains('active')) {
-      document.body.style.overflow = '';
     }
   }
 
