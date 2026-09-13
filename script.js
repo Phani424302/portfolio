@@ -458,23 +458,23 @@ function initCursorActions() {
     }, 850);
   });
 
-  // --- ACTION 3: MOTIONLESS CURSOR TRANSFORMATION (Jumping Cute Dog) ---
+  // --- ACTION 3: MOTIONLESS CURSOR TRANSFORMATION (3D Quantum Singularity) ---
   function triggerIdleBeacon() {
     if (!mouseHasEntered) return;
     document.body.classList.add('cursor-stationary');
     if (!idleBeacon) return;
 
-    // Trigger fresh jump-in transformation animation
-    const wrapper = idleBeacon.querySelector('.dog-jump-wrapper');
-    if (wrapper) {
-      wrapper.style.animation = 'none';
-      void wrapper.offsetWidth;
-      wrapper.style.animation = '';
+    // Trigger fresh 3D orb bloom transformation animation
+    const orb = idleBeacon.querySelector('.quantum-singularity-orb');
+    if (orb) {
+      orb.style.animation = 'none';
+      void orb.offsetWidth;
+      orb.style.animation = '';
     }
 
     // Keep beacon comfortably within viewport bounds
-    const x = Math.max(35, Math.min(window.innerWidth - 35, lastMouseX));
-    const y = Math.max(35, Math.min(window.innerHeight - 35, lastMouseY));
+    const x = Math.max(38, Math.min(window.innerWidth - 38, lastMouseX));
+    const y = Math.max(38, Math.min(window.innerHeight - 38, lastMouseY));
 
     idleBeacon.style.left = `${x}px`;
     idleBeacon.style.top = `${y}px`;
