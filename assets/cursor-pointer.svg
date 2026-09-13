@@ -1,19 +1,18 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="14" height="20" viewBox="0 0 14 20" fill="none">
   <defs>
-    <linearGradient id="goldHoverGrad" x1="2" y1="1" x2="16" y2="18" gradientUnits="userSpaceOnUse">
+    <linearGradient id="goldHoverGrad" x1="0" y1="0" x2="11.5" y2="19" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="25%" stop-color="#ffe6a3"/>
+      <stop offset="25%" stop-color="#ffe8a3"/>
       <stop offset="65%" stop-color="#e5bd47"/>
       <stop offset="100%" stop-color="#a67c1c"/>
     </linearGradient>
-    <filter id="shadowHover" x="-30%" y="-30%" width="180%" height="180%">
-      <feDropShadow dx="0.8" dy="1.2" stdDeviation="0.8" flood-color="#000000" flood-opacity="0.95"/>
-      <feDropShadow dx="0" dy="0" stdDeviation="1.5" flood-color="#f3c77c" flood-opacity="0.7"/>
+    <filter id="shadowHover" x="-30%" y="-30%" width="170%" height="170%">
+      <feDropShadow dx="0.5" dy="1" stdDeviation="0.6" flood-color="#000000" flood-opacity="0.9"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="1.2" flood-color="#f3c77c" flood-opacity="0.55"/>
     </filter>
   </defs>
-  <path d="M2 1 L2 16.5 L6.5 12 L10.5 18.5 L12.8 17.2 L8.8 11 L14.5 11 Z" fill="#06070a" stroke="#06070a" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M2 1 L2 16.5 L6.5 12 L10.5 18.5 L12.8 17.2 L8.8 11 L14.5 11 Z" fill="url(#goldHoverGrad)" stroke="#fff3d1" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round" filter="url(#shadowHover)"/>
-  <path d="M3.2 2.8 L3.2 14.5 L6.2 11.5 L9.5 16.8" stroke="#ffffff" stroke-width="0.7" stroke-linecap="round" opacity="0.85"/>
-  <path d="M17 1 Q17 5 21 5 Q17 5 17 9 Q17 5 13 5 Q17 5 17 1 Z" fill="#fff8e7" stroke="#d4af37" stroke-width="0.6"/>
-  <circle cx="17" cy="5" r="0.9" fill="#ffffff"/>
+  <path d="M0 0 L0 16 L4 12 L7.5 19 L9.5 18 L6 11 L11.5 11 Z" fill="#06070a" stroke="#06070a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M0 0 L0 16 L4 12 L7.5 19 L9.5 18 L6 11 L11.5 11 Z" fill="url(#goldHoverGrad)" stroke="#fff3d1" stroke-width="0.5" stroke-linejoin="round" stroke-linecap="round" filter="url(#shadowHover)"/>
+  <path d="M1 2 L1 14.5 L3.8 11.8 L6.8 17.5" stroke="#ffffff" stroke-width="0.65" stroke-linecap="round" opacity="0.85"/>
+  <circle cx="0.5" cy="0.5" r="0.6" fill="#ffffff"/>
 </svg>

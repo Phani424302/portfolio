@@ -81,12 +81,12 @@ body {
 }
 
 /* ----------------------------------------------------
-   BESPOKE COMPACT CHAMPAGNE GOLD LUXURY CURSOR
-   Replaces generic white OS cursor with compact 24K sculpted gold
+   BESPOKE NORMAL-SIZED CHAMPAGNE GOLD LUXURY CURSOR
+   Replaces generic white OS cursor with 1:1 normal scale 24K sculpted gold
 ---------------------------------------------------- */
 @media (hover: hover) and (pointer: fine) {
   html, body, body * {
-    cursor: url('assets/cursor-default.svg') 2 1, auto;
+    cursor: url('assets/cursor-default.svg') 0 0, auto;
   }
 
   a, 
@@ -106,13 +106,13 @@ body {
   .tab-btn,
   select,
   summary {
-    cursor: url('assets/cursor-pointer.svg') 2 1, pointer !important;
+    cursor: url('assets/cursor-pointer.svg') 0 0, pointer !important;
   }
 
   input[type="text"],
   input[type="email"],
   textarea {
-    cursor: url('assets/cursor-text.svg') 9 9, text !important;
+    cursor: url('assets/cursor-text.svg') 6 9, text !important;
   }
 }
 
