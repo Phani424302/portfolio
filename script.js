@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNavigation();
   initSectionSpy();
   initCurrentYear();
+  initRoleTypewriter();
 });
 
 /* Complete Text Selection & Copy Protection */
@@ -157,6 +158,51 @@ function initSectionSpy() {
       ticking = true;
     }
   }, { passive: true });
+}
+
+/* Dynamic Hero Role Typewriter Animation */
+function initRoleTypewriter() {
+  const target = document.getElementById('typewriterText');
+  if (!target) return;
+
+  const roles = [
+    'Full Stack Developer',
+    'AI ML Engineer',
+    'Software Developer',
+    'Computer Vision Specialist'
+  ];
+
+  let roleIndex = 0;
+  let charIndex = roles[0].length;
+  let isDeleting = true;
+  let typingSpeed = 2200;
+
+  function tick() {
+    const currentRole = roles[roleIndex];
+
+    if (isDeleting) {
+      target.textContent = currentRole.substring(0, charIndex - 1);
+      charIndex--;
+      typingSpeed = 45;
+    } else {
+      target.textContent = currentRole.substring(0, charIndex + 1);
+      charIndex++;
+      typingSpeed = 80;
+    }
+
+    if (!isDeleting && charIndex === currentRole.length) {
+      typingSpeed = 2200;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      typingSpeed = 350;
+    }
+
+    setTimeout(tick, typingSpeed);
+  }
+
+  setTimeout(tick, typingSpeed);
 }
 
 /* Official Resume Modal (Lazy load iframe on demand) */

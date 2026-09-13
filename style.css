@@ -823,6 +823,40 @@ body {
   font-weight: 600;
   margin-bottom: 22px;
   letter-spacing: 0.5px;
+  min-height: 2.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typewriter-text {
+  display: inline-block;
+  color: var(--gold-light);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 16px rgba(243, 199, 124, 0.25);
+  white-space: nowrap;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  color: var(--gold-primary);
+  font-weight: 300;
+  margin-left: 3px;
+  animation: goldCursorBlink 0.9s infinite ease-in-out;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.85);
+  user-select: none;
+}
+
+@keyframes goldCursorBlink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
 }
 
 .hero-narrative {
@@ -2820,6 +2854,7 @@ body {
   }
   .hero-executive-title {
     font-size: 1.05rem;
+    min-height: 1.8rem;
   }
   .hero-narrative {
     font-size: 0.92rem;
@@ -3054,6 +3089,10 @@ body {
   }
   .hero-title {
     font-size: 1.5rem;
+  }
+  .hero-executive-title {
+    font-size: 0.95rem;
+    min-height: 1.6rem;
   }
   .crest-name {
     font-size: 0.9rem;
