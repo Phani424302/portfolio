@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  initLuxuryCursor();
   initMobileNavigation();
   initSectionSpy();
   initCurrentYear();
@@ -263,93 +262,5 @@ function initCurrentYear() {
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
-}
-
-/* Luxury Champagne Gold Cursor Halo Follower */
-function initLuxuryCursor() {
-  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-
-  const aura = document.getElementById('cursorAura');
-  if (!aura) return;
-
-  let targetX = -100;
-  let targetY = -100;
-  let currentX = -100;
-  let currentY = -100;
-  let isHovering = false;
-  let isClicking = false;
-  let isVisible = false;
-
-  window.addEventListener('mousemove', (e) => {
-    targetX = e.clientX;
-    targetY = e.clientY;
-    if (!isVisible) {
-      isVisible = true;
-      aura.classList.add('active');
-    }
-  }, { passive: true });
-
-  document.addEventListener('mouseleave', () => {
-    isVisible = false;
-    aura.classList.remove('active');
-  });
-
-  document.addEventListener('mouseenter', () => {
-    if (!isVisible) {
-      isVisible = true;
-      aura.classList.add('active');
-    }
-  });
-
-  window.addEventListener('mousedown', () => {
-    isClicking = true;
-    aura.classList.add('clicking');
-  });
-
-  window.addEventListener('mouseup', () => {
-    isClicking = false;
-    aura.classList.remove('clicking');
-  });
-
-  const interactiveSelector = 'a, button, [role="button"], input, textarea, select, .nav-item, .luxury-card, .btn, .brand-crest, .gold-copy-btn, .gold-chat-btn';
-
-  document.addEventListener('mouseover', (e) => {
-    if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
-      if (!isHovering) {
-        isHovering = true;
-        aura.classList.add('hovering');
-      }
-    }
-  }, { passive: true });
-
-  document.addEventListener('mouseout', (e) => {
-    if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
-      const related = e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest(interactiveSelector) : null;
-      if (!related) {
-        isHovering = false;
-        aura.classList.remove('hovering');
-      }
-    }
-  }, { passive: true });
-
-  function render() {
-    if (isVisible) {
-      currentX += (targetX - currentX) * 0.22;
-      currentY += (targetY - currentY) * 0.22;
-
-      const halfSize = aura.offsetWidth / 2;
-      const x = currentX - halfSize;
-      const y = currentY - halfSize;
-
-      aura.style.setProperty('--aura-x', `${x}px`);
-      aura.style.setProperty('--aura-y', `${y}px`);
-      if (!isClicking) {
-        aura.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      }
-    }
-    requestAnimationFrame(render);
-  }
-
-  requestAnimationFrame(render);
 }
 

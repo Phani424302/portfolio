@@ -81,12 +81,12 @@ body {
 }
 
 /* ----------------------------------------------------
-   BESPOKE CHAMPAGNE GOLD LUXURY CURSOR
-   Replaces generic white OS cursor with 24K sculpted gold
+   BESPOKE COMPACT CHAMPAGNE GOLD LUXURY CURSOR
+   Replaces generic white OS cursor with compact 24K sculpted gold
 ---------------------------------------------------- */
 @media (hover: hover) and (pointer: fine) {
   html, body, body * {
-    cursor: url('assets/cursor-default.svg') 4 3, auto;
+    cursor: url('assets/cursor-default.svg') 2 1, auto;
   }
 
   a, 
@@ -106,61 +106,13 @@ body {
   .tab-btn,
   select,
   summary {
-    cursor: url('assets/cursor-pointer.svg') 4 3, pointer !important;
+    cursor: url('assets/cursor-pointer.svg') 2 1, pointer !important;
   }
 
   input[type="text"],
   input[type="email"],
   textarea {
-    cursor: url('assets/cursor-text.svg') 12 12, text !important;
-  }
-
-  /* Smooth Trailing Luxury Gold Halo Ring */
-  .luxury-cursor-aura {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 32px;
-    height: 32px;
-    border: 1.5px solid rgba(212, 175, 55, 0.45);
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 999999;
-    transform: translate3d(-100px, -100px, 0);
-    transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-                height 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.25s ease,
-                background 0.25s ease,
-                opacity 0.25s ease;
-    opacity: 0;
-    box-shadow: 0 0 14px rgba(212, 175, 55, 0.22);
-    will-change: transform, width, height;
-  }
-
-  .luxury-cursor-aura.active {
-    opacity: 1;
-  }
-
-  .luxury-cursor-aura.hovering {
-    width: 50px;
-    height: 50px;
-    border-color: rgba(243, 199, 124, 0.85);
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0.02) 75%);
-    box-shadow: 0 0 22px rgba(212, 175, 55, 0.42);
-  }
-
-  .luxury-cursor-aura.clicking {
-    transform: translate3d(var(--aura-x), var(--aura-y), 0) scale(0.82) !important;
-    border-color: #ffffff;
-    background: rgba(212, 175, 55, 0.28);
-    box-shadow: 0 0 26px rgba(212, 175, 55, 0.6);
-  }
-}
-
-@media (hover: none) or (pointer: coarse) {
-  .luxury-cursor-aura {
-    display: none !important;
+    cursor: url('assets/cursor-text.svg') 9 9, text !important;
   }
 }
 

@@ -1,18 +1,18 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
   <defs>
-    <linearGradient id="goldMetallic" x1="4" y1="3" x2="22" y2="28" gradientUnits="userSpaceOnUse">
+    <linearGradient id="goldMetallic" x1="2" y1="1" x2="16" y2="18" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#fffbee"/>
       <stop offset="25%" stop-color="#f5d082"/>
       <stop offset="60%" stop-color="#d4af37"/>
       <stop offset="100%" stop-color="#8c6414"/>
     </linearGradient>
     <filter id="shadowDefault" x="-30%" y="-30%" width="170%" height="170%">
-      <feDropShadow dx="1" dy="2" stdDeviation="1.2" flood-color="#000000" flood-opacity="0.95"/>
-      <feDropShadow dx="0" dy="0" stdDeviation="1.8" flood-color="#d4af37" flood-opacity="0.45"/>
+      <feDropShadow dx="0.8" dy="1.2" stdDeviation="0.8" flood-color="#000000" flood-opacity="0.95"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="1" flood-color="#d4af37" flood-opacity="0.5"/>
     </filter>
   </defs>
-  <path d="M4 3 L4 25.5 L10.2 19.5 L15.8 28.8 L19.4 26.8 L14 17.6 L22 17.6 Z" fill="#06070a" stroke="#06070a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M4 3 L4 25.5 L10.2 19.5 L15.8 28.8 L19.4 26.8 L14 17.6 L22 17.6 Z" fill="url(#goldMetallic)" stroke="rgba(255, 243, 209, 0.5)" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round" filter="url(#shadowDefault)"/>
-  <path d="M5.5 5.2 L5.5 22.8 L9.8 18.6 L14.5 26.2" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" opacity="0.75"/>
-  <circle cx="4" cy="3" r="1" fill="#ffffff" opacity="0.9"/>
+  <path d="M2 1 L2 16.5 L6.5 12 L10.5 18.5 L12.8 17.2 L8.8 11 L14.5 11 Z" fill="#06070a" stroke="#06070a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M2 1 L2 16.5 L6.5 12 L10.5 18.5 L12.8 17.2 L8.8 11 L14.5 11 Z" fill="url(#goldMetallic)" stroke="rgba(255, 243, 209, 0.6)" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round" filter="url(#shadowDefault)"/>
+  <path d="M3.2 2.8 L3.2 14.5 L6.2 11.5 L9.5 16.8" stroke="#ffffff" stroke-width="0.65" stroke-linecap="round" opacity="0.75"/>
+  <circle cx="2" cy="1" r="0.75" fill="#ffffff"/>
 </svg>
