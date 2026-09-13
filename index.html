@@ -18,7 +18,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=2.4" />
 </head>
 <body>
 
@@ -29,13 +29,98 @@
   <!-- Cursor Interactive FX System (Single-Click, Double-Click, Right-Click, Stationary Idle) -->
   <div class="cursor-effects-container" id="cursorEffectsContainer" aria-hidden="true"></div>
 
-  <!-- Luxury Idle Living Beacon (Triggers when cursor is stationary) -->
+  <!-- Luxury Idle Living Dog Companion (Waiting for viewer) -->
   <div class="cursor-idle-beacon" id="cursorIdleBeacon" aria-hidden="true">
-    <div class="beacon-pulse-ring"></div>
-    <div class="beacon-orbit-ring">
-      <span class="orbit-star star-1">✦</span>
-      <span class="orbit-star star-2">🐾</span>
-      <span class="orbit-star star-3">✦</span>
+    <div class="dog-pedestal-glow"></div>
+    <svg class="dog-animated-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="goldLuxuryDog" x1="10" y1="5" x2="54" y2="55" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="18%" stop-color="#fff0c4"/>
+          <stop offset="50%" stop-color="#f3c77c"/>
+          <stop offset="78%" stop-color="#d4af37"/>
+          <stop offset="100%" stop-color="#8a6112"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Tail (animated wagging back and forth) -->
+      <g class="dog-tail-group">
+        <path d="M18 46 C12 44 6 36 8 26 C10 24 13 25 12 28 C10 34 14 40 19 44 Z" 
+              fill="url(#goldLuxuryDog)" stroke="#06070a" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M10 28 C9 26 12 25 13 28 C12 32 15 37 18 42" 
+              stroke="#ffffff" stroke-width="0.8" stroke-linecap="round"/>
+      </g>
+
+      <!-- Sitting Hind Leg & Haunch -->
+      <ellipse cx="20" cy="46" rx="9" ry="7" fill="url(#goldLuxuryDog)" stroke="#06070a" stroke-width="1.8"/>
+      <!-- Hind Paw -->
+      <path d="M18 52 C18 50 25 50 26 52 C27 54 26 56 22 56 C18 56 18 54 18 52 Z" 
+            fill="url(#goldLuxuryDog)" stroke="#06070a" stroke-width="1.5"/>
+
+      <!-- Main Torso / Body -->
+      <path d="M22 34 C24 30 31 30 34 34 C36 38 37 46 36 52 C35 55 31 56 27 55 C23 54 20 48 20 42 C20 37 21 35 22 34 Z" 
+            fill="url(#goldLuxuryDog)" stroke="#06070a" stroke-width="1.8" stroke-linejoin="round"/>
+
+      <!-- Front Left Leg & Paw -->
+      <path d="M27 38 L27 53 C27 55 24 55 24 55 C23 55 22 54 22 53 L24 38 Z" 
+            fill="url(#goldLuxuryDog)" stroke="#06070a" stroke-width="1.5"/>
+      <ellipse cx="25" cy="54" rx="3.2" ry="1.8" fill="url(#goldLuxuryDog)" stroke="#06070a" stroke-width="1.4"/>
+
+      <!-- Front Right Leg & Paw (Foreground) -->
+      <path d="M33 37 L34 53 C34 55 31 55 31 55 C30 55 29 54 29 53 L30 37 Z" 
+            fill="url(#goldLuxuryDog)" stroke="#06070a" stroke-width="1.5"/>
+      <ellipse cx="33" cy="54" rx="3.5" ry="2" fill="url(#goldLuxuryDog)" stroke="#06070a" stroke-width="1.4"/>
+      <line x1="32" y1="53" x2="32" y2="55.5" stroke="#06070a" stroke-width="0.8"/>
+      <line x1="34" y1="53" x2="34" y2="55.5" stroke="#06070a" stroke-width="0.8"/>
+
+      <!-- Chest highlight -->
+      <path d="M31 35 C33 39 33 45 32 49" stroke="#ffffff" stroke-width="1" stroke-linecap="round"/>
+
+      <!-- Head Group (animated tilting / waiting for viewer) -->
+      <g class="dog-head-group">
+        <!-- Left Ear (Back) -->
+        <path d="M27 16 C25 10 23 4 27 3 C30 2 32 8 32 14 Z" 
+              fill="#d4af37" stroke="#06070a" stroke-width="1.5" stroke-linejoin="round"/>
+        
+        <!-- Right Ear (Front) -->
+        <path d="M35 15 C37 9 39 3 43 4 C46 5 44 11 41 16 Z" 
+              fill="url(#goldLuxuryDog)" stroke="#06070a" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M38 8 C40 6 42 6 41 10 C40 12 38 14 38 14" stroke="#ffffff" stroke-width="0.8"/>
+
+        <!-- Head Base Skull -->
+        <ellipse cx="34" cy="20" rx="9" ry="8" fill="url(#goldLuxuryDog)" stroke="#06070a" stroke-width="1.8"/>
+
+        <!-- Snout & Muzzle -->
+        <path d="M38 18 C41 18 47 18 48 21 C48 24 44 26 39 26 C36 26 36 22 38 18 Z" 
+              fill="url(#goldLuxuryDog)" stroke="#06070a" stroke-width="1.6" stroke-linejoin="round"/>
+        <!-- Cute Black Nose -->
+        <path d="M47 19.5 C48.5 19.5 48.5 21.5 47 21.5 C46 21.5 46 19.5 47 19.5 Z" fill="#06070a"/>
+        <circle cx="46.8" cy="19.8" r="0.4" fill="#ffffff"/>
+
+        <!-- Smiling Mouth -->
+        <path d="M43 24 C45 24.5 46 23.5 46 23" stroke="#06070a" stroke-width="0.9" stroke-linecap="round"/>
+
+        <!-- Eye (Animated Blinking) -->
+        <g class="dog-eye">
+          <ellipse cx="38" cy="17" rx="2.2" ry="2.6" fill="#06070a"/>
+          <circle cx="38.8" cy="16.2" r="0.9" fill="#ffffff"/>
+          <circle cx="37.3" cy="17.8" r="0.4" fill="#ffffff"/>
+        </g>
+        <!-- Eyebrow perk -->
+        <path d="M36 13.5 C37.5 12.8 39.5 13 40.5 14" stroke="#8a6112" stroke-width="0.8" stroke-linecap="round"/>
+
+        <!-- Luxury Collar -->
+        <path d="M28 27 C32 29 37 29 40 27" stroke="#06070a" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M28 27 C32 29 37 29 40 27" stroke="#fff3d1" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Gold Diamond Tag -->
+        <polygon points="34,29 36.5,32.5 34,36 31.5,32.5" fill="#ffffff" stroke="#d4af37" stroke-width="1"/>
+      </g>
+    </svg>
+
+    <!-- Subtle Floating Waiting Accents (Zero words / text) -->
+    <div class="dog-waiting-accents">
+      <span class="wait-sparkle s-1">✦</span>
+      <span class="wait-sparkle s-2">🐾</span>
     </div>
   </div>
 
@@ -991,6 +1076,6 @@
     <span id="toast-message">Copied to clipboard</span>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2.4"></script>
 </body>
 </html>

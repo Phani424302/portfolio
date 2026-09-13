@@ -284,7 +284,7 @@ function initCursorActions() {
   let lastMouseY = window.innerHeight / 2;
   let mouseHasEntered = false;
   let idleTimer = null;
-  const STATIONARY_DELAY_MS = 1600; // 1.6s of motionless cursor triggers transformation
+  const STATIONARY_DELAY_MS = 1300; // 1.3s of motionless cursor triggers waiting dog
 
   // --- ACTION 0: SINGLE-CLICK CHAMPAGNE GOLD LIQUID RIPPLE & GLINTS ---
   function spawnClickRipple(x, y) {
