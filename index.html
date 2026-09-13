@@ -26,6 +26,61 @@
   <div class="ambient-glow-gold glow-top"></div>
   <div class="ambient-glow-gold glow-mid"></div>
 
+  <!-- Cursor Interactive FX System (Right-Click, Double-Click, 30s Idle Beacon) -->
+  <div class="cursor-effects-container" id="cursorEffectsContainer" aria-hidden="true"></div>
+
+  <!-- Luxury Idle Beacon (Triggers after 30s of cursor inactivity) -->
+  <div class="cursor-idle-beacon" id="cursorIdleBeacon" aria-hidden="true">
+    <div class="beacon-pulse-ring"></div>
+    <div class="beacon-orbit-ring">
+      <span class="orbit-star star-1">✦</span>
+      <span class="orbit-star star-2">✦</span>
+      <span class="orbit-star star-3">✦</span>
+    </div>
+    <div class="beacon-badge">
+      <span class="beacon-gem">✦</span>
+      <span class="beacon-text">Executive Session Active</span>
+    </div>
+  </div>
+
+  <!-- Luxury Right-Click Quick Navigation HUD -->
+  <div class="luxury-context-menu" id="luxuryContextMenu" aria-hidden="true">
+    <div class="ctx-header">
+      <span class="ctx-crest">PBR</span>
+      <div class="ctx-titles">
+        <span class="ctx-name">Quick Access</span>
+        <span class="ctx-sub">Executive Actions</span>
+      </div>
+    </div>
+    <div class="ctx-divider"></div>
+    <div class="ctx-list">
+      <button class="ctx-item" data-action="resume">
+        <i class="fa-solid fa-file-pdf ctx-icon"></i>
+        <span>View Resume</span>
+        <span class="ctx-tag">PDF</span>
+      </button>
+      <button class="ctx-item" data-action="contact">
+        <i class="fa-solid fa-paper-plane ctx-icon"></i>
+        <span>Get in Touch</span>
+        <span class="ctx-tag">Direct</span>
+      </button>
+      <button class="ctx-item" data-action="email">
+        <i class="fa-solid fa-copy ctx-icon"></i>
+        <span>Copy Email</span>
+        <span class="ctx-tag">phani</span>
+      </button>
+      <button class="ctx-item" data-action="github">
+        <i class="fa-brands fa-github ctx-icon"></i>
+        <span>GitHub Profile</span>
+        <span class="ctx-tag">Code</span>
+      </button>
+      <button class="ctx-item" data-action="top">
+        <i class="fa-solid fa-arrow-up ctx-icon"></i>
+        <span>Back to Top</span>
+      </button>
+    </div>
+  </div>
+
   <!-- Mobile Navigation Backdrop Overlay -->
   <div class="nav-drawer-backdrop" id="nav-backdrop"></div>
 

@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  initCursorActions();
   initMobileNavigation();
   initSectionSpy();
   initCurrentYear();
@@ -263,4 +264,185 @@ function initCurrentYear() {
     yearEl.textContent = new Date().getFullYear();
   }
 }
+
+/* ----------------------------------------------------
+   INTERACTIVE THEME CURSOR ACTIONS
+   1. Right-Click: Bespoke Obsidian & Gold Quick Access HUD
+   2. Double-Click: Golden Celestial Supernova Burst
+   3. 30s Inactivity: Orbiting Starlight Idle Beacon
+---------------------------------------------------- */
+function initCursorActions() {
+  const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!isFinePointer) return;
+
+  const effectsContainer = document.getElementById('cursorEffectsContainer');
+  const contextMenu = document.getElementById('luxuryContextMenu');
+  const idleBeacon = document.getElementById('cursorIdleBeacon');
+
+  let lastMouseX = window.innerWidth / 2;
+  let lastMouseY = window.innerHeight / 2;
+  let idleTimer = null;
+  const IDLE_TIMEOUT_MS = 30000; // Exactly 30 seconds
+
+  // --- ACTION 1: RIGHT-CLICK HUD ---
+  function openContextMenu(e) {
+    if (e.shiftKey) return; // Allow devtools on shift+right-click
+    e.preventDefault();
+
+    if (!contextMenu) return;
+
+    const menuWidth = 224;
+    const menuHeight = 245;
+    let posX = e.clientX;
+    let posY = e.clientY;
+
+    if (posX + menuWidth > window.innerWidth - 12) {
+      posX = window.innerWidth - menuWidth - 12;
+    }
+    if (posY + menuHeight > window.innerHeight - 12) {
+      posY = window.innerHeight - menuHeight - 12;
+    }
+
+    contextMenu.style.left = `${Math.max(12, posX)}px`;
+    contextMenu.style.top = `${Math.max(12, posY)}px`;
+    contextMenu.classList.add('open');
+
+    // Subtle gold pulse at cursor click point
+    spawnShockwave(e.clientX, e.clientY);
+  }
+
+  function closeContextMenu() {
+    if (contextMenu && contextMenu.classList.contains('open')) {
+      contextMenu.classList.remove('open');
+    }
+  }
+
+  function spawnShockwave(x, y) {
+    if (!effectsContainer) return;
+    const wave = document.createElement('div');
+    wave.className = 'cursor-burst-ring';
+    wave.style.left = `${x}px`;
+    wave.style.top = `${y}px`;
+    effectsContainer.appendChild(wave);
+    setTimeout(() => wave.remove(), 700);
+  }
+
+  window.addEventListener('contextmenu', openContextMenu);
+
+  document.addEventListener('click', (e) => {
+    if (contextMenu && !contextMenu.contains(e.target)) {
+      closeContextMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeContextMenu();
+    }
+  });
+
+  window.addEventListener('scroll', closeContextMenu, { passive: true });
+
+  if (contextMenu) {
+    contextMenu.querySelectorAll('.ctx-item').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const action = btn.getAttribute('data-action');
+        closeContextMenu();
+
+        if (action === 'resume') {
+          openResumeModal();
+        } else if (action === 'contact') {
+          const contactSec = document.getElementById('contact');
+          if (contactSec) contactSec.scrollIntoView({ behavior: 'smooth' });
+        } else if (action === 'email') {
+          copyEmail('phani424302@gmail.com');
+        } else if (action === 'github') {
+          window.open('https://github.com/Phani424302', '_blank', 'noopener,noreferrer');
+        } else if (action === 'top') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    });
+  }
+
+  // --- ACTION 2: DOUBLE-CLICK SUPERNOVA BURST ---
+  window.addEventListener('dblclick', (e) => {
+    if (!effectsContainer) return;
+
+    const x = e.clientX;
+    const y = e.clientY;
+
+    const ring1 = document.createElement('div');
+    ring1.className = 'cursor-burst-ring';
+    ring1.style.left = `${x}px`;
+    ring1.style.top = `${y}px`;
+
+    const ring2 = document.createElement('div');
+    ring2.className = 'cursor-burst-ring outer';
+    ring2.style.left = `${x}px`;
+    ring2.style.top = `${y}px`;
+
+    effectsContainer.appendChild(ring1);
+    effectsContainer.appendChild(ring2);
+
+    const particleCount = 10;
+    for (let i = 0; i < particleCount; i++) {
+      const isStar = i % 2 === 0;
+      const particle = document.createElement('div');
+      particle.className = isStar ? 'cursor-burst-star' : 'cursor-burst-dot';
+      if (isStar) particle.textContent = '✦';
+
+      const angle = (i / particleCount) * Math.PI * 2 + (Math.random() * 0.4 - 0.2);
+      const distance = 40 + Math.random() * 55;
+      const tx = Math.cos(angle) * distance;
+      const ty = Math.sin(angle) * distance;
+      const rot = Math.floor(Math.random() * 240 - 120);
+
+      particle.style.left = `${x}px`;
+      particle.style.top = `${y}px`;
+      particle.style.setProperty('--tx', `${tx}px`);
+      particle.style.setProperty('--ty', `${ty}px`);
+      particle.style.setProperty('--rot', `${rot}deg`);
+
+      effectsContainer.appendChild(particle);
+      setTimeout(() => particle.remove(), 800);
+    }
+
+    setTimeout(() => {
+      ring1.remove();
+      ring2.remove();
+    }, 850);
+  });
+
+  // --- ACTION 3: 30-SECOND IDLE BEACON ---
+  function triggerIdleBeacon() {
+    if (!idleBeacon) return;
+    idleBeacon.style.left = `${lastMouseX}px`;
+    idleBeacon.style.top = `${lastMouseY}px`;
+    idleBeacon.classList.add('active');
+  }
+
+  function resetIdleTimer() {
+    if (idleBeacon && idleBeacon.classList.contains('active')) {
+      idleBeacon.classList.remove('active');
+    }
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(triggerIdleBeacon, IDLE_TIMEOUT_MS);
+  }
+
+  window.addEventListener('mousemove', (e) => {
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
+    resetIdleTimer();
+  }, { passive: true });
+
+  window.addEventListener('mousedown', resetIdleTimer, { passive: true });
+  window.addEventListener('keydown', resetIdleTimer, { passive: true });
+  window.addEventListener('scroll', resetIdleTimer, { passive: true });
+
+  // Start 30s timer
+  idleTimer = setTimeout(triggerIdleBeacon, IDLE_TIMEOUT_MS);
+}
+
 
