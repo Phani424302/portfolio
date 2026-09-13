@@ -167,7 +167,7 @@ function initRoleTypewriter() {
 
   const roles = [
     'Full Stack Developer',
-    'AI ML Engineer',
+    'AI/ML Engineer',
     'Software Developer',
     'Computer Vision Specialist'
   ];
