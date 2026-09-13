@@ -458,15 +458,23 @@ function initCursorActions() {
     }, 850);
   });
 
-  // --- ACTION 3: MOTIONLESS CURSOR TRANSFORMATION & LIVING COMPANION AURA ---
+  // --- ACTION 3: MOTIONLESS CURSOR TRANSFORMATION (Jumping Cute Dog) ---
   function triggerIdleBeacon() {
     if (!mouseHasEntered) return;
     document.body.classList.add('cursor-stationary');
     if (!idleBeacon) return;
 
+    // Trigger fresh jump-in transformation animation
+    const wrapper = idleBeacon.querySelector('.dog-jump-wrapper');
+    if (wrapper) {
+      wrapper.style.animation = 'none';
+      void wrapper.offsetWidth;
+      wrapper.style.animation = '';
+    }
+
     // Keep beacon comfortably within viewport bounds
-    const x = Math.max(30, Math.min(window.innerWidth - 30, lastMouseX));
-    const y = Math.max(30, Math.min(window.innerHeight - 30, lastMouseY));
+    const x = Math.max(35, Math.min(window.innerWidth - 35, lastMouseX));
+    const y = Math.max(35, Math.min(window.innerHeight - 35, lastMouseY));
 
     idleBeacon.style.left = `${x}px`;
     idleBeacon.style.top = `${y}px`;
