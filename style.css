@@ -1684,8 +1684,17 @@ body {
 .credential-card {
   padding: 22px 28px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.credential-main {
+  display: flex;
+  align-items: center;
   gap: 20px;
+  flex: 1;
+  min-width: 0;
 }
 
 .credential-icon {
@@ -1718,6 +1727,20 @@ body {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.credential-icon.oracle-gold i {
+  color: #ff4747 !important;
+  filter: drop-shadow(0 0 8px rgba(255, 71, 71, 0.6)) brightness(1.25);
+  font-size: 1.5rem;
+}
+
+.credential-icon.ms-gold i {
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5));
+}
+
+.credential-icon.hr-gold i {
+  filter: drop-shadow(0 0 8px rgba(46, 200, 102, 0.5));
+}
+
 .credential-card:hover .credential-icon {
   transform: scale(1.12) translateY(-2px);
   border-color: rgba(243, 199, 124, 0.6);
@@ -1734,7 +1757,8 @@ body {
 }
 
 .credential-info {
-  flex-grow: 1;
+  flex: 1;
+  min-width: 0;
 }
 
 .credential-name {
@@ -1752,6 +1776,9 @@ body {
 }
 
 .credential-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-mono);
   font-size: 0.76rem;
   color: var(--gold-light);
@@ -2856,6 +2883,44 @@ body {
   }
 }
 
+/* 2.5 Tablets & Large Phablets (<= 680px) */
+@media (max-width: 680px) {
+  .credential-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px 18px;
+    gap: 16px;
+  }
+  .credential-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    min-width: 0;
+  }
+  .credential-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .credential-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .credential-actions {
+    width: 100%;
+    margin-top: 2px;
+    padding-left: 0;
+  }
+  .btn-cert-preview {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+  }
+}
+
 /* 3. Smartphones (iPhone 12/13/14/15/16, Samsung Galaxy, Google Pixel <= 480px) */
 @media (max-width: 480px) {
   .container {
@@ -2988,16 +3053,28 @@ body {
 
   /* Education & Certifications */
   .diploma-card, .credential-card {
-    padding: 18px 14px;
-    gap: 12px;
+    padding: 18px 16px;
+    gap: 14px;
   }
   .credential-card {
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .credential-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    width: 100%;
+    min-width: 0;
   }
   .diploma-badge-disc, .credential-icon {
-    width: 42px;
-    height: 42px;
-    font-size: 1.15rem;
+    width: 44px;
+    height: 44px;
+    font-size: 1.18rem;
+    flex-shrink: 0;
+  }
+  .credential-icon {
+    margin-top: 2px;
   }
   .diploma-degree {
     font-size: 1.05rem;
@@ -3008,18 +3085,29 @@ body {
   .diploma-note {
     font-size: 0.84rem;
   }
+  .credential-info {
+    flex: 1;
+    min-width: 0;
+  }
   .credential-name {
-    font-size: 0.96rem;
+    font-size: 0.98rem;
+    line-height: 1.35;
+    margin-bottom: 5px;
+  }
+  .credential-seal {
+    font-size: 0.72rem;
+    padding: 3px 10px;
   }
   .credential-actions {
     width: 100%;
-    margin-top: 4px;
-    padding-left: 54px;
+    margin-top: 0;
+    padding-left: 0;
   }
   .btn-cert-preview {
     width: 100%;
     justify-content: center;
-    padding: 8px 14px;
+    padding: 9px 14px;
+    font-size: 0.84rem;
   }
 
   /* Contact */
