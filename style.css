@@ -1859,22 +1859,26 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
+  gap: 14px;
+  flex-wrap: nowrap;
+  width: 100%;
+  max-width: 100%;
   margin-top: 36px;
+  box-sizing: border-box;
 }
 
 .social-circle-btn {
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
+  flex-shrink: 0;
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(20, 26, 40, 0.78) 45%, rgba(10, 14, 22, 0.95) 100%);
   border: 1px solid rgba(212, 175, 55, 0.28);
   border-top: 1.5px solid rgba(255, 243, 209, 0.55);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   color: var(--gold-light);
   text-decoration: none;
   backdrop-filter: blur(14px);
@@ -1887,6 +1891,16 @@ body {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   position: relative;
+}
+
+.social-circle-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max(100%, 42px);
+  height: max(100%, 42px);
 }
 
 .social-circle-btn i {
@@ -1908,6 +1922,11 @@ body {
 .social-circle-btn:hover i {
   filter: drop-shadow(0 0 10px currentColor);
   transform: scale(1.1);
+}
+
+.social-circle-btn:active {
+  transform: scale(0.92);
+  border-color: rgba(243, 199, 124, 0.9);
 }
 
 .concierge-layout {
@@ -2919,6 +2938,17 @@ body {
     justify-content: center;
     padding: 10px 16px;
   }
+  .contact-social-channels {
+    margin-top: 28px;
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+  .social-circle-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+  }
 }
 
 /* 3. Smartphones (iPhone 12/13/14/15/16, Samsung Galaxy, Google Pixel <= 480px) */
@@ -3139,13 +3169,17 @@ body {
     padding: 24px 18px;
   }
   .contact-social-channels {
-    margin-top: 26px;
-    gap: 12px;
+    margin-top: 24px;
+    gap: clamp(6px, 2.0vw, 10px);
+    flex-wrap: nowrap !important;
+    width: 100%;
+    justify-content: center;
   }
   .social-circle-btn {
-    width: 46px;
-    height: 46px;
-    font-size: 1.18rem;
+    width: clamp(35px, 9.2vw, 42px);
+    height: clamp(35px, 9.2vw, 42px);
+    font-size: clamp(0.92rem, 2.3vw, 1.1rem);
+    flex-shrink: 0;
   }
   .form-gold-title {
     font-size: 1.25rem;
@@ -3240,6 +3274,17 @@ body {
   }
   .credential-actions {
     padding-left: 0;
+  }
+  .contact-social-channels {
+    margin-top: 20px;
+    gap: 4px;
+    flex-wrap: nowrap !important;
+  }
+  .social-circle-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+    flex-shrink: 0;
   }
 }
 
