@@ -1,99 +1,44 @@
-# C Phani Bhushan Reddy — Professional Portfolio Website
+# Phani Bhushan Reddy — Official Portfolio
 
-A modern, high-performance developer portfolio website designed for **C Phani Bhushan Reddy**, showcasing expertise in **Machine Learning, Computer Vision, Full-Stack Web Development**, and academic credentials from **VIT-AP**.
+Welcome to the official portfolio repository of **Chennamareddygari Phani Bhushan Reddy**.
 
----
-
-## 🌟 Highlights & Features
-
-- **Cyber-Glassmorphism UI**: Deep space slate background with luminous cyan and purple gradients, backdrop blur effects, and smooth card hover animations.
-- **Interactive Neural Network Canvas**: 60fps canvas particle simulation that dynamically reacts to mouse movements, symbolizing AI and computer vision.
-- **Dynamic Typing Roles**: Rotating role cycler in hero section highlighting your education and specializations.
-- **Academic & Industry Metrics**: Highlighting CGPA (8.47 @ VIT-AP), 100% SSC, 95.9% Intermediate, and 87% CNN accuracy.
-- **Real-World Project Showcases**:
-  - **SkyWrite (Air Canvas)**: Touchless drawing with MediaPipe, OpenCV & 87% accuracy CNN on EMNIST.
-  - **Vehicle Detection and Counting System**: Real-time traffic analytics pipeline with YOLOv8n, COCO dataset, and Flask web app.
-- **Interactive Project Deep Dive Modal**: In-depth architecture breakdown and technical achievements.
-- **Interactive Skills Matrix**: Real-time category filtering (Languages, AI/ML, Web, Core CS, Tools).
-- **Interactive Career & Education Journey**: Vertical milestone timeline detailing VIT-AP, Teachnook internship, and school honors.
-- **Verified Certifications Showcase**: Official accreditation cards for Microsoft Azure GenAI, Azure Vision, Oracle OCI 2025, and HackerRank SQL.
-- **Interactive Resume Modal & Printable Sheet**: Instant view and 1-click print/PDF save.
-- **1-Click Copy Email & Direct WhatsApp/Call Action**: With animated feedback toast.
+Integrated M.Tech Computer Science & Engineering student at **VIT-AP University**, specializing in **Full Stack Development**, **AI/ML**, **Computer Vision**, and **Scalable Software Systems**.
 
 ---
 
-## 🚀 How to Run Locally
+## 🌐 Live Portfolio Link
 
-### Option 1: Using Python (Recommended)
-Open your terminal / PowerShell in this folder and run:
+Explore the live portfolio website here:
 
-```bash
-# Navigate to this directory
-cd phani-portfolio
-
-# Start a local web server
-python -m http.server 3000
-```
-
-Then open your browser and visit: **`http://localhost:3000`**
-
-### Option 2: Direct File Open
-Simply double-click [`index.html`](index.html) to open it directly in Google Chrome, Microsoft Edge, or any modern web browser!
+👉 **[https://phani424302.github.io/portfolio/](https://phani424302.github.io/portfolio/)**
 
 ---
 
-## 🌐 Free 1-Click Deployment Guide
+## 📌 About the Portfolio
 
-### Method A: Deploy to GitHub Pages (100% Free)
-1. **Initialize Git & Commit**:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: C Phani Bhushan Reddy Portfolio"
-   ```
+This portfolio serves as an interactive showcase of my engineering projects, technical skillset, certifications, and academic background:
 
-2. **Create a Repository on GitHub**:
-   - Go to [github.com/new](https://github.com/new).
-   - Name your repository `portfolio` (or `phanibhushanreddy.github.io`).
-   - Leave it **Public** and click **Create repository**.
-
-3. **Push your code**:
-   ```bash
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/<repo-name>.git
-   git push -u origin main
-   ```
-
-4. **Turn on GitHub Pages**:
-   - In your GitHub repo, go to **Settings** > **Pages** (in left sidebar).
-   - Under **Build and deployment** > **Source**, select **Deploy from a branch**.
-   - Under **Branch**, select `main` and `/ (root)`, then click **Save**.
-   - Your website will be live in ~60 seconds at `https://<your-username>.github.io/<repo-name>/`!
+* **Executive Aesthetic**: Modern Onyx and 24K Gold design with responsive layout, glassmorphic accents, and smooth transitions across mobile, tablet, and desktop viewports.
+* **Featured Projects**:
+  * **Vehicle Detection & Counting System**: Traffic analytics pipeline using YOLOv8n, OpenCV, and a Flask web interface.
+  * **SkyWrite (Air Canvas)**: Touchless gesture-based drawing app using MediaPipe hand tracking and a custom CNN on EMNIST.
+* **Skills Matrix**: Core competencies across Programming Languages (Python, Java, SQL), Web Development, Machine Learning, Core CS fundamentals, and Developer Tools.
+* **Verified Certifications**: Official credentials from Microsoft Learn (Azure AI & Vision), Oracle Cloud Infrastructure (OCI 2025), and HackerRank (SQL Advanced).
+* **Experience & Education**: Timeline detailing my academic journey at VIT-AP University and industry web development internship at Teachnook.
+* **Interactive Resume**: Direct in-browser viewing and downloadable PDF resume.
 
 ---
 
-### Method B: Deploy to Vercel (Instant Drag-and-Drop)
-1. Go to [vercel.com](https://vercel.com) and log in with GitHub.
-2. Click **Add New Project**.
-3. Import your GitHub repository or drag and drop this `phani-portfolio` folder directly into Vercel.
-4. Click **Deploy**.
-5. Your portfolio is instantly live with a free `.vercel.app` domain and automatic SSL!
+## 📬 Contact & Connect
+
+* **Live Portfolio**: [phani424302.github.io/portfolio](https://phani424302.github.io/portfolio/)
+* **LinkedIn**: [Phani Bhushan Reddy](https://www.linkedin.com/in/phani-bhushan-reddy-chennamareddygari-843806289/)
+* **GitHub**: [@Phani424302](https://github.com/Phani424302)
+* **Email**: [phani424302@gmail.com](mailto:phani424302@gmail.com)
 
 ---
 
-### Method C: Deploy to Netlify (Drag-and-Drop in 30 Seconds)
-1. Go to [app.netlify.com/drop](https://app.netlify.com/drop).
-2. Drag and drop the `phani-portfolio` folder right onto the web page.
-3. Your website goes live immediately with a free custom URL!
+<p align="center">
+  <sub>© 2026 Chennamareddygari Phani Bhushan Reddy · All rights reserved.</sub>
+</p>
 
----
-
-## 🛠️ Personalization & Custom Links
-
-Your personal GitHub and LinkedIn profiles are already fully linked:
-- **GitHub**: `https://github.com/Phani424302`
-- **LinkedIn**: `https://www.linkedin.com/in/phani-bhushan-reddy-chennamareddygari-843806289/`
-
----
-
-© 2026 C Phani Bhushan Reddy · Integrated M.Tech (CSE) @ VIT-AP
