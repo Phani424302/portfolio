@@ -18,7 +18,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-  <link rel="stylesheet" href="style.css?v=8.3" />
+  <link rel="stylesheet" href="style.css?v=9.0" />
 </head>
 <body>
 
@@ -912,18 +912,18 @@
 
   <!-- RESUME MODAL -->
   <div class="modal-backdrop" id="resume-modal" onclick="handleBackdropClick(event)">
-    <div class="modal-luxury-card luxury-card">
+    <div class="modal-luxury-card cert-modal-card luxury-card">
       <div class="modal-gold-header">
         <div class="modal-title-group">
           <h3>Resume</h3>
-          <p>Chennamareddygari Phani Bhushan Reddy · Original Document</p>
+          <p>Chennamareddygari Phani Bhushan Reddy · Official Document</p>
         </div>
         <div class="modal-header-actions">
           <a href="assets/Phani_Bhushan_Reddy_Resume.pdf" download="C_Phani_Bhushan_Reddy_Resume.pdf" class="btn btn-sm btn-gold" title="Download original uploaded PDF resume">
-            <i class="fa-solid fa-download"></i> Download Resume
+            <i class="fa-solid fa-download"></i> <span>Download Resume</span>
           </a>
           <a href="assets/Phani_Bhushan_Reddy_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-gold-ghost" title="Open original PDF in new tab">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open PDF
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> <span>Open PDF</span>
           </a>
           <button class="modal-close-gold" onclick="closeResumeModal()" aria-label="Close modal">
             <i class="fa-solid fa-xmark"></i>
@@ -931,8 +931,10 @@
         </div>
       </div>
 
-      <div class="resume-pdf-container">
-        <iframe data-src="assets/Phani_Bhushan_Reddy_Resume.pdf#toolbar=1&navpanes=0" class="resume-pdf-frame" id="resume-frame" title="C Phani Bhushan Reddy Official Resume"></iframe>
+      <div class="cert-modal-body">
+        <div class="cert-image-matting">
+          <img src="assets/Phani_Bhushan_Reddy_Resume.png" class="cert-display-img" alt="Chennamareddygari Phani Bhushan Reddy Official Resume" />
+        </div>
       </div>
     </div>
   </div>
@@ -971,6 +973,6 @@
     <span id="toast-message">Copied to clipboard</span>
   </div>
 
-  <script src="script.js?v=8.3"></script>
+  <script src="script.js?v=9.0"></script>
 </body>
 </html>

@@ -205,13 +205,9 @@ function initRoleTypewriter() {
   setTimeout(tick, typingSpeed);
 }
 
-/* Official Resume Modal (Lazy load iframe on demand) */
+/* Official Resume Modal */
 function openResumeModal() {
   const modal = document.getElementById('resume-modal');
-  const frame = document.getElementById('resume-frame');
-  if (frame && !frame.getAttribute('src')) {
-    frame.setAttribute('src', frame.getAttribute('data-src'));
-  }
   if (modal) {
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';

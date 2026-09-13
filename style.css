@@ -463,48 +463,53 @@ body {
 .luxury-card {
   position: relative;
   background: var(--bg-card);
-  backdrop-filter: blur(30px) saturate(190%) contrast(105%);
-  -webkit-backdrop-filter: blur(30px) saturate(190%) contrast(105%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--gold-border);
   border-top: 1.5px solid var(--glass-specular-gold);
   border-left: 1.2px solid rgba(255, 255, 255, 0.25);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-luxury);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.38),
+    inset 0 0 20px 0 rgba(255, 255, 255, 0.02),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.5),
+    inset 0 0 25px 0 rgba(212, 175, 55, 0.04),
+    0 14px 35px -8px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(212, 175, 55, 0.06);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
-/* Frosted Glass Sheen - Calm, static, elegant specular reflection */
+/* Frosted Glass Sheen - Static specular reflection */
 .luxury-card::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(380px circle at 20% 15%, rgba(255, 255, 255, 0.08) 0%, rgba(243, 199, 124, 0.03) 35%, transparent 75%);
+  background: radial-gradient(420px circle at 18% 12%, rgba(255, 255, 255, 0.09) 0%, rgba(243, 199, 124, 0.03) 30%, transparent 70%);
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.8;
   z-index: 1;
 }
 
-/* Prismatic Liquid Glass Perimeter Rim */
+/* Specular Top Edge Prismatic Glint */
 .luxury-card::after {
   content: '';
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(243, 199, 124, 0.4) 22%, transparent 48%, rgba(212, 175, 55, 0.22) 75%, rgba(255, 245, 215, 0.35) 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.85) 50%, transparent 100%);
   pointer-events: none;
-  opacity: 0.75;
-  transition: opacity 0.35s ease;
+  opacity: 0.65;
   z-index: 2;
+  transition: all 0.3s ease;
 }
 
 .luxury-card > * {
@@ -512,22 +517,28 @@ body {
   z-index: 3;
 }
 
-.luxury-card:hover {
-  transform: translateY(-6px) scale(1.008);
-  background: var(--bg-card-hover);
-  border-top-color: rgba(255, 255, 255, 0.85);
-  border-left-color: rgba(255, 255, 255, 0.45);
-  border-right-color: rgba(243, 199, 124, 0.5);
-  border-bottom-color: rgba(212, 175, 55, 0.45);
-  box-shadow: var(--shadow-hover);
-}
+@media (hover: hover) and (pointer: fine) {
+  .luxury-card:hover {
+    transform: translateY(-5px) translateZ(0);
+    background: var(--bg-card-hover);
+    border-top-color: #ffffff;
+    border-left-color: rgba(255, 255, 255, 0.5);
+    border-right-color: rgba(243, 199, 124, 0.5);
+    border-bottom-color: rgba(212, 175, 55, 0.45);
+    box-shadow: 
+      inset 0 2px 1.5px 0 rgba(255, 255, 255, 0.75),
+      inset 0 0 30px 0 rgba(255, 255, 255, 0.04),
+      inset 0 0 35px 0 rgba(212, 175, 55, 0.14),
+      0 22px 50px -10px rgba(0, 0, 0, 0.9),
+      0 0 35px 0 rgba(212, 175, 55, 0.22);
+  }
 
-.luxury-card:hover::before {
-  opacity: 1;
-}
-
-.luxury-card:hover::after {
-  opacity: 1;
+  .luxury-card:hover::after {
+    opacity: 1;
+    left: 2%;
+    right: 2%;
+    background: linear-gradient(90deg, transparent 0%, #ffffff 50%, transparent 100%);
+  }
 }
 
 /* Buttons */
@@ -2299,22 +2310,6 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 12px rgba(243, 199, 124, 0.35);
 }
 
-.resume-pdf-container {
-  flex-grow: 1;
-  width: 100%;
-  height: calc(100% - 68px);
-  background: #10141e;
-  position: relative;
-  overflow: hidden;
-}
-
-.resume-pdf-frame {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-  background: #ffffff;
-}
 
 .modal-close-gold {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(20, 26, 40, 0.7) 100%);
