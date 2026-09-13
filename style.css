@@ -1719,6 +1719,57 @@ body {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
+.credential-actions {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.btn-cert-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(20, 26, 40, 0.85) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-top: 1.5px solid rgba(255, 245, 215, 0.55);
+  color: var(--gold-light);
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-family: var(--font-heading);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-cert-preview i {
+  font-size: 0.88rem;
+  color: var(--gold-light);
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.btn-cert-preview:hover {
+  background: var(--gold-gradient);
+  color: #08090d;
+  border-color: var(--gold-primary);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 18px rgba(0, 0, 0, 0.5),
+    0 0 18px rgba(212, 175, 55, 0.45);
+}
+
+.btn-cert-preview:hover i {
+  color: #08090d;
+  transform: scale(1.15);
+}
+
 /* Concierge / Contact Section */
 .contact-card-wrapper {
   max-width: 680px;
@@ -2223,6 +2274,52 @@ body {
   color: #08090d;
   border-color: var(--gold-primary);
   transform: scale(1.08);
+}
+
+/* Certificate Preview Modal */
+.cert-modal-card {
+  max-width: 980px;
+  height: 90vh;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cert-modal-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 24px;
+  background: radial-gradient(circle at center, #131722 0%, #090b10 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cert-image-matting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-top: 1px solid rgba(255, 245, 215, 0.4);
+  box-shadow: 
+    0 20px 40px -10px rgba(0, 0, 0, 0.85),
+    0 0 28px rgba(212, 175, 55, 0.12);
+  max-width: 100%;
+}
+
+.cert-display-img {
+  max-width: 100%;
+  max-height: calc(88vh - 120px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  display: block;
 }
 
 .res-sheet-header {
@@ -2830,6 +2927,9 @@ body {
     padding: 18px 14px;
     gap: 12px;
   }
+  .credential-card {
+    flex-wrap: wrap;
+  }
   .diploma-badge-disc, .credential-icon {
     width: 42px;
     height: 42px;
@@ -2846,6 +2946,16 @@ body {
   }
   .credential-name {
     font-size: 0.96rem;
+  }
+  .credential-actions {
+    width: 100%;
+    margin-top: 4px;
+    padding-left: 54px;
+  }
+  .btn-cert-preview {
+    width: 100%;
+    justify-content: center;
+    padding: 8px 14px;
   }
 
   /* Contact */
@@ -2922,6 +3032,19 @@ body {
     padding: 6px 10px;
     font-size: 0.78rem;
   }
+  .cert-modal-card {
+    height: 94dvh;
+    max-height: 94dvh;
+  }
+  .cert-modal-body {
+    padding: 10px;
+  }
+  .cert-image-matting {
+    padding: 6px;
+  }
+  .cert-display-img {
+    max-height: calc(90dvh - 120px);
+  }
 }
 
 /* 4. Ultra-Compact Screens (iPhone SE 1st gen / narrow foldables <= 360px) */
@@ -2958,6 +3081,9 @@ body {
     width: 42px;
     height: 42px;
     font-size: 18px;
+  }
+  .credential-actions {
+    padding-left: 0;
   }
 }
 

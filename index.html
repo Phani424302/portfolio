@@ -18,7 +18,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-  <link rel="stylesheet" href="style.css?v=7.1" />
+  <link rel="stylesheet" href="style.css?v=8.1" />
 </head>
 <body>
 
@@ -754,6 +754,12 @@
               <p class="credential-issuer">Microsoft Learn</p>
               <span class="credential-seal"><i class="fa-solid fa-certificate" style="color: #38bdf8;"></i> Verified Credential</span>
             </div>
+            <div class="credential-actions">
+              <button type="button" class="btn-cert-preview" onclick="openCertificateModal('azure-genai')" aria-label="Preview Generative AI and Agents in Azure Certificate">
+                <i class="fa-solid fa-eye"></i>
+                <span>Preview</span>
+              </button>
+            </div>
           </div>
 
           <div class="credential-card luxury-card">
@@ -761,9 +767,15 @@
               <i class="devicon-oracle-original colored"></i>
             </div>
             <div class="credential-info">
-              <h4 class="credential-name">Oracle Cloud Infrastructure 2025 Certified Foundations Associate</h4>
+              <h4 class="credential-name">Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate</h4>
               <p class="credential-issuer">Oracle University</p>
               <span class="credential-seal"><i class="fa-solid fa-certificate" style="color: #f87171;"></i> Official Associate</span>
+            </div>
+            <div class="credential-actions">
+              <button type="button" class="btn-cert-preview" onclick="openCertificateModal('oracle-ai')" aria-label="Preview Oracle Cloud Infrastructure AI Foundations Certificate">
+                <i class="fa-solid fa-eye"></i>
+                <span>Preview</span>
+              </button>
             </div>
           </div>
 
@@ -776,6 +788,12 @@
               <p class="credential-issuer">Microsoft Learn</p>
               <span class="credential-seal"><i class="fa-solid fa-certificate" style="color: #38bdf8;"></i> Verified Credential</span>
             </div>
+            <div class="credential-actions">
+              <button type="button" class="btn-cert-preview" onclick="openCertificateModal('azure-vision')" aria-label="Preview Computer Vision in Azure Certificate">
+                <i class="fa-solid fa-eye"></i>
+                <span>Preview</span>
+              </button>
+            </div>
           </div>
 
           <div class="credential-card luxury-card">
@@ -786,6 +804,12 @@
               <h4 class="credential-name">SQL (Advanced)</h4>
               <p class="credential-issuer">HackerRank</p>
               <span class="credential-seal"><i class="fa-solid fa-certificate" style="color: #2ec866;"></i> Advanced Benchmark</span>
+            </div>
+            <div class="credential-actions">
+              <button type="button" class="btn-cert-preview" onclick="openCertificateModal('hackerrank-sql')" aria-label="Preview HackerRank SQL Advanced Certificate">
+                <i class="fa-solid fa-eye"></i>
+                <span>Preview</span>
+              </button>
             </div>
           </div>
 
@@ -913,12 +937,40 @@
     </div>
   </div>
 
+  <!-- CERTIFICATE PREVIEW MODAL -->
+  <div class="modal-backdrop" id="cert-modal" onclick="handleCertBackdropClick(event)">
+    <div class="modal-luxury-card cert-modal-card luxury-card">
+      <div class="modal-gold-header">
+        <div class="modal-title-group">
+          <h3 id="cert-modal-title">Certificate Preview</h3>
+          <p id="cert-modal-issuer">Verified Credential</p>
+        </div>
+        <div class="modal-header-actions">
+          <a href="#" id="cert-download-link" download class="btn btn-sm btn-gold" title="Download Certificate PDF">
+            <i class="fa-solid fa-download"></i> <span>Download PDF</span>
+          </a>
+          <a href="#" id="cert-pdf-link" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-gold-ghost" title="Open PDF in new tab">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> <span>Open PDF</span>
+          </a>
+          <button class="modal-close-gold" onclick="closeCertModal()" aria-label="Close certificate modal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+      <div class="cert-modal-body">
+        <div class="cert-image-matting">
+          <img src="" id="cert-modal-image" class="cert-display-img" alt="Certificate Preview" />
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- GOLD TOAST POPUP -->
   <div class="gold-toast" id="toast">
     <i class="fa-solid fa-certificate"></i>
     <span id="toast-message">Copied to clipboard</span>
   </div>
 
-  <script src="script.js?v=8.0"></script>
+  <script src="script.js?v=8.1"></script>
 </body>
 </html>

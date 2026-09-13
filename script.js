@@ -186,9 +186,87 @@ function handleBackdropClick(e) {
   }
 }
 
+/* Certificate Preview Modal Data & Logic */
+const CERTIFICATES_DATA = {
+  'azure-genai': {
+    title: 'Generative AI and Agents in Azure',
+    issuer: 'Microsoft Learn · Issued July 11, 2026',
+    image: 'assets/certificates/Microsoft_Azure_Generative_AI.png',
+    pdf: 'assets/certificates/Microsoft_Azure_Generative_AI.pdf',
+    downloadName: 'Microsoft_Azure_Generative_AI.pdf'
+  },
+  'oracle-ai': {
+    title: 'Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate',
+    issuer: 'Oracle University · Candidate ID: 103394998OCI25AICFA · Feb 07, 2026',
+    image: 'assets/certificates/Oracle_Cloud_AI_Foundations.png',
+    pdf: 'assets/certificates/Oracle_Cloud_AI_Foundations.pdf',
+    downloadName: 'Oracle_Cloud_Infrastructure_AI_Foundations.pdf'
+  },
+  'azure-vision': {
+    title: 'Computer Vision in Azure',
+    issuer: 'Microsoft Learn · Issued July 11, 2026',
+    image: 'assets/certificates/Microsoft_Azure_Computer_Vision.png',
+    pdf: 'assets/certificates/Microsoft_Azure_Computer_Vision.pdf',
+    downloadName: 'Microsoft_Azure_Computer_Vision.pdf'
+  },
+  'hackerrank-sql': {
+    title: 'SQL (Advanced) Certificate',
+    issuer: 'HackerRank · Certificate ID: 2645CDA8C0D1 · July 16, 2026',
+    image: 'assets/certificates/HackerRank_SQL_Advanced.png',
+    pdf: 'assets/certificates/HackerRank_SQL_Advanced.pdf',
+    downloadName: 'HackerRank_SQL_Advanced.pdf'
+  }
+};
+
+function openCertificateModal(key) {
+  const cert = CERTIFICATES_DATA[key];
+  if (!cert) return;
+
+  const modal = document.getElementById('cert-modal');
+  const titleElem = document.getElementById('cert-modal-title');
+  const issuerElem = document.getElementById('cert-modal-issuer');
+  const imgElem = document.getElementById('cert-modal-image');
+  const downloadLink = document.getElementById('cert-download-link');
+  const pdfLink = document.getElementById('cert-pdf-link');
+
+  if (titleElem) titleElem.textContent = cert.title;
+  if (issuerElem) issuerElem.textContent = cert.issuer;
+  if (imgElem) {
+    imgElem.src = cert.image;
+    imgElem.alt = `${cert.title} Preview`;
+  }
+  if (downloadLink) {
+    downloadLink.href = cert.pdf;
+    downloadLink.download = cert.downloadName;
+  }
+  if (pdfLink) {
+    pdfLink.href = cert.pdf;
+  }
+
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeCertModal() {
+  const modal = document.getElementById('cert-modal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+}
+
+function handleCertBackdropClick(e) {
+  if (e.target.id === 'cert-modal') {
+    closeCertModal();
+  }
+}
+
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeResumeModal();
+    closeCertModal();
   }
 });
 
