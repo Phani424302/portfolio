@@ -326,8 +326,8 @@ function initCursorActions() {
 
     if (!contextMenu) return;
 
-    const menuWidth = 224;
-    const menuHeight = 245;
+    const menuWidth = 190;
+    const menuHeight = 280;
     let posX = e.clientX;
     let posY = e.clientY;
 
@@ -387,6 +387,9 @@ function initCursorActions() {
 
         if (action === 'resume') {
           openResumeModal();
+        } else if (action === 'projects') {
+          const projectsSec = document.getElementById('projects');
+          if (projectsSec) projectsSec.scrollIntoView({ behavior: 'smooth' });
         } else if (action === 'contact') {
           const contactSec = document.getElementById('contact');
           if (contactSec) contactSec.scrollIntoView({ behavior: 'smooth' });
@@ -394,6 +397,8 @@ function initCursorActions() {
           copyEmail('phani424302@gmail.com');
         } else if (action === 'github') {
           window.open('https://github.com/Phani424302', '_blank', 'noopener,noreferrer');
+        } else if (action === 'linkedin') {
+          window.open('https://www.linkedin.com/in/phani-bhushan-reddy-chennamareddygari-843806289/', '_blank', 'noopener,noreferrer');
         } else if (action === 'top') {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }

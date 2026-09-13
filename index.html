@@ -18,7 +18,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-  <link rel="stylesheet" href="style.css?v=4.0" />
+  <link rel="stylesheet" href="style.css?v=5.0" />
 </head>
 <body>
 
@@ -29,41 +29,18 @@
   <!-- Cursor Interactive FX System (Single-Click, Double-Click, Right-Click) -->
   <div class="cursor-effects-container" id="cursorEffectsContainer" aria-hidden="true"></div>
 
-  <!-- Luxury Right-Click Quick Navigation HUD -->
+  <!-- Luxury Right-Click Quick Navigation Menu -->
   <div class="luxury-context-menu" id="luxuryContextMenu" aria-hidden="true">
-    <div class="ctx-header">
-      <span class="ctx-crest">PBR</span>
-      <div class="ctx-titles">
-        <span class="ctx-name">Quick Access</span>
-        <span class="ctx-sub">Executive Actions</span>
-      </div>
-    </div>
-    <div class="ctx-divider"></div>
     <div class="ctx-list">
-      <button class="ctx-item" data-action="resume">
-        <i class="fa-solid fa-file-pdf ctx-icon"></i>
-        <span>View Resume</span>
-        <span class="ctx-tag">PDF</span>
-      </button>
-      <button class="ctx-item" data-action="contact">
-        <i class="fa-solid fa-paper-plane ctx-icon"></i>
-        <span>Get in Touch</span>
-        <span class="ctx-tag">Direct</span>
-      </button>
-      <button class="ctx-item" data-action="email">
-        <i class="fa-solid fa-copy ctx-icon"></i>
-        <span>Copy Email</span>
-        <span class="ctx-tag">phani</span>
-      </button>
-      <button class="ctx-item" data-action="github">
-        <i class="fa-brands fa-github ctx-icon"></i>
-        <span>GitHub Profile</span>
-        <span class="ctx-tag">Code</span>
-      </button>
-      <button class="ctx-item" data-action="top">
-        <i class="fa-solid fa-arrow-up ctx-icon"></i>
-        <span>Back to Top</span>
-      </button>
+      <button class="ctx-item" data-action="resume">View Resume</button>
+      <button class="ctx-item" data-action="projects">Projects</button>
+      <button class="ctx-item" data-action="contact">Get in Touch</button>
+      <button class="ctx-item" data-action="email">Copy Email</button>
+      <div class="ctx-divider"></div>
+      <button class="ctx-item" data-action="github">GitHub Profile</button>
+      <button class="ctx-item" data-action="linkedin">LinkedIn Profile</button>
+      <div class="ctx-divider"></div>
+      <button class="ctx-item" data-action="top">Back to Top</button>
     </div>
   </div>
 
@@ -981,6 +958,6 @@
     <span id="toast-message">Copied to clipboard</span>
   </div>
 
-  <script src="script.js?v=4.0"></script>
+  <script src="script.js?v=5.0"></script>
 </body>
 </html>
