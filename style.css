@@ -118,12 +118,6 @@ body {
   .ctx-item {
     cursor: url('assets/cursor-pointer.svg') 0 0, pointer !important;
   }
-
-  /* Stationary Cursor: Animated 24K Gold Dog Companion takes over seamlessly */
-  body.cursor-stationary,
-  body.cursor-stationary * {
-    cursor: none !important;
-  }
 }
 
 /* ----------------------------------------------------
@@ -131,7 +125,6 @@ body {
    0. Single-Click: Instant Champagne Gold Liquid Ripple
    1. Double-Click: Golden Celestial Supernova Burst
    2. Right-Click: Bespoke Obsidian & Gold Radial HUD
-   3. Motionless Cursor: 24K Golden Companion & Living Orbit Aura
 ---------------------------------------------------- */
 
 /* Cursor FX Master Container */
@@ -412,193 +405,8 @@ body {
   text-transform: uppercase;
 }
 
-/* 3. Motionless Cursor: 3D Golden Quantum Singularity (Celestial Gyroscope Core) */
-.cursor-idle-beacon {
-  position: fixed;
-  top: -9999px;
-  left: -9999px;
-  pointer-events: none;
-  z-index: 100001;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.22s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cursor-idle-beacon.active {
-  opacity: 1;
-}
-
-/* Master 3D Quantum Orb */
-.quantum-singularity-orb {
-  position: relative;
-  width: 68px;
-  height: 68px;
-  transform-style: preserve-3d;
-  perspective: 700px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: orbImplodeSpawn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes orbImplodeSpawn {
-  0% { transform: scale(0) rotate(-120deg); opacity: 0; }
-  65% { transform: scale(1.15) rotate(15deg); opacity: 1; }
-  100% { transform: scale(1) rotate(0deg); opacity: 1; }
-}
-
-/* Gravitational Ambient Wave Aura */
-.quantum-ambient-aura {
-  position: absolute;
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(243, 199, 124, 0.45) 0%, rgba(212, 175, 55, 0.18) 42%, transparent 72%);
-  animation: ambientAuraBreath 2.2s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes ambientAuraBreath {
-  0%, 100% { transform: scale(0.85); opacity: 0.55; }
-  50% { transform: scale(1.32); opacity: 0.95; }
-}
-
-.gravity-ripple-wave {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  box-shadow: 0 0 14px rgba(212, 175, 55, 0.2);
-  animation: gravityWavePulse 2.8s cubic-bezier(0.1, 0.8, 0.25, 1) infinite;
-  pointer-events: none;
-}
-
-@keyframes gravityWavePulse {
-  0% { width: 16px; height: 16px; opacity: 0.9; transform: scale(0.4); }
-  100% { width: 90px; height: 90px; opacity: 0; transform: scale(1.25); }
-}
-
-/* 3D Gyroscope Rings */
-.gyro-ring {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  box-sizing: border-box;
-}
-
-/* Ring 1: X-Axis Tilted Rotation */
-.ring-x {
-  width: 54px;
-  height: 54px;
-  border: 1.5px solid rgba(243, 199, 124, 0.9);
-  box-shadow: 0 0 12px rgba(212, 175, 55, 0.65), inset 0 0 8px rgba(255, 243, 209, 0.45);
-  animation: spinGyroX 3.8s linear infinite;
-}
-
-@keyframes spinGyroX {
-  0% { transform: rotateX(68deg) rotateY(0deg) rotateZ(0deg); }
-  100% { transform: rotateX(68deg) rotateY(0deg) rotateZ(360deg); }
-}
-
-/* Ring 2: Y-Axis Tilted Counter-Rotation */
-.ring-y {
-  width: 48px;
-  height: 48px;
-  border: 1.5px solid rgba(212, 175, 55, 0.95);
-  box-shadow: 0 0 15px rgba(243, 199, 124, 0.75), inset 0 0 8px rgba(212, 175, 55, 0.35);
-  animation: spinGyroY 2.8s linear infinite reverse;
-}
-
-@keyframes spinGyroY {
-  0% { transform: rotateY(68deg) rotateX(15deg) rotateZ(0deg); }
-  100% { transform: rotateY(68deg) rotateX(15deg) rotateZ(360deg); }
-}
-
-/* Ring 3: Diagonal Celestial Orbit Track */
-.ring-diag {
-  width: 60px;
-  height: 60px;
-  border: 1px dashed rgba(255, 243, 209, 0.7);
-  box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
-  animation: spinGyroDiag 5.6s linear infinite;
-}
-
-@keyframes spinGyroDiag {
-  0% { transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg); }
-  100% { transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg); }
-}
-
-/* Central Levitating 24K Diamond Singularity Core */
-.singularity-core-diamond {
-  position: relative;
-  z-index: 10;
-  font-family: var(--font-serif);
-  font-size: 17px;
-  line-height: 1;
-  color: #ffffff;
-  text-shadow: 
-    0 0 10px #ffffff,
-    0 0 20px rgba(243, 199, 124, 0.95), 
-    0 0 35px rgba(212, 175, 55, 0.85);
-  animation: singularityCorePulse 2.2s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes singularityCorePulse {
-  0%, 100% { transform: scale(0.92) rotate(0deg); }
-  50% { transform: scale(1.24) rotate(180deg); color: #fff9e6; }
-}
-
-/* Orbiting Celestial Satellites */
-.satellite-orbit-track {
-  position: absolute;
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  animation: satelliteOrbit 5s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes satelliteOrbit {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.sat-particle {
-  position: absolute;
-  font-size: 10px;
-  color: #fff6db;
-  text-shadow: 0 0 8px rgba(243, 199, 124, 0.95), 0 0 16px rgba(212, 175, 55, 0.7);
-  line-height: 1;
-}
-
-.sat-particle.p-1 {
-  top: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.sat-particle.p-2 {
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 8px;
-  color: #f3c77c;
-}
-
-.sat-particle.p-3 {
-  top: 50%;
-  right: -6px;
-  transform: translateY(-50%);
-  font-size: 9px;
-  color: #d4af37;
-}
-
 @media (hover: none) or (pointer: coarse) {
-  .luxury-context-menu,
-  .cursor-idle-beacon {
+  .luxury-context-menu {
     display: none !important;
   }
 }

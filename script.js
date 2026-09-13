@@ -270,7 +270,6 @@ function initCurrentYear() {
    0. Single-Click: Instant Champagne Gold Liquid Ripple
    1. Right-Click: Bespoke Obsidian & Gold Quick Access HUD
    2. Double-Click: Golden Celestial Supernova Burst
-   3. Motionless Cursor: 24K Celestial Star Diamond Morph & Orbiting Starlight Beacon
 ---------------------------------------------------- */
 function initCursorActions() {
   const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -278,13 +277,6 @@ function initCursorActions() {
 
   const effectsContainer = document.getElementById('cursorEffectsContainer');
   const contextMenu = document.getElementById('luxuryContextMenu');
-  const idleBeacon = document.getElementById('cursorIdleBeacon');
-
-  let lastMouseX = window.innerWidth / 2;
-  let lastMouseY = window.innerHeight / 2;
-  let mouseHasEntered = false;
-  let idleTimer = null;
-  const STATIONARY_DELAY_MS = 1300; // 1.3s of motionless cursor triggers waiting dog
 
   // --- ACTION 0: SINGLE-CLICK CHAMPAGNE GOLD LIQUID RIPPLE & GLINTS ---
   function spawnClickRipple(x, y) {
@@ -456,57 +448,6 @@ function initCursorActions() {
       ring1.remove();
       ring2.remove();
     }, 850);
-  });
-
-  // --- ACTION 3: MOTIONLESS CURSOR TRANSFORMATION (3D Quantum Singularity) ---
-  function triggerIdleBeacon() {
-    if (!mouseHasEntered) return;
-    document.body.classList.add('cursor-stationary');
-    if (!idleBeacon) return;
-
-    // Trigger fresh 3D orb bloom transformation animation
-    const orb = idleBeacon.querySelector('.quantum-singularity-orb');
-    if (orb) {
-      orb.style.animation = 'none';
-      void orb.offsetWidth;
-      orb.style.animation = '';
-    }
-
-    // Keep beacon comfortably within viewport bounds
-    const x = Math.max(38, Math.min(window.innerWidth - 38, lastMouseX));
-    const y = Math.max(38, Math.min(window.innerHeight - 38, lastMouseY));
-
-    idleBeacon.style.left = `${x}px`;
-    idleBeacon.style.top = `${y}px`;
-    idleBeacon.classList.add('active');
-  }
-
-  function resetIdleTimer() {
-    document.body.classList.remove('cursor-stationary');
-    if (idleBeacon && idleBeacon.classList.contains('active')) {
-      idleBeacon.classList.remove('active');
-    }
-    clearTimeout(idleTimer);
-    if (mouseHasEntered) {
-      idleTimer = setTimeout(triggerIdleBeacon, STATIONARY_DELAY_MS);
-    }
-  }
-
-  window.addEventListener('mousemove', (e) => {
-    lastMouseX = e.clientX;
-    lastMouseY = e.clientY;
-    mouseHasEntered = true;
-    resetIdleTimer();
-  }, { passive: true });
-
-  window.addEventListener('mousedown', resetIdleTimer, { passive: true });
-  window.addEventListener('keydown', resetIdleTimer, { passive: true });
-  window.addEventListener('scroll', resetIdleTimer, { passive: true });
-
-  document.addEventListener('mouseleave', () => {
-    document.body.classList.remove('cursor-stationary');
-    if (idleBeacon) idleBeacon.classList.remove('active');
-    clearTimeout(idleTimer);
   });
 }
 
