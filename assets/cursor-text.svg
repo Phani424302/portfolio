@@ -1,0 +1,11 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <defs>
+    <filter id="beamGlow">
+      <feDropShadow dx="0" dy="0" stdDeviation="1.5" flood-color="#d4af37" flood-opacity="0.75"/>
+      <feDropShadow dx="1" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.9"/>
+    </filter>
+  </defs>
+  <path d="M8 4 H16 M12 4 V20 M8 20 H16" stroke="#08090d" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M8 4 H16 M12 4 V20 M8 20 H16" stroke="#f3c77c" stroke-width="1.8" stroke-linecap="round" filter="url(#beamGlow)"/>
+  <circle cx="12" cy="12" r="1.2" fill="#ffffff"/>
+</svg>
