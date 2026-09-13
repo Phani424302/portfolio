@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Cursor Animations Showcase</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    :root {
+      --gold-pri: #d4af37;
+      --gold-light: #f3c77c;
+      --gold-pale: #fff3d1;
+      --gold-dark: #8f6515;
+      --bg-dark: #07090e;
+      --bg-card: #0d111a;
+      --border-gold: rgba(212, 175, 55, 0.28);
+    }
+
+    /* ----------------------------------------------------
+       STYLE 1: 3D QUANTUM GYROSCOPE CORE
+    ---------------------------------------------------- */
+    .orb-1 {
+      position: relative;
+      width: 64px;
+      height: 64px;
+      transform-style: preserve-3d;
+      perspective: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .orb-1 .ambient-aura {
+      position: absolute;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(243, 199, 124, 0.45) 0%, rgba(212, 175, 55, 0.15) 45%, transparent 72%);
+      animation: auraBreath 2.2s ease-in-out infinite;
+    }
+    .orb-1 .wave {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      animation: wavePulse 2.8s cubic-bezier(0.1, 0.8, 0.25, 1) infinite;
+    }
+    .orb-1 .ring-x {
+      position: absolute;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(243, 199, 124, 0.9);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.65), inset 0 0 8px rgba(255, 243, 209, 0.45);
+      animation: spinX 3.8s linear infinite;
+    }
+    .orb-1 .ring-y {
+      position: absolute;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(212, 175, 55, 0.95);
+      box-shadow: 0 0 14px rgba(243, 199, 124, 0.75), inset 0 0 8px rgba(212, 175, 55, 0.35);
+      animation: spinY 2.8s linear infinite reverse;
+    }
+    .orb-1 .ring-diag {
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 1px dashed rgba(255, 243, 209, 0.7);
+      animation: spinDiag 5.6s linear infinite;
+    }
+    .orb-1 .diamond-core {
+      position: relative;
+      z-index: 5;
+      font-size: 16px;
+      color: #ffffff;
+      text-shadow: 0 0 10px #ffffff, 0 0 20px rgba(243, 199, 124, 0.95), 0 0 35px rgba(212, 175, 55, 0.85);
+      animation: coreSpin 2.2s ease-in-out infinite;
+    }
+    .orb-1 .satellites {
+      position: absolute;
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      animation: satOrbit 5s linear infinite;
+    }
+    .orb-1 .dot {
+      position: absolute;
+      font-size: 9px;
+      color: #fff6db;
+      text-shadow: 0 0 8px rgba(243, 199, 124, 0.95);
+    }
+    .orb-1 .d-1 { top: -6px; left: 50%; transform: translateX(-50%); }
+    .orb-1 .d-2 { bottom: -6px; left: 50%; transform: translateX(-50%); color: #f3c77c; font-size: 8px; }
+    .orb-1 .d-3 { top: 50%; right: -6px; transform: translateY(-50%); color: #d4af37; }
+
+    @keyframes auraBreath { 0%, 100% { transform: scale(0.85); opacity: 0.55; } 50% { transform: scale(1.3); opacity: 0.95; } }
+    @keyframes wavePulse { 0% { width: 14px; height: 14px; opacity: 0.9; } 100% { width: 85px; height: 85px; opacity: 0; } }
+    @keyframes spinX { 0% { transform: rotateX(68deg) rotateZ(0deg); } 100% { transform: rotateX(68deg) rotateZ(360deg); } }
+    @keyframes spinY { 0% { transform: rotateY(68deg) rotateX(15deg) rotateZ(0deg); } 100% { transform: rotateY(68deg) rotateX(15deg) rotateZ(360deg); } }
+    @keyframes spinDiag { 0% { transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg); } 100% { transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg); } }
+    @keyframes coreSpin { 0%, 100% { transform: scale(0.92) rotate(0deg); } 50% { transform: scale(1.22) rotate(180deg); } }
+    @keyframes satOrbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    /* ----------------------------------------------------
+       STYLE 2: CELESTIAL CHRONO-TOURBILLON (Swiss Luxury Watch Mechanism)
+    ---------------------------------------------------- */
+    .orb-2 {
+      position: relative;
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .orb-2 .bezel {
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold-pri);
+      box-shadow: 0 0 16px rgba(212, 175, 55, 0.4), inset 0 0 12px rgba(0, 0, 0, 0.9);
+      background: radial-gradient(circle, #0e1320 60%, #080a10 100%);
+    }
+    .orb-2 .gear-outer {
+      position: absolute;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(243, 199, 124, 0.85);
+      animation: gearClockwise 8s linear infinite;
+    }
+    .orb-2 .gear-inner {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px dotted rgba(255, 243, 209, 0.9);
+      animation: gearCounter 4s linear infinite;
+    }
+    .orb-2 .tourbillon-cage {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border: 1.5px solid var(--gold-light);
+      border-radius: 4px;
+      animation: cageOscillate 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    .orb-2 .ruby-jewel {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff 10%, #f3c77c 60%, #99751d 100%);
+      box-shadow: 0 0 10px #fff0c4, 0 0 18px rgba(212, 175, 55, 0.8);
+      animation: jewelGleam 1.8s ease-in-out infinite alternate;
+    }
+    .orb-2 .escapement-tick {
+      position: absolute;
+      width: 1px;
+      height: 38px;
+      background: linear-gradient(180deg, var(--gold-light), transparent, var(--gold-light));
+      animation: tickSwing 1.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes gearClockwise { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes gearCounter { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+    @keyframes cageOscillate { 0% { transform: rotate(0deg) scale(0.95); } 50% { transform: rotate(180deg) scale(1.08); } 100% { transform: rotate(360deg) scale(0.95); } }
+    @keyframes jewelGleam { 0% { transform: scale(0.85); opacity: 0.8; } 100% { transform: scale(1.25); opacity: 1; } }
+    @keyframes tickSwing { 0% { transform: rotate(-25deg); } 100% { transform: rotate(25deg); } }
+
+    /* ----------------------------------------------------
+       STYLE 3: NEURAL VISION APERTURE (AI & Computer Vision Core)
+    ---------------------------------------------------- */
+    .orb-3 {
+      position: relative;
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .orb-3 .radar-sweep {
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      background: conic-gradient(from 0deg, transparent 70%, rgba(243, 199, 124, 0.25) 90%, rgba(255, 243, 209, 0.7) 100%);
+      animation: radarSpin 2.5s linear infinite;
+    }
+    .orb-3 .crosshair-h {
+      position: absolute;
+      width: 64px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.8), transparent);
+    }
+    .orb-3 .crosshair-v {
+      position: absolute;
+      width: 1px;
+      height: 64px;
+      background: linear-gradient(180deg, transparent, rgba(212, 175, 55, 0.8), transparent);
+    }
+    .orb-3 .iris-blade-ring {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(243, 199, 124, 0.9);
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.5);
+      animation: irisBreathe 2.4s ease-in-out infinite;
+    }
+    .orb-3 .reticle-corner {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      border: 1.5px dashed rgba(255, 243, 209, 0.8);
+      animation: cornerRotate 6s linear infinite reverse;
+    }
+    .orb-3 .sensor-core {
+      position: relative;
+      z-index: 5;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff 20%, #f3c77c 70%, #d4af37 100%);
+      box-shadow: 0 0 12px #fff3d1, 0 0 24px rgba(212, 175, 55, 0.9);
+      animation: sensorPulse 1.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes radarSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes irisBreathe { 0%, 100% { transform: scale(0.88); } 50% { transform: scale(1.16); } }
+    @keyframes cornerRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes sensorPulse { 0% { transform: scale(0.85); } 100% { transform: scale(1.25); } }
+
+    /* ----------------------------------------------------
+       STYLE 4: 24K RADIANT DIAMOND CREST (Royal Celestial Star)
+    ---------------------------------------------------- */
+    .orb-4 {
+      position: relative;
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .orb-4 .halo-1 {
+      position: absolute;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(243, 199, 124, 0.8);
+      box-shadow: 0 0 16px rgba(212, 175, 55, 0.5), inset 0 0 10px rgba(243, 199, 124, 0.3);
+      animation: haloBreathe 2.6s ease-in-out infinite;
+    }
+    .orb-4 .halo-2 {
+      position: absolute;
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      border: 1px dotted rgba(255, 243, 209, 0.6);
+      animation: haloSpin 8s linear infinite;
+    }
+    .orb-4 .crest-diamond {
+      position: relative;
+      z-index: 5;
+      font-size: 24px;
+      line-height: 1;
+      color: #ffffff;
+      text-shadow: 
+        0 0 12px #ffffff,
+        0 0 22px rgba(243, 199, 124, 1), 
+        0 0 38px rgba(212, 175, 55, 0.85);
+      animation: crestFloat 2.8s ease-in-out infinite;
+    }
+    .orb-4 .stardust-vortex {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      animation: vortexSpin 4.5s linear infinite reverse;
+    }
+    .orb-4 .starlet {
+      position: absolute;
+      font-size: 10px;
+      color: #fff6db;
+      text-shadow: 0 0 8px rgba(243, 199, 124, 0.95);
+    }
+    .orb-4 .s-top { top: -6px; left: 50%; transform: translateX(-50%); }
+    .orb-4 .s-bottom { bottom: -6px; left: 50%; transform: translateX(-50%); color: #f3c77c; font-size: 8px; }
+    .orb-4 .s-left { top: 50%; left: -6px; transform: translateY(-50%); font-size: 9px; }
+    .orb-4 .s-right { top: 50%; right: -6px; transform: translateY(-50%); color: #d4af37; font-size: 9px; }
+
+    @keyframes haloBreathe { 0%, 100% { transform: scale(0.9); opacity: 0.6; } 50% { transform: scale(1.22); opacity: 1; } }
+    @keyframes haloSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes crestFloat { 0%, 100% { transform: scale(0.94) rotate(0deg); } 50% { transform: scale(1.18) rotate(45deg); } }
+    @keyframes vortexSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    /* Interactive Card Hover */
+    .card-preview {
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-preview:hover {
+      border-color: rgba(243, 199, 124, 0.7);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 35px -8px rgba(0, 0, 0, 0.9), 0 0 25px rgba(212, 175, 55, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-transparent text-[var(--foreground)] antialiased p-4 sm:p-6 font-sans">
+
+  <div class="max-w-4xl mx-auto bg-[#080a10] border border-[var(--border-gold)] rounded-2xl p-6 sm:p-8 shadow-2xl">
+    
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[rgba(212,175,55,0.12)] border border-[rgba(212,175,55,0.3)] text-xs text-[#f3c77c] font-mono tracking-wider uppercase mb-3">
+        <span>✦ Curated Executive Selection</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-serif font-bold text-white tracking-wide">
+        Classic & Premium Cursor Idle Animations
+      </h1>
+      <p class="text-sm text-slate-400 mt-2 max-w-xl mx-auto">
+        These animations activate seamlessly when the cursor stops moving. Zero text, pure luxury aesthetic, 60fps GPU-accelerated, and instant recovery on movement.
+      </p>
+    </div>
+
+    <!-- 4 Animation Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Card 1 -->
+      <div class="card-preview bg-[#0e121c] border border-[rgba(212,175,55,0.25)] rounded-xl p-5 flex flex-col items-center text-center relative overflow-hidden">
+        <div class="absolute top-3 left-3 px-2 py-0.5 rounded bg-[rgba(212,175,55,0.15)] text-[11px] font-mono font-bold text-[#f3c77c]">
+          OPTION 1 (Currently Live)
+        </div>
+
+        <!-- Live Animation Stage -->
+        <div class="h-32 flex items-center justify-center my-3">
+          <div class="orb-1">
+            <div class="wave"></div>
+            <div class="ambient-aura"></div>
+            <div class="ring-x"></div>
+            <div class="ring-y"></div>
+            <div class="ring-diag"></div>
+            <div class="satellites">
+              <span class="dot d-1">✦</span>
+              <span class="dot d-2">✦</span>
+              <span class="dot d-3">✦</span>
+            </div>
+            <div class="diamond-core">✦</div>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-serif font-bold text-white">3D Quantum Gyroscope Singularity</h3>
+        <p class="text-xs text-slate-400 mt-1 mb-4 leading-relaxed">
+          Three interlocking 24K gold armillary rings spinning in 3D perspective around a levitating diamond crystal with ambient gravitational wave pulses.
+        </p>
+
+        <div class="mt-auto w-full pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-amber-300 font-mono">Theme: Astronomy & Physics</span>
+          <span class="px-3 py-1 rounded-full bg-[rgba(212,175,55,0.2)] text-white font-medium">Style #1</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card-preview bg-[#0e121c] border border-[rgba(212,175,55,0.25)] rounded-xl p-5 flex flex-col items-center text-center relative overflow-hidden">
+        <div class="absolute top-3 left-3 px-2 py-0.5 rounded bg-[rgba(212,175,55,0.15)] text-[11px] font-mono font-bold text-[#f3c77c]">
+          OPTION 2
+        </div>
+
+        <!-- Live Animation Stage -->
+        <div class="h-32 flex items-center justify-center my-3">
+          <div class="orb-2">
+            <div class="bezel"></div>
+            <div class="gear-outer"></div>
+            <div class="gear-inner"></div>
+            <div class="escapement-tick"></div>
+            <div class="tourbillon-cage"></div>
+            <div class="ruby-jewel"></div>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-serif font-bold text-white">Celestial Chrono-Tourbillon</h3>
+        <p class="text-xs text-slate-400 mt-1 mb-4 leading-relaxed">
+          Inspired by Swiss Haute Horlogerie (Patek Philippe & Rolex). Rotating gold escapement gears and oscillating tourbillon cage with gleaming center jewel.
+        </p>
+
+        <div class="mt-auto w-full pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-amber-300 font-mono">Theme: Swiss Horology</span>
+          <span class="px-3 py-1 rounded-full bg-[rgba(212,175,55,0.2)] text-white font-medium">Style #2</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card-preview bg-[#0e121c] border border-[rgba(212,175,55,0.25)] rounded-xl p-5 flex flex-col items-center text-center relative overflow-hidden">
+        <div class="absolute top-3 left-3 px-2 py-0.5 rounded bg-[rgba(212,175,55,0.15)] text-[11px] font-mono font-bold text-[#f3c77c]">
+          OPTION 3
+        </div>
+
+        <!-- Live Animation Stage -->
+        <div class="h-32 flex items-center justify-center my-3">
+          <div class="orb-3">
+            <div class="crosshair-h"></div>
+            <div class="crosshair-v"></div>
+            <div class="radar-sweep"></div>
+            <div class="reticle-corner"></div>
+            <div class="iris-blade-ring"></div>
+            <div class="sensor-core"></div>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-serif font-bold text-white">Neural Vision AI Aperture</h3>
+        <p class="text-xs text-slate-400 mt-1 mb-4 leading-relaxed">
+          Tailored to Computer Vision & AI. A high-tech golden optical sensor with 360° sweeping radar beam, breathing iris reticle, and targeting crosshairs.
+        </p>
+
+        <div class="mt-auto w-full pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-amber-300 font-mono">Theme: Computer Vision & AI</span>
+          <span class="px-3 py-1 rounded-full bg-[rgba(212,175,55,0.2)] text-white font-medium">Style #3</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card-preview bg-[#0e121c] border border-[rgba(212,175,55,0.25)] rounded-xl p-5 flex flex-col items-center text-center relative overflow-hidden">
+        <div class="absolute top-3 left-3 px-2 py-0.5 rounded bg-[rgba(212,175,55,0.15)] text-[11px] font-mono font-bold text-[#f3c77c]">
+          OPTION 4
+        </div>
+
+        <!-- Live Animation Stage -->
+        <div class="h-32 flex items-center justify-center my-3">
+          <div class="orb-4">
+            <div class="halo-1"></div>
+            <div class="halo-2"></div>
+            <div class="stardust-vortex">
+              <span class="starlet s-top">✦</span>
+              <span class="starlet s-bottom">✦</span>
+              <span class="starlet s-left">✦</span>
+              <span class="starlet s-right">✦</span>
+            </div>
+            <div class="crest-diamond">✦</div>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-serif font-bold text-white">24K Royal Diamond Crest</h3>
+        <p class="text-xs text-slate-400 mt-1 mb-4 leading-relaxed">
+          Classic imperial luxury. An 8-pointed multifaceted 24K diamond star floating within dual pulsating halos and an orbiting starlight diamond vortex.
+        </p>
+
+        <div class="mt-auto w-full pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-amber-300 font-mono">Theme: Royal Crest & Starlight</span>
+          <span class="px-3 py-1 rounded-full bg-[rgba(212,175,55,0.2)] text-white font-medium">Style #4</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Instruction -->
+    <div class="mt-8 text-center text-xs text-slate-400 border-t border-slate-800 pt-4">
+      Reply with <strong class="text-[#f3c77c]">1</strong>, <strong class="text-[#f3c77c]">2</strong>, <strong class="text-[#f3c77c]">3</strong>, or <strong class="text-[#f3c77c]">4</strong>, and I will activate your chosen animation immediately!
+    </div>
+
+  </div>
+
+</body>
+</html>
