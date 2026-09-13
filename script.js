@@ -50,31 +50,42 @@ function initMobileNavigation() {
 function initSectionSpy() {
   const sections = document.querySelectorAll('section[id], [id="certifications"]');
   const navItems = document.querySelectorAll('.nav-item');
+  let ticking = false;
 
   window.addEventListener('scroll', () => {
-    let current = '';
-    const scrollPos = window.pageYOffset + 140;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        let current = '';
+        const scrollPos = window.pageYOffset + 140;
 
-    sections.forEach(sec => {
-      const top = sec.offsetTop;
-      const height = sec.offsetHeight;
-      if (scrollPos >= top && scrollPos < top + height) {
-        current = sec.getAttribute('id');
-      }
-    });
+        sections.forEach(sec => {
+          const top = sec.offsetTop;
+          const height = sec.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            current = sec.getAttribute('id');
+          }
+        });
 
-    navItems.forEach(item => {
-      item.classList.remove('active');
-      if (item.getAttribute('href') === `#${current}`) {
-        item.classList.add('active');
-      }
-    });
-  });
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('href') === `#${current}`) {
+            item.classList.add('active');
+          }
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 }
 
-/* Official Resume Modal */
+/* Official Resume Modal (Lazy load iframe on demand) */
 function openResumeModal() {
   const modal = document.getElementById('resume-modal');
+  const frame = document.getElementById('resume-frame');
+  if (frame && !frame.getAttribute('src')) {
+    frame.setAttribute('src', frame.getAttribute('data-src'));
+  }
   if (modal) {
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';

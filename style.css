@@ -1916,38 +1916,57 @@ body {
     top: 72px;
     left: 0;
     width: 100%;
-    max-height: calc(100vh - 72px);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
     background-color: rgba(8, 9, 13, 0.98);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--gold-border);
     flex-direction: column;
-    padding: 20px 24px 28px;
-    gap: 12px;
+    padding: 8px 16px 12px;
+    gap: 0;
     margin-left: 0;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+    overflow: hidden !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    z-index: 1000;
+  }
+  .nav-menu::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
   }
   .nav-menu.open {
     display: flex;
   }
   .nav-item {
     height: auto;
-    padding: 12px 0;
+    padding: 8px 12px;
     width: 100%;
-    font-size: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.92rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--text-creamy);
+    border-radius: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    display: flex;
+    align-items: center;
+    transition: all 0.15s ease;
   }
   .nav-item:last-child {
     border-bottom: none;
   }
+  .nav-item:hover, .nav-item:active {
+    color: var(--gold-light);
+    background: rgba(212, 175, 55, 0.08);
+  }
+  .nav-item.active {
+    color: var(--gold-pale);
+    background: rgba(212, 175, 55, 0.12);
+    border-left: 3px solid var(--gold-primary);
+    padding-left: 14px;
+  }
   .nav-item.active::after {
-    bottom: 0;
-    left: 0;
-    right: auto;
-    width: 36px;
-    border-radius: 2px;
+    display: none;
   }
   .capabilities-quad-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1971,6 +1990,13 @@ body {
 @media (max-width: 768px) {
   html, body {
     overflow-x: hidden;
+  }
+  /* Mobile GPU Smoothing - Eliminates initial rendering lag & glitch */
+  .luxury-card {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
   .container {
     padding: 0 20px;
@@ -2395,5 +2421,28 @@ body {
   }
   .navbar {
     padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* 6. Landscape Mode on Smartphones: Display in 3-column micro-grid with zero scrollbar */
+@media (max-height: 520px) and (max-width: 1040px) {
+  .nav-menu.open {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 4px 10px !important;
+    padding: 8px 16px !important;
+    overflow: hidden !important;
+  }
+  .nav-item {
+    padding: 6px 10px !important;
+    font-size: 0.82rem !important;
+    text-align: center !important;
+    justify-content: center !important;
+    border-bottom: none !important;
+  }
+  .nav-item.active {
+    border-left: none !important;
+    border-bottom: 2px solid var(--gold-primary) !important;
+    padding-left: 10px !important;
   }
 }
