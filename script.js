@@ -220,6 +220,11 @@ function showGoldToast(msg) {
   }, 2800);
 }
 
+// --- CONTACT FORM API CONFIGURATION ---
+// Option 1: Web3Forms API Key (Instant delivery, no activation link needed)
+// Option 2: FormSubmit (Requires 1-time activation link sent to phani424302@gmail.com)
+const CONTACT_API_KEY = ""; // Paste your Web3Forms Access Key here when available
+
 /* Direct Portfolio Background Transmission — Zero Deviations, Never Leaves Page */
 async function handleContactSubmit(e) {
   e.preventDefault();
@@ -243,30 +248,75 @@ async function handleContactSubmit(e) {
   }
 
   try {
-    const payload = {
-      name: name,
-      email: email,
-      subject: subject,
-      message: message,
-      _replyto: email,
-      _subject: `Portfolio Inquiry from ${name}: ${subject}`,
-      _captcha: 'false',
-      _template: 'table'
-    };
+    let success = false;
+    let responseMsg = '';
 
-    const response = await fetch('https://formsubmit.co/ajax/phani424302@gmail.com', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
+    // If Web3Forms API Key is configured, use it first
+    if (CONTACT_API_KEY && CONTACT_API_KEY.trim() !== '') {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: CONTACT_API_KEY.trim(),
+          name: name,
+          email: email,
+          subject: subject,
+          message: message,
+          from_name: `${name} (Portfolio Inquiry)`
+        })
+      });
 
-    const data = await response.json().catch(() => ({}));
+      const data = await response.json().catch(() => ({}));
+      if (response.ok && data.success) {
+        success = true;
+        responseMsg = 'Message delivered directly to Phani\'s inbox!';
+      } else {
+        responseMsg = data.message || 'API error. Trying backup channel...';
+      }
+    }
 
-    if (response.ok && (data.success === 'true' || data.success === true)) {
-      showGoldToast('Message sent! Delivered directly to Phani\'s inbox.');
+    // Default to FormSubmit if no API key or if Web3Forms fails
+    if (!success) {
+      const payload = {
+        name: name,
+        email: email,
+        subject: subject,
+        message: message,
+        _replyto: email,
+        _subject: `Portfolio Inquiry from ${name}: ${subject}`,
+        _captcha: 'false',
+        _template: 'table'
+      };
+
+      const response = await fetch('https://formsubmit.co/ajax/phani424302@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (response.ok && (data.success === 'true' || data.success === true)) {
+        success = true;
+        responseMsg = 'Message sent! Delivered directly to Phani\'s inbox.';
+      } else if (data.message && data.message.toLowerCase().includes('activation')) {
+        success = false;
+        responseMsg = 'Activation Needed: Check phani424302@gmail.com and click "Activate Form".';
+        alert('FormSubmit Notice:\n\nFormSubmit sent a 1-click activation email to phani424302@gmail.com.\n\nPlease open your Gmail (check Inbox/Spam) and click "Activate Form" to start receiving visitor messages.');
+      } else {
+        success = false;
+        responseMsg = data.message || 'Transmission failed. Please use direct email link.';
+      }
+    }
+
+    if (success) {
+      showGoldToast(responseMsg);
       form.reset();
       if (submitBtn) {
         submitBtn.innerHTML = '<span>Message Sent!</span> <i class="fa-solid fa-check"></i>';
@@ -275,33 +325,20 @@ async function handleContactSubmit(e) {
           submitBtn.innerHTML = originalBtnHtml;
         }, 3500);
       }
-    } else if (data.message && data.message.toLowerCase().includes('activation')) {
-      showGoldToast('Please tap Activate Form in the latest email sent to phani424302@gmail.com');
+    } else {
+      showGoldToast(responseMsg);
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnHtml;
-      }
-    } else {
-      showGoldToast(data.message || 'Message sent! Thank you.');
-      form.reset();
-      if (submitBtn) {
-        submitBtn.innerHTML = '<span>Message Sent!</span> <i class="fa-solid fa-check"></i>';
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnHtml;
-        }, 3500);
       }
     }
   } catch (error) {
     console.warn('Transmission error:', error);
-    showGoldToast('Message submitted. Thank you for reaching out!');
-    form.reset();
+    showGoldToast('Network error. Opening your email client as fallback...');
+    window.location.href = `mailto:phani424302@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
     if (submitBtn) {
-      submitBtn.innerHTML = '<span>Message Sent!</span> <i class="fa-solid fa-check"></i>';
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnHtml;
-      }, 3500);
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnHtml;
     }
   }
 }
