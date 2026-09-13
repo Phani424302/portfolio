@@ -55,6 +55,31 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+}
+
+/* Allow text editing inside form inputs only */
+input,
+textarea {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+}
+
+/* Suppress all browser text selection highlights */
+::selection {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+::-moz-selection {
+  background: transparent !important;
+  color: inherit !important;
 }
 
 html {

@@ -1,9 +1,58 @@
 document.addEventListener('DOMContentLoaded', () => {
+  initCopyProtection();
   initCursorActions();
   initMobileNavigation();
   initSectionSpy();
   initCurrentYear();
 });
+
+/* Complete Text Selection & Copy Protection */
+function initCopyProtection() {
+  const isFormInput = (el) => el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA');
+
+  // Prevent drag-to-select text
+  document.addEventListener('selectstart', (e) => {
+    if (!isFormInput(e.target)) {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Prevent manual copy event
+  document.addEventListener('copy', (e) => {
+    if (!isFormInput(e.target)) {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Prevent cut event
+  document.addEventListener('cut', (e) => {
+    if (!isFormInput(e.target)) {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Prevent dragging text or elements
+  document.addEventListener('dragstart', (e) => {
+    if (!isFormInput(e.target)) {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Block copy & select-all keyboard shortcuts (Ctrl+C, Ctrl+A, Ctrl+U, Ctrl+S)
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.metaKey) {
+      const key = e.key.toLowerCase();
+      if ((key === 'c' || key === 'a' || key === 'u' || key === 's') && !isFormInput(e.target)) {
+        e.preventDefault();
+        return false;
+      }
+    }
+  });
+}
 
 /* Mobile Navigation Drawer Toggle (Touch-optimized for iOS & Android) */
 function initMobileNavigation() {
