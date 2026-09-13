@@ -26,6 +26,9 @@
   <div class="ambient-glow-gold glow-top"></div>
   <div class="ambient-glow-gold glow-mid"></div>
 
+  <!-- Mobile Navigation Backdrop Overlay -->
+  <div class="nav-drawer-backdrop" id="nav-backdrop"></div>
+
   <!-- NAVIGATION -->
   <header class="navbar" id="navbar">
     <div class="nav-container">
@@ -33,16 +36,68 @@
         <span class="crest-name">Phani Bhushan Reddy</span>
       </a>
 
-      <nav class="nav-menu" id="nav-menu">
-        <a href="#hero" class="nav-item active">Home</a>
-        <a href="#about" class="nav-item">About</a>
-        <a href="#skills" class="nav-item">Skills</a>
-        <a href="#projects" class="nav-item">Projects</a>
-        <a href="#experience" class="nav-item">Experience</a>
-        <a href="#education" class="nav-item">Education</a>
-        <a href="#certifications" class="nav-item">Certifications</a>
-        <a href="javascript:void(0)" onclick="openResumeModal()" class="nav-item">Resume</a>
-        <a href="#contact" class="nav-item">Contact</a>
+      <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+        <!-- Mobile Drawer Header -->
+        <div class="nav-drawer-header">
+          <div class="drawer-crest-badge">
+            <span class="drawer-monogram">PBR</span>
+            <div class="drawer-title-col">
+              <span class="drawer-name">PHANI BHUSHAN REDDY</span>
+              <span class="drawer-sub">Navigation Panel</span>
+            </div>
+          </div>
+          <button class="drawer-close-btn" id="drawer-close" aria-label="Close Navigation">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="nav-items-wrapper">
+          <a href="#hero" class="nav-item active">
+            <i class="fa-solid fa-house-chimney nav-icon"></i>
+            <span class="nav-label">Home</span>
+            <i class="fa-solid fa-chevron-right nav-arrow"></i>
+          </a>
+          <a href="#about" class="nav-item">
+            <i class="fa-solid fa-user-tie nav-icon"></i>
+            <span class="nav-label">About</span>
+            <i class="fa-solid fa-chevron-right nav-arrow"></i>
+          </a>
+          <a href="#skills" class="nav-item">
+            <i class="fa-solid fa-microchip nav-icon"></i>
+            <span class="nav-label">Skills</span>
+            <i class="fa-solid fa-chevron-right nav-arrow"></i>
+          </a>
+          <a href="#projects" class="nav-item">
+            <i class="fa-solid fa-diagram-project nav-icon"></i>
+            <span class="nav-label">Projects</span>
+            <i class="fa-solid fa-chevron-right nav-arrow"></i>
+          </a>
+          <a href="#experience" class="nav-item">
+            <i class="fa-solid fa-briefcase nav-icon"></i>
+            <span class="nav-label">Experience</span>
+            <i class="fa-solid fa-chevron-right nav-arrow"></i>
+          </a>
+          <a href="#education" class="nav-item">
+            <i class="fa-solid fa-graduation-cap nav-icon"></i>
+            <span class="nav-label">Education</span>
+            <i class="fa-solid fa-chevron-right nav-arrow"></i>
+          </a>
+          <a href="#certifications" class="nav-item">
+            <i class="fa-solid fa-award nav-icon"></i>
+            <span class="nav-label">Certifications</span>
+            <i class="fa-solid fa-chevron-right nav-arrow"></i>
+          </a>
+          <a href="javascript:void(0)" onclick="openResumeModal()" class="nav-item">
+            <i class="fa-solid fa-file-pdf nav-icon"></i>
+            <span class="nav-label">Resume</span>
+            <i class="fa-solid fa-arrow-up-right-from-square nav-arrow"></i>
+          </a>
+          <a href="#contact" class="nav-item">
+            <i class="fa-solid fa-paper-plane nav-icon"></i>
+            <span class="nav-label">Contact</span>
+            <i class="fa-solid fa-chevron-right nav-arrow"></i>
+          </a>
+        </div>
       </nav>
 
       <div class="nav-actions">

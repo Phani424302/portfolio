@@ -4,43 +4,79 @@ document.addEventListener('DOMContentLoaded', () => {
   initCurrentYear();
 });
 
-/* Mobile Navigation Toggle (Touch-optimized for iOS & Android) */
+/* Mobile Navigation Drawer Toggle (Touch-optimized for iOS & Android) */
 function initMobileNavigation() {
   const toggle = document.getElementById('mobile-toggle');
   const navMenu = document.getElementById('nav-menu');
+  const backdrop = document.getElementById('nav-backdrop');
+  const drawerClose = document.getElementById('drawer-close');
   const navItems = document.querySelectorAll('.nav-item');
+
+  function openMenu() {
+    navMenu.classList.add('open');
+    if (backdrop) backdrop.classList.add('open');
+    if (toggle) {
+      toggle.classList.add('active');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    navMenu.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('open');
+    if (toggle) {
+      toggle.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+    // Only restore body scrolling if resume modal is not currently active
+    const resumeModal = document.getElementById('resumeModal');
+    if (!resumeModal || !resumeModal.classList.contains('active')) {
+      document.body.style.overflow = '';
+    }
+  }
 
   if (toggle && navMenu) {
     toggle.addEventListener('click', (e) => {
       e.stopPropagation();
-      const isOpen = navMenu.classList.toggle('open');
-      toggle.classList.toggle('active', isOpen);
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (navMenu.classList.contains('open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
+
+    if (drawerClose) {
+      drawerClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeMenu();
+      });
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeMenu();
+      });
+    }
 
     navItems.forEach(item => {
       item.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        toggle.classList.remove('active');
-        toggle.setAttribute('aria-expanded', 'false');
+        closeMenu();
       });
     });
 
-    // Close when tapping anywhere outside the menu
+    // Close when tapping anywhere outside the drawer
     document.addEventListener('click', (e) => {
       if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && !toggle.contains(e.target)) {
-        navMenu.classList.remove('open');
-        toggle.classList.remove('active');
-        toggle.setAttribute('aria-expanded', 'false');
+        closeMenu();
       }
     });
 
     // Close on Escape key press
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && navMenu.classList.contains('open')) {
-        navMenu.classList.remove('open');
-        toggle.classList.remove('active');
-        toggle.setAttribute('aria-expanded', 'false');
+        closeMenu();
       }
     });
   }
