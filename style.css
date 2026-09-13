@@ -880,8 +880,64 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 18px;
   flex-wrap: wrap;
+  margin-top: 36px;
+}
+
+.hero-cta-btn {
+  padding: 13px 32px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.35px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  cursor: pointer;
+}
+
+.hero-cta-btn i {
+  font-size: 1rem;
+  transition: transform 0.25s ease;
+}
+
+.hero-cta-btn:hover i {
+  transform: scale(1.15);
+}
+
+.hero-cta-btn.btn-gold {
+  background: var(--gold-gradient-btn);
+  color: #08090d;
+  box-shadow: 0 4px 22px rgba(212, 175, 55, 0.35);
+  border: 1px solid rgba(255, 243, 209, 0.4);
+}
+
+.hero-cta-btn.btn-gold:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.55);
+  color: #08090d;
+}
+
+.hero-cta-btn.btn-gold-outline {
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  color: var(--gold-light);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+}
+
+.hero-cta-btn.btn-gold-outline:hover {
+  background: rgba(212, 175, 55, 0.18);
+  border-color: var(--gold-light);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(212, 175, 55, 0.25);
 }
 
 /* Key Metrics Strip */
@@ -2592,6 +2648,19 @@ body {
   .hero-narrative {
     font-size: 0.92rem;
     line-height: 1.7;
+  }
+
+  .hero-action-buttons {
+    margin-top: 28px;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .hero-cta-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 0.95rem;
   }
 
   /* About */
