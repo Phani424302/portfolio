@@ -4,21 +4,44 @@ document.addEventListener('DOMContentLoaded', () => {
   initCurrentYear();
 });
 
-/* Mobile Navigation Toggle */
+/* Mobile Navigation Toggle (Touch-optimized for iOS & Android) */
 function initMobileNavigation() {
   const toggle = document.getElementById('mobile-toggle');
   const navMenu = document.getElementById('nav-menu');
   const navItems = document.querySelectorAll('.nav-item');
 
   if (toggle && navMenu) {
-    toggle.addEventListener('click', () => {
-      navMenu.classList.toggle('open');
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navMenu.classList.toggle('open');
+      toggle.classList.toggle('active', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
     navItems.forEach(item => {
       item.addEventListener('click', () => {
         navMenu.classList.remove('open');
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
       });
+    });
+
+    // Close when tapping anywhere outside the menu
+    document.addEventListener('click', (e) => {
+      if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && !toggle.contains(e.target)) {
+        navMenu.classList.remove('open');
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+        navMenu.classList.remove('open');
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 }

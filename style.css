@@ -62,6 +62,10 @@ html {
   scroll-padding-top: 80px;
   font-size: 16px;
   color-scheme: dark;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -71,6 +75,8 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   position: relative;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
 }
 
@@ -425,26 +431,47 @@ body {
 }
 
 .mobile-toggle {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--gold-border);
   border-radius: var(--radius-sm);
-  padding: 8px;
+  padding: 10px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  transition: border-color 0.2s ease;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  min-width: 44px;
+  min-height: 44px;
+  transition: all 0.25s ease;
 }
 
-.mobile-toggle:hover {
+.mobile-toggle:hover, .mobile-toggle.active {
   border-color: var(--gold-light);
+  background: rgba(212, 175, 55, 0.12);
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.25);
 }
 
 .mobile-toggle span {
-  width: 20px;
+  display: block;
+  width: 22px;
   height: 2px;
   background-color: var(--gold-light);
   border-radius: 2px;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+.mobile-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.mobile-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* Hero Section */
@@ -1864,37 +1891,17 @@ body {
   color: var(--gold-primary);
 }
 
-/* Responsiveness */
-@media (max-width: 980px) {
-  .hero-title {
-    font-size: 3rem;
-  }
-  .metrics-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .capabilities-quad-grid {
-    grid-template-columns: 1fr;
-  }
-  .arsenal-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .two-column-diploma-grid {
-    grid-template-columns: 1fr;
-  }
-  .concierge-layout {
-    grid-template-columns: 1fr;
-  }
-}
+/* ==========================================================================
+   Comprehensive Mobile & Cross-Device Responsiveness (iOS & Android)
+   ========================================================================== */
 
+/* 1. Tablets & Small Laptops (<= 1040px) */
 @media (max-width: 1040px) {
   .section {
-    padding: 70px 0;
+    padding: 75px 0;
   }
   .hero-title {
-    font-size: 2.35rem;
-  }
-  .hero-executive-title {
-    font-size: 1.15rem;
+    font-size: 2.6rem;
   }
   .nav-actions {
     display: flex;
@@ -1909,21 +1916,31 @@ body {
     top: 72px;
     left: 0;
     width: 100%;
-    height: auto;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     background-color: rgba(8, 9, 13, 0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--gold-border);
     flex-direction: column;
-    padding: 24px;
-    gap: 16px;
+    padding: 20px 24px 28px;
+    gap: 12px;
     margin-left: 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
   }
   .nav-menu.open {
     display: flex;
   }
   .nav-item {
     height: auto;
-    padding: 10px 0;
+    padding: 12px 0;
     width: 100%;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .nav-item:last-child {
+    border-bottom: none;
   }
   .nav-item.active::after {
     bottom: 0;
@@ -1932,26 +1949,451 @@ body {
     width: 36px;
     border-radius: 2px;
   }
+  .capabilities-quad-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .arsenal-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .concierge-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
   .form-split-row {
     grid-template-columns: 1fr;
   }
   .project-showcase-card {
-    padding: 26px;
+    padding: 32px;
   }
 }
 
-@media (max-width: 480px) {
-  .metrics-grid {
-    grid-template-columns: 1fr;
+/* 2. Standard Mobile & Tablets (<= 768px) */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
   }
+  .container {
+    padding: 0 20px;
+  }
+  .section {
+    padding: 65px 0;
+  }
+  .section-heading-group {
+    margin-bottom: 40px;
+  }
+  .section-main-title {
+    font-size: clamp(1.85rem, 6vw, 2.3rem);
+  }
+  .section-lead-desc {
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 85px 0 60px;
+  }
+  .hero-title {
+    font-size: clamp(1.85rem, 6.8vw, 2.6rem);
+    line-height: 1.22;
+  }
+  .hero-title .name-line {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .hero-executive-title {
+    font-size: 1.12rem;
+    line-height: 1.45;
+    margin-bottom: 18px;
+  }
+  .hero-narrative {
+    font-size: 0.98rem;
+    line-height: 1.75;
+  }
+
+  /* About */
+  .about-lead-card {
+    padding: 26px 22px;
+  }
+  .card-inner-title {
+    font-size: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .about-paragraph {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  .capabilities-quad-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .cap-box {
+    padding: 24px 20px;
+  }
+
+  /* Skills / Arsenal */
   .arsenal-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
-  .hero-action-buttons {
+  .arsenal-card {
+    padding: 26px 18px;
+  }
+
+  /* Projects */
+  .project-showcase-card {
+    padding: 24px 20px;
+    border-left-width: 3px;
+  }
+  .project-top-meta {
     flex-direction: column;
-    width: 100%;
+    align-items: flex-start;
+    gap: 14px;
   }
-  .hero-action-buttons .btn {
+  .project-gold-badge {
+    font-size: 0.76rem;
+    line-height: 1.4;
+    max-width: 100%;
+    word-break: break-word;
+  }
+  .gold-source-btn {
     width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+  }
+  .project-headline {
+    font-size: 1.35rem;
+  }
+  .project-subheadline {
+    font-size: 0.92rem;
+  }
+  .project-body-text {
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+  .highlight-item {
+    font-size: 0.9rem;
+  }
+
+  /* Experience */
+  .experience-showcase {
+    padding: 24px 20px;
+  }
+  .exp-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .exp-period-badge {
+    align-self: flex-start;
+  }
+
+  /* Education & Certifications */
+  .diploma-card, .credential-card {
+    padding: 20px 18px;
+    gap: 16px;
+  }
+  .diploma-badge-disc, .credential-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+  }
+  .diploma-degree {
+    font-size: 1.15rem;
+  }
+
+  /* Contact */
+  .concierge-box {
+    padding: 18px 16px;
+    gap: 14px;
+  }
+  .concierge-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+  }
+  .concierge-link {
+    font-size: 0.88rem;
+  }
+  .concierge-form-box {
+    padding: 26px 20px;
+  }
+  .form-gold-title {
+    font-size: 1.35rem;
+  }
+
+  /* iOS Auto-Zoom Prevention: Minimum 16px on inputs */
+  .gold-form-group input,
+  .gold-form-group textarea {
+    font-size: 16px !important;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 38px 0;
+  }
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+  .footer-left {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+/* 3. Smartphones (iPhone 12/13/14/15/16, Samsung Galaxy, Google Pixel <= 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+  .section {
+    padding: 50px 0;
+  }
+
+  /* Navbar */
+  .crest-name {
+    font-size: 0.98rem;
+    letter-spacing: 0.3px;
+  }
+
+  /* Hero */
+  .hero-section {
+    padding: 75px 0 50px;
+  }
+  .hero-title {
+    font-size: clamp(1.65rem, 7.8vw, 2.15rem);
+  }
+  .hero-title .name-line {
+    word-break: break-word;
+  }
+  .hero-executive-title {
+    font-size: 1.05rem;
+  }
+  .hero-narrative {
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  /* About */
+  .about-lead-card {
+    padding: 20px 16px;
+  }
+  .card-inner-title {
+    font-size: 1.15rem;
+  }
+  .cap-box {
+    padding: 20px 16px;
+  }
+  .cap-icon-gold {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+  .cap-box h4 {
+    font-size: 1.08rem;
+  }
+  .cap-box p {
+    font-size: 0.88rem;
+  }
+
+  /* Skills */
+  .arsenal-card {
+    padding: 22px 14px;
+  }
+  .skills-bubble-grid {
+    gap: 16px 10px;
+  }
+  .skill-disc-item {
+    width: 62px;
+  }
+  .skill-icon-bubble {
+    width: 46px;
+    height: 46px;
+    font-size: 20px;
+  }
+  .skill-label {
+    font-size: 0.72rem;
+    margin-top: 6px;
+  }
+
+  /* Projects */
+  .project-showcase-card {
+    padding: 20px 16px;
+  }
+  .project-headline {
+    font-size: 1.2rem;
+  }
+  .project-subheadline {
+    font-size: 0.86rem;
+  }
+  .project-body-text {
+    font-size: 0.88rem;
+  }
+  .highlight-item {
+    font-size: 0.85rem;
+    gap: 8px;
+  }
+  .gold-pill {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+
+  /* Experience */
+  .experience-showcase {
+    padding: 20px 16px;
+  }
+  .exp-title-left {
+    gap: 12px;
+  }
+  .exp-badge-disc {
+    width: 46px;
+    height: 46px;
+    font-size: 1.3rem;
+  }
+  .exp-role-title {
+    font-size: 1.15rem;
+  }
+  .exp-bullet-points li {
+    font-size: 0.88rem;
+  }
+
+  /* Education & Certifications */
+  .diploma-card, .credential-card {
+    padding: 18px 14px;
+    gap: 12px;
+  }
+  .diploma-badge-disc, .credential-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.15rem;
+  }
+  .diploma-degree {
+    font-size: 1.05rem;
+  }
+  .diploma-school, .credential-issuer {
+    font-size: 0.86rem;
+  }
+  .diploma-note {
+    font-size: 0.84rem;
+  }
+  .credential-name {
+    font-size: 0.96rem;
+  }
+
+  /* Contact */
+  .concierge-box {
+    padding: 16px 14px;
+    gap: 12px;
+  }
+  .concierge-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+  .concierge-label {
+    font-size: 0.68rem;
+  }
+  .concierge-link {
+    font-size: 0.82rem;
+  }
+  .location-text {
+    font-size: 0.82rem;
+  }
+  .gold-copy-btn, .gold-chat-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+    border-radius: 10px;
+  }
+  .concierge-form-box {
+    padding: 22px 16px;
+  }
+  .form-gold-title {
+    font-size: 1.25rem;
+  }
+  .form-gold-sub {
+    font-size: 0.84rem;
+    margin-bottom: 18px;
+  }
+  .gold-form-group {
+    margin-bottom: 14px;
+  }
+  .btn-gold {
+    padding: 13px 20px;
+    font-size: 0.92rem;
+  }
+
+  /* Resume Modal */
+  .modal-backdrop {
+    padding: 10px;
+  }
+  .modal-luxury-card {
+    height: 94dvh;
+    max-height: 94dvh;
+  }
+  .modal-gold-header {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+  .modal-title-group h3 {
+    font-size: 1.1rem;
+  }
+  .modal-header-actions {
+    gap: 6px;
+  }
+  .btn-gold-ghost, .btn-sm {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+  }
+}
+
+/* 4. Ultra-Compact Screens (iPhone SE 1st gen / narrow foldables <= 360px) */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 12px;
+  }
+  .hero-title {
+    font-size: 1.5rem;
+  }
+  .crest-name {
+    font-size: 0.9rem;
+  }
+  .concierge-box {
+    padding: 14px 10px;
+    gap: 10px;
+  }
+  .concierge-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1.05rem;
+  }
+  .concierge-link {
+    font-size: 0.78rem;
+  }
+  .gold-copy-btn, .gold-chat-btn {
+    width: 34px;
+    height: 34px;
+  }
+  .skill-disc-item {
+    width: 56px;
+  }
+  .skill-icon-bubble {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+}
+
+/* 5. iOS Safe Area Insets (Notches & Home Indicators) */
+@supports (padding: env(safe-area-inset-bottom)) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .navbar {
+    padding-top: env(safe-area-inset-top);
   }
 }
