@@ -458,15 +458,15 @@ function initCursorActions() {
     }, 850);
   });
 
-  // --- ACTION 3: MOTIONLESS CURSOR TRANSFORMATION & CELESTIAL BEACON ---
+  // --- ACTION 3: MOTIONLESS CURSOR TRANSFORMATION & LIVING COMPANION AURA ---
   function triggerIdleBeacon() {
     if (!mouseHasEntered) return;
     document.body.classList.add('cursor-stationary');
     if (!idleBeacon) return;
 
     // Keep beacon comfortably within viewport bounds
-    const x = Math.max(40, Math.min(window.innerWidth - 40, lastMouseX));
-    const y = Math.max(40, Math.min(window.innerHeight - 65, lastMouseY));
+    const x = Math.max(30, Math.min(window.innerWidth - 30, lastMouseX));
+    const y = Math.max(30, Math.min(window.innerHeight - 30, lastMouseY));
 
     idleBeacon.style.left = `${x}px`;
     idleBeacon.style.top = `${y}px`;

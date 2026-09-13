@@ -119,10 +119,10 @@ body {
     cursor: url('assets/cursor-pointer.svg') 0 0, pointer !important;
   }
 
-  /* Stationary Cursor: Morphs into 24K Celestial Star Diamond when motionless */
+  /* Stationary Cursor: Morphs into 24K Champagne Gold Loyal Companion when motionless */
   body.cursor-stationary,
   body.cursor-stationary * {
-    cursor: url('assets/cursor-idle.svg') 9 9, auto !important;
+    cursor: url('assets/cursor-idle.svg') 12 12, auto !important;
   }
 }
 
@@ -131,7 +131,7 @@ body {
    0. Single-Click: Instant Champagne Gold Liquid Ripple
    1. Double-Click: Golden Celestial Supernova Burst
    2. Right-Click: Bespoke Obsidian & Gold Radial HUD
-   3. Motionless Cursor: Celestial Diamond Morph & Orbiting Starlight Beacon
+   3. Motionless Cursor: 24K Golden Companion & Living Orbit Aura
 ---------------------------------------------------- */
 
 /* Cursor FX Master Container */
@@ -473,56 +473,34 @@ body {
   position: absolute;
   font-size: 11px;
   color: #fff6db;
-  text-shadow: 0 0 8px rgba(243, 199, 124, 0.9);
-}
-
-.orbit-star.star-1 { top: -6px; left: 50%; transform: translateX(-50%); }
-.orbit-star.star-2 { bottom: -6px; left: 50%; transform: translateX(-50%); font-size: 8px; color: #f3c77c; }
-.orbit-star.star-3 { top: 50%; right: -6px; transform: translateY(-50%); font-size: 9px; color: #d4af37; }
-
-.beacon-badge {
-  position: absolute;
-  top: 44px;
-  left: 50%;
-  transform: translateX(-50%);
+  text-shadow: 0 0 8px rgba(243, 199, 124, 0.95);
+  line-height: 1;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  background: linear-gradient(135deg, rgba(16, 21, 32, 0.96) 0%, rgba(9, 12, 18, 0.99) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(212, 175, 55, 0.5);
-  border-radius: 9999px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9), 0 0 18px rgba(212, 175, 55, 0.25);
-  white-space: nowrap;
-  animation: badgeFloat 3s ease-in-out infinite;
+  justify-content: center;
 }
 
-@keyframes badgeFloat {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-4px); }
+.orbit-star.star-1 { 
+  top: -7px; 
+  left: 50%; 
+  transform: translateX(-50%); 
 }
 
-.beacon-gem {
-  color: var(--gold-light);
-  font-size: 0.82rem;
-  animation: gemSpin 4s linear infinite;
+.orbit-star.star-2 { 
+  bottom: -7px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  font-size: 10px; 
+  color: #f3c77c; 
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.8));
 }
 
-@keyframes gemSpin {
-  0% { transform: rotate(0deg) scale(0.9); }
-  50% { transform: rotate(180deg) scale(1.15); color: #ffffff; }
-  100% { transform: rotate(360deg) scale(0.9); }
-}
-
-.beacon-text {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-  color: var(--gold-pale);
-  text-transform: uppercase;
+.orbit-star.star-3 { 
+  top: 50%; 
+  right: -7px; 
+  transform: translateY(-50%); 
+  font-size: 9px; 
+  color: #d4af37; 
 }
 
 @media (hover: none) or (pointer: coarse) {
